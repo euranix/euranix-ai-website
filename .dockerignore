@@ -1,0 +1,21 @@
+# Never send local node_modules into Docker build context.
+# The Dockerfile does its own `npm ci` inside the container,
+# installing Linux-native binaries.  Sending Windows-compiled
+# node_modules would overwrite that install and break vite.
+node_modules
+
+# Previous build artefacts — Docker builds fresh every time
+dist
+
+# Git metadata — not needed in the image
+.git
+.gitignore
+
+# Docs / local-only files
+README.md
+*.local
+.env*
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
