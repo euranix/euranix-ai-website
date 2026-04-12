@@ -1,7 +1,8 @@
-FROM node:20-alpine AS builder
+FROM node:18 AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --legacy-peer-depsCOPY . .
+RUN npm install --legacy-peer-deps
+COPY . .
 RUN npm run build
 
 FROM nginx:stable-alpine
