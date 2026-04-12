@@ -161,7 +161,7 @@ function Nav() {
   return (
     <>
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
-        <a href="/" className="nav-logo"><img src={logoUrl} alt="Euranix AI" className="nav-logo-img" /><span className="nav-logo-ai"><span className="red">.</span>AI</span></a>
+        <a href="/" className="nav-logo"><img src={logoUrl} alt="Euranix AI" className="nav-logo-img" /></a>
         <div className="nav-links">
           {links.map(([l, h]) => (
             <a key={l} href={h} className={activeSection === h ? 'active' : ''} onClick={() => setActiveSection(h)}>{l}</a>
@@ -309,7 +309,11 @@ function Hero() {
       <div className="orb orb1" /><div className="orb orb2" /><div className="orb orb3" /><div className="orb orb4" />
       <div className="hero-layout">
         <div className="hero-inner">
-          <div className="hero-badge"><span className="badge-dot" />EURANIX AI &mdash; FULLY MANAGED TRANSFORMATION</div>
+          <div className="hero-brand-tag">
+            <span className="hero-brand-text">EURANIX<span className="hero-brand-dot">.</span>AI</span>
+            <span className="hero-brand-line" />
+            <span className="hero-brand-sub">FULLY MANAGED AI TRANSFORMATION</span>
+          </div>
           <h1><span className="gradient-text">AI-POWERED</span><br />INTELLIGENCE<br />FOR YOUR BUSINESS</h1>
           <p className="hero-sub">Legacy systems, scattered data, no AI team &mdash; <strong>not your problem anymore.</strong><br />Euranix connects your data, builds your private AI, and manages everything. Your team just asks questions.</p>
           <div className="hero-actions">
@@ -494,6 +498,51 @@ function IntegrationStrip() {
   );
 }
 
+/* ── Privacy Banner ── */
+function PrivacyBanner() {
+  return (
+    <Reveal>
+      <div className="privacy-banner">
+        <div className="pb-inner">
+          <div className="pb-left">
+            <span className="pb-eyebrow">// The problem with public AI</span>
+            <h2 className="pb-headline">Every time your team uses ChatGPT<br />your business walks out the door.</h2>
+            <p className="pb-body">
+              Contracts pasted in. Customer lists uploaded. Internal strategy shared as &ldquo;context.&rdquo;
+              Public AI platforms are trained on data like yours &mdash; and there is no taking it back.
+              Euranix AI runs entirely on <strong>your data, in your environment</strong>.
+              No public model ever sees it. Not one word.
+            </p>
+            <a href="https://platform.euranix.ai" className="btn-primary" style={{width:'fit-content'}}>Keep Your Data Private &nbsp;&rarr;</a>
+          </div>
+          <div className="pb-right">
+            <div className="pb-vs">
+              <div className="pb-col pb-bad">
+                <div className="pb-col-label">Public AI</div>
+                <ul>
+                  <li><span className="pb-x">&#x2715;</span> Your data used for training</li>
+                  <li><span className="pb-x">&#x2715;</span> No control over storage</li>
+                  <li><span className="pb-x">&#x2715;</span> Generic, context-blind answers</li>
+                  <li><span className="pb-x">&#x2715;</span> Compliance risk</li>
+                </ul>
+              </div>
+              <div className="pb-col pb-good">
+                <div className="pb-col-label">Euranix AI</div>
+                <ul>
+                  <li><span className="pb-check"><Icon name="check" size={13} /></span> Runs on your infrastructure</li>
+                  <li><span className="pb-check"><Icon name="check" size={13} /></span> Data never leaves your environment</li>
+                  <li><span className="pb-check"><Icon name="check" size={13} /></span> Trained on your specific context</li>
+                  <li><span className="pb-check"><Icon name="check" size={13} /></span> GDPR and compliance ready</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 /* ── Pricing ── */
 const plans = [
   { name: 'Starter',    price: '199', per: 'per month, flat rate',       featured: false, features: ['Up to 10 team members', '1 managed AI agent', 'Ingest PDFs, docs, spreadsheets and URLs', 'Chat interface and smart notes', '10GB knowledge base storage', 'Euranix-managed setup and deployment', 'Email support'],                                                                                                cta: 'Get Started',      href: 'mailto:contact@euranix.com?subject=Starter Plan' },
@@ -570,7 +619,7 @@ export default function App() {
   }, []);
   return (
     <div className="app">
-      <Nav /><Hero /><IntegrationStrip /><Outcomes /><HowItWorks /><UseCases /><Features /><Pricing /><Footer />
+      <Nav /><Hero /><IntegrationStrip /><PrivacyBanner /><Outcomes /><HowItWorks /><UseCases /><Features /><Pricing /><Footer />
     </div>
   );
 }
