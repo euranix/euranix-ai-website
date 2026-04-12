@@ -107,12 +107,16 @@ function ParticleCanvas() {
 }
 
 /* Typewriter */
-function Typewriter({ text, speed = 50 }: { text: string; speed?: number }) {
+function Typewriter({ text, speed = 50, onDone }: { text: string; speed?: number; onDone?: () => void }) {
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
   useEffect(() => {
+    setDisplayed(''); setDone(false);
     let i = 0;
-    const iv = setInterval(() => { if (i < text.length) { setDisplayed(text.slice(0, ++i)); } else { clearInterval(iv); setDone(true); } }, speed);
+    const iv = setInterval(() => {
+      if (i < text.length) { setDisplayed(text.slice(0, ++i)); }
+      else { clearInterval(iv); setDone(true); onDone?.(); }
+    }, speed);
     return () => clearInterval(iv);
   }, [text, speed]);
   return <span>{displayed}{!done && <span className="caret">|</span>}</span>;
@@ -178,46 +182,109 @@ function Nav() {
 }
 
 /* ── Hero chat preview ── */
+const EXCHANGES = [
+  {
+    user: "What's our refund policy for EU customers?",
+    ai:   "EU customers get a full refund within 30 days — no questions asked. Returns are shipped at company expense, per your Jan 2025 policy doc."
+  },
+  {
+    user: "Summarise last week's board meeting",
+    ai:   "Key decisions: Q2 budget approved at $2.4M, 4 engineering hires greenlit. Action items assigned to Sarah (ops) and the Dev leads."
+  },
+];
+
+type ChatPhase = 'pause' | 'user-typing' | 'ai-thinking' | 'ai-typing';
+
 function HeroChatPreview() {
-  const msgs = [
-    { who: 'user', text: "What's our refund policy for EU customers?" },
-    { who: 'ai',   text: "EU customers have 30 days for a full refund. No questions asked. Returns shipped at company expense per your Jan 2025 policy doc..." },
-    { who: 'user', text: "Summarise last week's board meeting" },
-  ];
-  const [step, setStep] = useState(0);
-  const tilt = useTilt(8);
+  const [exchIdx,   setExchIdx]   = useState(0);
+  const [phase,     setPhase]     = useState<ChatPhase>('pause');
+  const [history,   setHistory]   = useState<{who:string;text:string}[]>([]);
+  const tilt = useTilt(6);
+
+  /* advance through phases */
   useEffect(() => {
-    if (step >= msgs.length) return;
-    const t = setTimeout(() => setStep(s => s + 1), step === 0 ? 900 : 2400);
-    return () => clearTimeout(t);
-  }, [step, msgs.length]);
+    let tm: ReturnType<typeof setTimeout>;
+    if (phase === 'pause')       tm = setTimeout(() => setPhase('user-typing'), exchIdx === 0 ? 900 : 500);
+    if (phase === 'ai-thinking') tm = setTimeout(() => setPhase('ai-typing'),   1800);
+    return () => clearTimeout(tm);
+  }, [phase, exchIdx]);
+
+  const onUserDone = useCallback(() => {
+    setHistory(h => [...h, { who:'user', text: EXCHANGES[exchIdx].user }]);
+    setTimeout(() => setPhase('ai-thinking'), 250);
+  }, [exchIdx]);
+
+  const onAiDone = useCallback(() => {
+    setHistory(h => [...h, { who:'ai', text: EXCHANGES[exchIdx].ai }]);
+    const next = (exchIdx + 1) % EXCHANGES.length;
+    setTimeout(() => {
+      if (next === 0) setHistory([]);
+      setExchIdx(next);
+      setPhase('pause');
+    }, 2800);
+  }, [exchIdx]);
+
   return (
     <div className="hero-preview" ref={tilt.ref} onMouseMove={tilt.handleMove} onMouseLeave={tilt.handleLeave}>
       <div className="card-shine" />
       <div className="preview-glow" />
+      {/* title bar */}
       <div className="preview-bar">
         <span className="pd red-dot" /><span className="pd ylw-dot" /><span className="pd grn-dot" />
         <span className="preview-title">euranix.ai &nbsp;/&nbsp; knowledge-base</span>
-        <span className="preview-status"><span className="live-dot"/>LIVE</span>
+        <span className="preview-status"><span className="live-dot" />LIVE</span>
       </div>
+      {/* messages */}
       <div className="preview-body">
-        {msgs.slice(0, step).map((m, i) => (
+        {history.map((m, i) => (
           <div key={i} className={`preview-msg ${m.who}`}>
             <span className="preview-avatar">{m.who === 'user' ? 'U' : 'AI'}</span>
             <div className="preview-bubble">
               <span className="preview-label">{m.who === 'user' ? 'You' : 'Euranix AI'}</span>
-              <span className="preview-text">
-                {i === step - 1 && m.who === 'user' ? <Typewriter text={m.text} speed={38} /> : m.text}
-              </span>
+              <span className="preview-text">{m.text}</span>
             </div>
           </div>
         ))}
-        {step < msgs.length && (
-          <div className="preview-msg ai">
-            <span className="preview-avatar">AI</span>
-            <div className="preview-bubble"><div className="preview-thinking"><span /><span /><span /></div></div>
+
+        {phase === 'user-typing' && (
+          <div className="preview-msg user" key={`ut-${exchIdx}`}>
+            <span className="preview-avatar">U</span>
+            <div className="preview-bubble">
+              <span className="preview-label">You</span>
+              <span className="preview-text"><Typewriter key={exchIdx} text={EXCHANGES[exchIdx].user} speed={40} onDone={onUserDone} /></span>
+            </div>
           </div>
         )}
+
+        {phase === 'ai-thinking' && (
+          <div className="preview-msg ai">
+            <span className="preview-avatar">AI</span>
+            <div className="preview-bubble">
+              <span className="preview-label">Euranix AI</span>
+              <div className="preview-thinking"><span /><span /><span /></div>
+            </div>
+          </div>
+        )}
+
+        {phase === 'ai-typing' && (
+          <div className="preview-msg ai" key={`at-${exchIdx}`}>
+            <span className="preview-avatar">AI</span>
+            <div className="preview-bubble">
+              <span className="preview-label">Euranix AI</span>
+              <span className="preview-text"><Typewriter key={`ai-${exchIdx}`} text={EXCHANGES[exchIdx].ai} speed={22} onDone={onAiDone} /></span>
+            </div>
+          </div>
+        )}
+      </div>
+      {/* fake input bar */}
+      <div className="preview-input-row">
+        <span className="preview-input-box">
+          {phase === 'user-typing'
+            ? <span className="preview-input-hint typing">typing<span className="dot-1">.</span><span className="dot-2">.</span><span className="dot-3">.</span></span>
+            : <span className="preview-input-hint">Ask Euranix AI anything&hellip;</span>
+          }
+        </span>
+        <span className="preview-send">&#9166;</span>
       </div>
     </div>
   );

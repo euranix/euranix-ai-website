@@ -115,8 +115,8 @@ h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8.5vw,120px); lin
 @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
 
 /* Hero chat preview */
-.hero-visual-col { display:flex; align-items:center; justify-content:center; animation:fadeUp .8s .48s ease both; }
-.hero-preview { background:var(--surface); border:1px solid var(--glass-b); border-radius:var(--r-xl); overflow:hidden; width:100%; max-width:460px; box-shadow:0 50px 120px rgba(0,0,0,0.55),0 0 0 1px rgba(230,57,70,0.1),inset 0 1px 0 rgba(255,255,255,0.06); position:relative; transform-style:preserve-3d; }
+.hero-visual-col { display:flex; align-items:flex-start; justify-content:center; animation:fadeUp .8s .48s ease both; margin-top:-60px; }
+.hero-preview { background:var(--surface); border:1px solid var(--glass-b); border-radius:var(--r-xl); overflow:hidden; width:100%; max-width:540px; box-shadow:0 50px 120px rgba(0,0,0,0.55),0 0 0 1px rgba(230,57,70,0.1),inset 0 1px 0 rgba(255,255,255,0.06); position:relative; transform-style:preserve-3d; }
 .preview-glow { position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(135deg,rgba(230,57,70,0.18) 0%,transparent 50%); pointer-events:none; z-index:0; }
 .preview-bar { display:flex; align-items:center; gap:7px; padding:13px 18px; background:rgba(0,0,0,0.35); border-bottom:1px solid var(--glass-b); position:relative; z-index:2; }
 .pd { width:11px; height:11px; border-radius:50%; display:block; flex-shrink:0; }
@@ -124,8 +124,8 @@ h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8.5vw,120px); lin
 .preview-title { font-family:var(--mono); font-size:11px; color:var(--muted); margin-left:8px; flex:1; }
 .preview-status { font-family:var(--mono); font-size:9px; color:#28c840; letter-spacing:1px; display:flex; align-items:center; gap:5px; }
 .live-dot { width:6px; height:6px; background:#28c840; border-radius:50%; animation:blink 1.5s ease-in-out infinite; display:inline-block; }
-.preview-body { padding:20px 18px; display:flex; flex-direction:column; gap:14px; min-height:220px; position:relative; z-index:2; }
-.preview-msg { display:flex; gap:10px; align-items:flex-start; }
+.preview-body { padding:22px 20px; display:flex; flex-direction:column; gap:18px; min-height:300px; position:relative; z-index:2; overflow-y:auto; }
+.preview-msg { display:flex; gap:12px; align-items:flex-start; }
 .preview-avatar { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:9px; font-weight:700; flex-shrink:0; margin-top:2px; }
 .preview-msg.user .preview-avatar { background:linear-gradient(135deg,var(--red),var(--orange)); color:#fff; }
 .preview-msg.ai   .preview-avatar { background:var(--glass); border:1px solid var(--glass-b); color:var(--red-bright); }
@@ -133,13 +133,25 @@ h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8.5vw,120px); lin
 .preview-label { font-family:var(--mono); font-size:9px; letter-spacing:1.5px; text-transform:uppercase; }
 .preview-msg.user .preview-label { color:var(--red-bright); }
 .preview-msg.ai   .preview-label { color:var(--muted); }
-.preview-msg.user .preview-text { color:var(--white); font-size:13px; font-weight:500; line-height:1.55; }
-.preview-msg.ai   .preview-text { color:var(--muted2); font-size:12.5px; line-height:1.68; }
+.preview-msg.user .preview-text { color:var(--white); font-size:14px; font-weight:500; line-height:1.6; }
+.preview-msg.ai   .preview-text { color:var(--muted2); font-size:13.5px; line-height:1.75; }
 .preview-thinking { display:flex; gap:5px; align-items:center; padding:5px 0; }
 .preview-thinking span { width:7px; height:7px; background:var(--muted); border-radius:50%; animation:thinking .8s ease-in-out infinite; }
 .preview-thinking span:nth-child(2) { animation-delay:.2s; }
 .preview-thinking span:nth-child(3) { animation-delay:.4s; }
 @keyframes thinking { 0%,100%{opacity:.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-4px)} }
+
+/* Preview input bar */
+.preview-input-row { display:flex; align-items:center; gap:10px; padding:14px 18px; border-top:1px solid var(--glass-b); background:rgba(0,0,0,0.25); position:relative; z-index:2; }
+.preview-input-box { flex:1; background:rgba(255,255,255,0.04); border:1px solid var(--glass-b); border-radius:8px; padding:10px 14px; font-size:12.5px; color:var(--muted); font-family:'DM Sans',sans-serif; display:flex; align-items:center; min-height:40px; }
+.preview-input-hint { color:var(--muted); font-size:12.5px; }
+.preview-input-hint.typing { color:var(--red-bright); font-family:var(--mono); font-size:11px; letter-spacing:1px; }
+.preview-send { width:36px; height:36px; background:linear-gradient(135deg,var(--red),var(--red-bright)); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; flex-shrink:0; cursor:default; opacity:0.7; }
+/* typing dots in input hint */
+.dot-1,.dot-2,.dot-3 { display:inline-block; animation:dotBounce .9s ease-in-out infinite; }
+.dot-2 { animation-delay:.2s; }
+.dot-3 { animation-delay:.4s; }
+@keyframes dotBounce { 0%,100%{opacity:.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-3px)} }
 
 /* ══════════════ SECTIONS ══════════════ */
 section { padding:114px 64px; position:relative; }
