@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  euranix-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: euranix-ai
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.euranix-ai.rule=Host(`euranix.ai`)"
+      - "traefik.http.routers.euranix-ai.entrypoints=websecure"
+      - "traefik.http.routers.euranix-ai.tls.certresolver=letsencrypt"
+      - "traefik.http.services.euranix-ai.loadbalancer.server.port=80"
