@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './App.css';
+import logoUrl from './assets/logo.png';
 
 /* Intersection reveal */
 function useReveal() {
@@ -156,7 +157,7 @@ function Nav() {
   return (
     <>
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
-        <a href="/" className="nav-logo">EURANIX<span className="red">.</span>AI</a>
+        <a href="/" className="nav-logo"><img src={logoUrl} alt="Euranix AI" className="nav-logo-img" /><span className="nav-logo-ai"><span className="red">.</span>AI</span></a>
         <div className="nav-links">
           {links.map(([l, h]) => (
             <a key={l} href={h} className={activeSection === h ? 'active' : ''} onClick={() => setActiveSection(h)}>{l}</a>
@@ -233,7 +234,7 @@ function Hero() {
     };
     window.addEventListener('mousemove', mv); return () => window.removeEventListener('mousemove', mv);
   }, []);
-  const stats: [string, string][] = [['5min','First AI answer'],['100%','Your data, your control'],['10+','Data sources'],['24/7','AI availability']];
+  const stats: [string, string][] = [['50min','Setup to first answer'],['100%','Managed by Euranix'],['10+','Data sources supported']];
   return (
     <section className="hero" ref={heroRef} style={{ '--mx': '0px', '--my': '0px' } as React.CSSProperties}>
       <ParticleCanvas />
@@ -241,9 +242,9 @@ function Hero() {
       <div className="orb orb1" /><div className="orb orb2" /><div className="orb orb3" /><div className="orb orb4" />
       <div className="hero-layout">
         <div className="hero-inner">
-          <div className="hero-badge"><span className="badge-dot" />NOW AVAILABLE &mdash; EURANIX AI</div>
-          <h1>YOUR BUSINESS<br /><span className="gradient-text">INTELLIGENCE</span><br /><span className="outline">UNLOCKED</span></h1>
-          <p className="hero-sub">Turn your documents, databases, notes, and team knowledge into an AI that <strong>answers questions</strong>, <strong>supports customers</strong>, and <strong>works the way you do</strong> &mdash; with complete privacy.</p>
+          <div className="hero-badge"><span className="badge-dot" />EURANIX AI &mdash; FULLY MANAGED TRANSFORMATION</div>
+          <h1><span className="gradient-text">AI-POWERED</span><br />INTELLIGENCE<br />FOR YOUR BUSINESS</h1>
+          <p className="hero-sub">Legacy systems, scattered data, no AI team &mdash; <strong>not your problem anymore.</strong><br />Euranix connects your data, builds your private AI, and manages everything. Your team just asks questions.</p>
           <div className="hero-actions">
             <a href="https://platform.euranix.ai" className="btn-primary">Start Free Trial &nbsp;&rarr;</a>
             <a href="mailto:contact@euranix.com?subject=Demo Request" className="btn-secondary">Book a Demo</a>
@@ -259,29 +260,25 @@ function Hero() {
         </div>
         <div className="hero-visual-col"><HeroChatPreview /></div>
       </div>
-      <div className="hero-scroll-hint">
-        <div className="scroll-mouse"><div className="scroll-wheel" /></div>
-        <span>scroll to explore</span>
-      </div>
     </section>
   );
 }
 
 /* ── Outcomes ── */
 const outcomes = [
-  { icon: 'search', title: 'Find Any Answer Instantly',   desc: 'Ask in plain English. Get accurate answers from your own documents, databases, and notes &mdash; in seconds, not hours.' },
-  { icon: 'bot',    title: 'AI That Knows Your Business', desc: 'Not a generic chatbot. An AI trained on your products, processes, and history that speaks your language and context.' },
-  { icon: 'lock',   title: 'Your Data Never Leaves',      desc: 'Your business data is never used to train public models. Choose cloud or fully private hosting &mdash; your call.' },
-  { icon: 'chat',   title: 'Support Customers 24/7',      desc: 'Add an AI chat widget to your website. Customers get instant answers from your knowledge base &mdash; even at midnight.' },
-  { icon: 'mic',    title: 'Talk To Your AI',             desc: 'Not a fan of typing? Just speak. Euranix AI listens, understands, and responds &mdash; in voice or text.' },
-  { icon: 'zap',    title: 'Works With What You Have',    desc: 'Connects to your existing software, databases, and files. No migration, no disruption. Your data stays where it is.' },
+  { icon: 'zap',    title: 'We Handle Everything',          desc: 'You bring the data, we do the rest. Euranix designs, deploys, and manages your AI &mdash; no technical team required on your end.' },
+  { icon: 'db',     title: 'Legacy Software? No Problem',   desc: 'Already running on custom or older systems? We integrate directly into your existing software stack. No rip-and-replace.' },
+  { icon: 'search', title: 'Instant Answers From Your Data', desc: 'Your team asks in plain English, your AI answers from your actual documents, databases, and records &mdash; in seconds.' },
+  { icon: 'chat',   title: '24/7 Customer Support AI',      desc: 'Embed a branded AI assistant on your website. It handles customer questions around the clock using your own knowledge base.' },
+  { icon: 'lock',   title: 'Your Data Stays Private',       desc: 'Nothing leaves your environment without your say. We support fully private, on-premise deployments &mdash; your data, your rules.' },
+  { icon: 'bot',    title: 'Built For Your Business',       desc: 'Not a generic tool. Your AI is configured around your industry, your workflows, and your language from day one.' },
 ];
 function Outcomes() {
   return (
     <section className="outcomes" id="outcomes">
-      <Reveal><div className="section-label">// Why Euranix AI</div></Reveal>
-      <Reveal delay={0.08}><h2>STOP LOSING TIME<br />TO <span className="gradient-text">INFORMATION CHAOS</span></h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">Your team wastes hours every week searching for answers that already exist in your business. Euranix AI fixes that.</p></Reveal>
+      <Reveal><div className="section-label">// Why EURANIX AI</div></Reveal>
+      <Reveal delay={0.08}><h2>WE HANDLE THE<br /><span className="gradient-text">ENTIRE TRANSFORMATION</span></h2></Reveal>
+      <Reveal delay={0.14}><p className="section-sub">Legacy systems, scattered data, no internal AI team &mdash; none of that is your problem anymore. We come in, we build it, and we keep it running.</p></Reveal>
       <div className="outcomes-grid">
         {outcomes.map((o, i) => (
           <Reveal key={o.title} delay={i * 0.07}>
@@ -300,16 +297,16 @@ function Outcomes() {
 
 /* ── How It Works ── */
 const steps = [
-  { n: '01', title: 'Connect Your Knowledge',   desc: 'Upload PDFs, Word docs, spreadsheets, connect your database, paste website URLs &mdash; anything your business knows.', note: 'Supports 10+ data sources' },
-  { n: '02', title: 'Your AI Learns Instantly',  desc: 'Euranix processes and indexes your content. Your private AI is trained on your specific business context &mdash; no generic responses.', note: 'Ready in under 5 minutes' },
-  { n: '03', title: 'Ask Anything, Anytime',     desc: 'Your team asks in plain English and gets precise, sourced answers. Embed a chat widget on your site for customers too.', note: 'Voice & text support' },
+  { n: '01', title: 'We Audit Your Data & Systems', desc: 'We start by understanding your business &mdash; your data sources, existing software, and what your team actually needs answers to.', note: 'Works with your existing stack' },
+  { n: '02', title: 'We Build & Deploy Your AI',    desc: 'Euranix connects your data sources, configures your private AI, and deploys it &mdash; cloud or on-premise. You do nothing technical.', note: 'Live in under 50 minutes' },
+  { n: '03', title: 'Your Team Just Asks',              desc: 'From day one your team gets precise answers from your own data. Ask by text or voice. We monitor, update, and keep it sharp over time.', note: 'Ongoing managed by Euranix' },
 ];
 function HowItWorks() {
   return (
     <section className="hiw" id="howitworks">
       <Reveal><div className="section-label">// How It Works</div></Reveal>
-      <Reveal delay={0.08}><h2>UP AND RUNNING<br /><span className="gradient-text">IN 5 MINUTES</span></h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">No technical setup. No data migration. No AI experts needed. Just connect, train, and ask.</p></Reveal>
+      <Reveal delay={0.08}><h2>UP AND RUNNING<br /><span className="gradient-text">IN 50 MINUTES</span></h2></Reveal>
+      <Reveal delay={0.14}><p className="section-sub">We do the heavy lifting. You get a working AI that understands your business &mdash; without hiring a single data scientist.</p></Reveal>
       <div className="steps-grid">
         {steps.map((s, i) => (
           <Reveal key={s.n} delay={i * 0.12}>
@@ -329,31 +326,31 @@ function HowItWorks() {
 
 /* ── Use Cases ── */
 const ucards = [
-  { tag: 'CUSTOMER SUPPORT',  title: 'AI Chat Widget on Your Website',   desc: 'Embed a branded AI assistant. It answers customer questions using your product docs, FAQs, and support history &mdash; 24/7.',    list: ['Instant answers from your knowledge base', 'Escalates to human when needed', 'Branded with your colors and name', 'Works on any website or app'] },
-  { tag: 'DATA & ANALYTICS',  title: 'Ask Questions Over Your Database', desc: 'Connect your business database and ask plain English questions. No SQL needed. Get answers from live operational data.',            list: ['"What were our top products last month?"', '"Show pending orders over $500"', 'Works with MySQL, PostgreSQL, and more'] },
-  { tag: 'LEGACY INTEGRATION',title: 'Add AI to Existing Software',       desc: 'Already using custom-built software? We integrate Euranix AI directly into your existing systems &mdash; no rebuild required.',    list: ['API integration into any software', 'Embedded chat in your existing apps', 'We handle the full technical integration'] },
-  { tag: 'CUSTOM USE CASE',   title: "Don't See Your Use Case?",          desc: "Every business is different &mdash; clinics, logistics, law firms. Talk to us and we'll build the right AI solution.",              list: ['HR policy assistant for large teams', 'Contract review and summarization', 'Multilingual customer support'] },
+  { tag: 'CUSTOMER SUPPORT',  title: 'AI Support, Live on Your Website', desc: 'We deploy a branded AI assistant directly on your site. It resolves customer queries from your own product docs and history &mdash; zero wait time, 24/7.',  list: ['Trained on your FAQs, docs, and past support tickets', 'Seamlessly escalates complex cases to your team', 'Branded to match your product &mdash; we handle the setup'] },
+  { tag: 'DATABASE & ANALYTICS', title: 'Query Your Data in Plain English', desc: 'We connect Euranix to your live database. Your team asks business questions directly &mdash; no SQL, no analysts in the loop for simple queries.',      list: ['"Which customers haven\'t ordered in 90 days?"', '"What\'s our margin on product X this quarter?"', 'Supports MySQL, PostgreSQL, and more'] },
+  { tag: 'LEGACY INTEGRATION', title: 'AI Inside Your Existing Software', desc: 'Running on older or custom-built systems? We integrate AI directly into your current software &mdash; via API or embedded chat. No rebuild, no migration.', list: ['Full API integration &mdash; we manage it end-to-end', 'AI embedded inside your existing workflows', 'Works alongside the tools your team already uses'] },
+  { tag: 'ANY INDUSTRY',      title: 'Tell Us Your Problem. We\'ll Solve It.', desc: 'Clinics, logistics firms, law offices, manufacturers &mdash; we have worked across industries. Bring us your challenge and we will design the solution.', list: ['Policy and compliance Q&A for regulated industries', 'Contract review and document summarization', 'Internal HR assistants, onboarding bots, and more'] },
 ];
 function UseCases() {
   return (
     <section id="usecases" className="usecases-section">
       <Reveal><div className="section-label">// Real World Use Cases</div></Reveal>
       <Reveal delay={0.08}><h2>BUILT FOR<br /><span className="gradient-text">REAL BUSINESS</span></h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">Whether you run a clinic, a retail chain, a law firm, or a software company &mdash; Euranix AI works for your team.</p></Reveal>
+      <Reveal delay={0.14}><p className="section-sub">Every industry has data trapped in the wrong places. We free it. Here is how Euranix transforms different types of businesses.</p></Reveal>
       <div className="usecases-wrap">
         <Reveal delay={0.1}>
           <TiltCard className="usecase-card featured" strength={5}>
             <div className="card-shine" />
             <div>
               <span className="usecase-tag">MOST POPULAR</span>
-              <h3>Team Knowledge Base + Smart Notes</h3>
-              <p>Your team creates notes, uploads documents, writes SOPs &mdash; and anyone can ask the AI and get instant answers. New staff onboard in hours, not weeks.</p>
+              <h3>Your Entire Business Knowledge, Answering Questions</h3>
+              <p>We take everything your business knows &mdash; documents, SOPs, meeting notes, policies &mdash; and turn it into an AI your whole team can query instantly. New staff productive in hours, not weeks.</p>
               <ul className="usecase-list">
-                <li>Upload PDFs, Word docs, spreadsheets, and more</li>
-                <li>Structured notes with AI-powered templates</li>
-                <li>Ask in plain English, get precise answers</li>
-                <li>Share specific answers with teammates &mdash; not everything</li>
-                <li>Voice input &mdash; speak your question, hear the answer</li>
+                <li>We ingest all your existing docs &mdash; no reformatting needed</li>
+                <li>AI answers sourced directly from your content, with references</li>
+                <li>Ask by voice or text, from any device</li>
+                <li>Controlled sharing &mdash; not everyone sees everything</li>
+                <li>We maintain and update it as your business evolves</li>
               </ul>
             </div>
             <div className="usecase-visual">
@@ -386,22 +383,22 @@ function UseCases() {
 
 /* ── Features ── */
 const feats = [
-  { icon: 'upload', title: 'Upload Anything',          desc: 'PDFs, Word docs, Excel, plain text, markdown, website URLs &mdash; upload once, query forever.' },
-  { icon: 'db',     title: 'Database Connection',       desc: 'Connect MySQL or PostgreSQL. Ask plain English questions, get real-time answers from live data.' },
-  { icon: 'note',   title: 'Smart Notes',               desc: 'Create notes with AI-powered templates. Meeting notes, SOPs, project briefs &mdash; structured and searchable.' },
-  { icon: 'mic',    title: 'Voice Interface',           desc: 'Speak your question, hear the answer. Full voice interaction &mdash; hands-free AI for busy teams.' },
-  { icon: 'chat',   title: 'Embeddable Chat Widget',    desc: 'One line of code adds your AI assistant to any website. Branded, customizable, powered by your knowledge.' },
-  { icon: 'share',  title: 'Share Specific Answers',    desc: 'Share a specific AI response with a teammate without giving access to your entire knowledge base.' },
-  { icon: 'chart',  title: 'Analytics & History',       desc: 'Every conversation stored and searchable. See what your team asks most and where knowledge gaps exist.' },
-  { icon: 'bot',    title: 'Custom AI Agents',          desc: 'Create different agents for support, sales, HR &mdash; all powered from one unified platform.' },
-  { icon: 'sync',   title: 'Auto-Sync Your Data',       desc: 'Connect S3 or your database and set daily sync. Your AI knowledge base stays current automatically.' },
+  { icon: 'zap',    title: 'Managed Deployment',        desc: 'We deploy, configure, and maintain your AI. No devops, no internal expertise needed &mdash; just results.' },
+  { icon: 'db',     title: 'Any Data Source',           desc: 'Databases, documents, legacy systems, cloud storage &mdash; we connect it all. Your data does not need to move.' },
+  { icon: 'bot',    title: 'Domain-Specific AI Agents', desc: 'Separate agents for support, ops, HR, and sales &mdash; each trained on the right data, all managed centrally.' },
+  { icon: 'chat',   title: 'Website AI Assistant',      desc: 'A branded chat widget on your site, trained on your products. We build it, deploy it, and keep it accurate.' },
+  { icon: 'sync',   title: 'Always Up to Date',         desc: 'Auto-sync from your database or S3. As your data changes, your AI stays current &mdash; no manual re-training.' },
+  { icon: 'mic',    title: 'Voice & Text',          desc: 'Your team interacts however they prefer &mdash; type a question or speak it. Both work out of the box.' },
+  { icon: 'chart',  title: 'Usage Intelligence',        desc: 'See exactly what your team asks, track answer quality, and identify gaps. We use this to continuously improve your AI.' },
+  { icon: 'lock',   title: 'Private by Default',        desc: 'Cloud, private cloud, or fully on-premise &mdash; your data never feeds public AI models, ever.' },
+  { icon: 'note',   title: 'Structured Knowledge',      desc: 'Beyond Q&A &mdash; create structured SOPs, meeting summaries, and policy docs that are instantly queryable.' },
 ];
 function Features() {
   return (
     <section className="features" id="features">
       <Reveal><div className="section-label">// Platform Features</div></Reveal>
       <Reveal delay={0.08}><h2>EVERYTHING YOUR<br />TEAM <span className="gradient-text">NEEDS</span></h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">One platform. Multiple ways to use AI. Built for teams that want results, not complexity.</p></Reveal>
+      <Reveal delay={0.14}><p className="section-sub">One platform, fully managed by us. Every feature below comes deployed, configured, and maintained by Euranix &mdash; not left on your team to figure out.</p></Reveal>
       <div className="features-grid">
         {feats.map((f, i) => (
           <Reveal key={f.title} delay={i * 0.05}>
@@ -424,96 +421,24 @@ function IntegrationStrip() {
   const t = [...chips, ...chips, ...chips];
   return (
     <div className="int-section">
-      <p className="int-label">WORKS WITH YOUR EXISTING TOOLS</p>
+      <p className="int-label">SUPPORTED DATA SOURCES</p>
       <div className="int-strip"><div className="int-inner">{t.map((c, i) => <div key={i} className="int-chip">{c}</div>)}</div></div>
     </div>
   );
 }
 
-/* ── Privacy ── */
-function Privacy() {
-  const tiers = [
-    { label: 'TIER 1 &mdash; STANDARD',         title: 'Cloud Hosted, Data Isolated', desc: 'Your data is completely isolated. AI queries use OpenAI &mdash; never stored or used for training per their enterprise policy.', active: false },
-    { label: 'TIER 2 &mdash; ENHANCED PRIVACY',  title: 'Your Own Private AI',         desc: 'We host an open-source LLM on your dedicated server. Your data never touches OpenAI or any third party. 100% private.',            active: true },
-    { label: 'TIER 3 &mdash; FULL CONTROL',      title: 'On-Premise Deployment',       desc: 'Everything runs on your own infrastructure. We set it up, manage it, and support it. Your data never leaves your building.',         active: false },
-  ];
-  const shields = ['Data never used to train public AI models','Complete tenant isolation &mdash; your data is yours only','Private LLM hosting available on request','All data encrypted at rest and in transit','Audit logs &mdash; every query, every access tracked','Token usage limits to control costs per user','We manage hosting, updates, and backups','GDPR and data residency options available'];
-  return (
-    <section className="privacy" id="privacy">
-      <Reveal><div className="section-label">// Privacy &amp; Security</div></Reveal>
-      <Reveal delay={0.08}><h2>YOUR DATA STAYS<br /><span className="gradient-text">YOURS. ALWAYS.</span></h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">We built Euranix AI for businesses that cannot afford to have their data shared, leaked, or used to train public AI models.</p></Reveal>
-      <div className="privacy-grid">
-        <Reveal delay={0.1}>
-          <div className="privacy-tiers">
-            {tiers.map(t => (
-              <TiltCard key={t.title} className={`privacy-tier ${t.active ? 'active' : ''}`} strength={6}>
-                <div className="card-shine" />
-                <div className="tier-label" dangerouslySetInnerHTML={{ __html: t.label }} />
-                <h3>{t.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: t.desc }} />
-              </TiltCard>
-            ))}
-          </div>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="shield-visual">
-            <div className="shield-label">// SECURITY GUARANTEES</div>
-            {shields.map((g, i) => (
-              <div key={i} className="shield-row">
-                <span className="shield-check"><Icon name="check" size={13} /></span>
-                <span dangerouslySetInnerHTML={{ __html: g }} />
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ── Testimonials ── */
-const testimonials = [
-  { quote: 'We onboarded 6 new staff in one week &mdash; they were productive immediately because the AI answered every question from our SOPs.', name: 'Markus L.', role: 'Operations Director, Logistics Firm',      initials: 'ML' },
-  { quote: 'Support tickets dropped 40% in the first month. The chat widget handles common questions and customers love the instant answers.',     name: 'Sarah K.',  role: 'Head of Customer Experience, E-commerce', initials: 'SK' },
-  { quote: 'I was sceptical about AI privacy. Running our own private LLM through Euranix meant zero data left our servers. Game changer.',        name: 'David R.',  role: 'CTO, Healthcare Provider',               initials: 'DR' },
-];
-function Testimonials() {
-  return (
-    <section className="testimonials-section">
-      <Reveal><div className="section-label">// Customer Stories</div></Reveal>
-      <Reveal delay={0.08}><h2>TEAMS LOVE<br /><span className="gradient-text">EURANIX AI</span></h2></Reveal>
-      <div className="testimonials-grid">
-        {testimonials.map((t, i) => (
-          <Reveal key={t.name} delay={i * 0.1}>
-            <TiltCard className="testimonial-card">
-              <div className="card-shine" />
-              <div className="quote-icon"><Icon name="chat" size={18} /></div>
-              <p className="quote-text" dangerouslySetInnerHTML={{ __html: t.quote }} />
-              <div className="quote-author">
-                <div className="author-avatar">{t.initials}</div>
-                <div><div className="author-name">{t.name}</div><div className="author-role">{t.role}</div></div>
-              </div>
-            </TiltCard>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /* ── Pricing ── */
 const plans = [
-  { name: 'Starter',    price: '199', per: 'per month, flat rate',       featured: false, features: ['Up to 10 team members', '1 AI agent / knowledge base', 'Upload PDFs, docs, text files', 'Website URL ingestion', 'Chat interface', 'Smart notes with templates', '10GB knowledge base storage', 'Email support'],                                                                                                cta: 'Get Started',      href: 'mailto:contact@euranix.com?subject=Starter Plan' },
-  { name: 'Business',   price: '499', per: 'per month, flat rate',       featured: true,  features: ['Up to 50 team members', '5 AI agents with custom personas', 'Everything in Starter', 'Database connection (MySQL / Postgres)', 'Voice interface (speak + listen)', 'Website chat widget', 'Daily auto-sync from S3 / DB', '50GB storage + analytics', 'Share answers with team', 'Priority support'],         cta: 'Start Free Trial', href: 'https://platform.euranix.ai' },
-  { name: 'Enterprise', price: null,  per: 'tailored to your business',  featured: false, features: ['Unlimited team members', 'Unlimited AI agents', 'Everything in Business', 'Private LLM hosting', 'Legacy software integration', 'White-label option', 'On-premise deployment', 'Dedicated account manager', 'SLA + 24/7 support'],                                                                             cta: 'Contact Us',       href: 'mailto:contact@euranix.com?subject=Enterprise' },
+  { name: 'Starter',    price: '199', per: 'per month, flat rate',       featured: false, features: ['Up to 10 team members', '1 managed AI agent', 'Ingest PDFs, docs, spreadsheets and URLs', 'Chat interface and smart notes', '10GB knowledge base storage', 'Euranix-managed setup and deployment', 'Email support'],                                                                                                cta: 'Get Started',      href: 'mailto:contact@euranix.com?subject=Starter Plan' },
+  { name: 'Business',   price: '499', per: 'per month, flat rate',       featured: true,  features: ['Up to 50 team members', '5 AI agents with custom personas', 'Everything in Starter', 'Live database connection (MySQL / Postgres)', 'Voice interface', 'Branded website chat widget', 'Auto-sync from S3 or database', '50GB storage with usage analytics', 'Priority support'],         cta: 'Start Free Trial', href: 'https://platform.euranix.ai' },
+  { name: 'Enterprise', price: null,  per: 'tailored to your business',  featured: false, features: ['Unlimited team members and agents', 'Everything in Business', 'Legacy system integration — we handle it all', 'Private or on-premise LLM deployment', 'White-label and custom branding', 'Dedicated Euranix AI account manager', 'SLA-backed 24/7 support'],                                                                             cta: 'Contact Us',       href: 'mailto:contact@euranix.com?subject=Enterprise' },
 ];
 function Pricing() {
   return (
     <section className="pricing" id="pricing">
       <Reveal><div className="section-label">// Pricing</div></Reveal>
       <Reveal delay={0.08}><h2>SIMPLE,<br /><span className="gradient-text">HONEST</span> PRICING</h2></Reveal>
-      <Reveal delay={0.14}><p className="section-sub">No per-user fees. No surprise charges. Pay a flat monthly fee based on what your business needs.</p></Reveal>
+      <Reveal delay={0.14}><p className="section-sub">Flat monthly fee. No per-seat charges, no hidden costs. Every plan includes setup and ongoing management by Euranix.</p></Reveal>
       <div className="pricing-grid">
         {plans.map((p, i) => (
           <Reveal key={p.name} delay={i * 0.1}>
@@ -531,52 +456,24 @@ function Pricing() {
           </Reveal>
         ))}
       </div>
-      <Reveal delay={0.2}>
-        <div className="pricing-note">
-          <p><strong>Not sure which plan is right?</strong><br />Tell us about your business and we will recommend the best fit.</p>
-          <a href="mailto:contact@euranix.com?subject=Help Me Choose">Talk to us &rarr; contact@euranix.com</a>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-/* ── CTA ── */
-function CTA() {
-  return (
-    <section className="cta-section">
-      <div className="cta-orb" /><div className="cta-orb2" />
-      <Reveal><div className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>// Get Started Today</div></Reveal>
-      <Reveal delay={0.08}><h2>READY TO MAKE<br />YOUR BUSINESS<br /><span className="gradient-text">SMARTER?</span></h2></Reveal>
-      <Reveal delay={0.14}><p>Upload your first document and ask your AI a question &mdash; in under 5 minutes. No credit card required.</p></Reveal>
-      <Reveal delay={0.2}>
-        <div className="cta-actions">
-          <a href="https://platform.euranix.ai" className="btn-primary btn-xl">Start Free Trial &nbsp;&rarr;</a>
-          <a href="mailto:contact@euranix.com?subject=Demo Request" className="btn-secondary btn-xl">Book a Demo</a>
-        </div>
-        <div className="contact-row">
-          <a href="mailto:contact@euranix.com" className="contact-chip">contact@euranix.com</a>
-          <a href="https://www.euranix.com" className="contact-chip">euranix.com</a>
-        </div>
-      </Reveal>
     </section>
   );
 }
 
 /* ── Footer ── */
 function Footer() {
-  const links: [string, string][] = [['Benefits','#outcomes'],['How It Works','#howitworks'],['Use Cases','#usecases'],['Features','#features'],['Privacy','#privacy'],['Pricing','#pricing'],['Euranix.com','https://www.euranix.com'],['Contact','mailto:contact@euranix.com']];
+  const links: [string, string][] = [['Benefits','#outcomes'],['How It Works','#howitworks'],['Use Cases','#usecases'],['Features','#features'],['Pricing','#pricing'],['Euranix.com','https://www.euranix.com'],['Contact','mailto:contact@euranix.com']];
   return (
     <footer>
       <div className="footer-top">
         <div className="footer-brand">
-          <div className="footer-logo">EURANIX<span className="red">.</span>AI</div>
-          <p className="footer-tagline">Turn your business knowledge into AI that works for you.</p>
+          <div className="footer-logo"><img src={logoUrl} alt="Euranix AI" className="footer-logo-img" /></div>
+          <p className="footer-tagline">Your AI transformation partner. We build it, manage it, and make it work for your business.</p>
         </div>
         <div className="footer-links-grid">{links.map(([l, h]) => <a key={l} href={h}>{l}</a>)}</div>
       </div>
       <div className="footer-bottom">
-        <div className="footer-copy">&copy; 2025 EURANIX TECHNOLOGIES. ALL RIGHTS RESERVED.</div>
+        <div className="footer-copy">&copy; {new Date().getFullYear()} EURANIX TECHNOLOGIES. ALL RIGHTS RESERVED.</div>
         <div className="footer-legal">
           <a href="mailto:contact@euranix.com">Privacy Policy</a>
           <a href="mailto:contact@euranix.com">Terms of Service</a>
@@ -606,7 +503,7 @@ export default function App() {
   }, []);
   return (
     <div className="app">
-      <Nav /><Hero /><Outcomes /><HowItWorks /><UseCases /><Features /><IntegrationStrip /><Privacy /><Testimonials /><Pricing /><CTA /><Footer />
+      <Nav /><Hero /><IntegrationStrip /><Outcomes /><HowItWorks /><UseCases /><Features /><Pricing /><Footer />
     </div>
   );
 }
