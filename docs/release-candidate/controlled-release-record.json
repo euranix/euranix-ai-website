@@ -1,0 +1,162 @@
+{
+  "releaseDate": "2026-11-03 Asia/Kolkata",
+  "corporate": {
+    "baselineCommit": "ff9cca62709d0d9577eaaa55f50af25f8bc97e2b",
+    "baselineBranch": "codex/privacy-notice-production",
+    "resource": "uxff5lx50dlwaq44hha1rqje",
+    "baselineImage": "uxff5lx50dlwaq44hha1rqje:ff9cca62709d0d9577eaaa55f50af25f8bc97e2b",
+    "baselineConfiguration": {
+      "strategy": "Dockerfile",
+      "dockerfile": "/Dockerfile",
+      "base": "/",
+      "port": 80,
+      "applicationEnvironmentVariables": [],
+      "origin": "https://www.euranix.com"
+    },
+    "serverRollbackArchive": "/data/coolify/website-release-2026-11-03/com-notice-before.tar",
+    "serverRollbackArchiveSha256": "a0862e71fe32834d45221f03a698129c30438737cbd62653d6805b6e6fc9d0f9",
+    "deployments": [
+      {
+        "commit": "a90ab551143aa02f9779e32923f0de4f05a8cf3d",
+        "deployment": "meisbffpual1lajuvogrjiht",
+        "completedAt": "2026-11-02T18:59:58Z",
+        "result": "Rolled back because public CDN email rewriting caused hydration errors"
+      },
+      {
+        "commit": "ff9cca62709d0d9577eaaa55f50af25f8bc97e2b",
+        "deployment": "hlfr7o6vkvsoqvt56tosujrn",
+        "completedAt": "2026-11-02T19:04:15Z",
+        "result": "Notice-preserving rollback successful"
+      },
+      {
+        "commit": "28a139217946849609153792099726aa7ed8c1f5",
+        "deployment": "rf6xw9apzagpsnkedbhr66cj",
+        "completedAt": "2026-11-02T19:07:25Z",
+        "result": "Corrected release deployed; all 578 public checks passed"
+      }
+    ],
+    "receipt": "a4eadbc5-0e8e-4b9b-99aa-e5037e7c3864",
+    "enquiryId": 1,
+    "leadId": 1,
+    "contactId": 1,
+    "ownerUserId": 1,
+    "recipient": "admin@euranix.com",
+    "notificationSubject": "New website enquiry #1 — follow-up required",
+    "inboxConfirmation": "Human confirmed exact subject and synthetic name in recipient inbox",
+    "notificationQuality": "Human reported entity leakage, raw labels, empty fields; Hub preparing fix",
+    "publicChecks": {
+      "passed": true,
+      "checks": 578,
+      "routes": 20,
+      "checkedAt": "2026-11-02T19:12:43.250Z"
+    },
+    "noticePublicCheck": {
+      "passed": true,
+      "checkedAt": "2026-11-02T19:18:03.701Z",
+      "exactText": true,
+      "desktopMobileAnchor": true
+    },
+    "emailFallback": {
+      "source": "28a139217946849609153792099726aa7ed8c1f5",
+      "buildFlag": false,
+      "image": "euranix-website:release-email-fallback-28a1392",
+      "archive": "corporate-email-fallback-28a1392.tar",
+      "sha256": "9D5DD914855213AB78E9D466152A8FA375B4D445966608F23846FE31EE626A18",
+      "passed": true,
+      "noTransform": true,
+      "noticeRetained": true
+    },
+    "replay": "Incomplete. Three verification waits sent zero requests. The authorised real checkbox returned Cloudflare failure_retry; a normal refresh did not yield a token. Human ordinary-browser replay is required; no security bypass attempted.",
+    "replayNoRequestAudit": {
+      "confirmedBy": "Hub agent read-only requery",
+      "enquiries": 1,
+      "leads": 1,
+      "contacts": 1,
+      "notificationIntents": 2,
+      "bellNotifications": 1,
+      "deliveryIds": [
+        1,
+        2
+      ],
+      "mailHistoryIds": [
+        32
+      ],
+      "duplicates": 0
+    },
+    "releaseStatus": "Corporate deployed with genuine acceptance, assignment and human-confirmed inbox delivery. Same-key replay remains incomplete because the automated browser could not complete Turnstile; AI release is held.",
+    "deployedCommit": "28a139217946849609153792099726aa7ed8c1f5"
+  },
+  "ai": {
+    "baselineCommit": "82b749bbdd39d702992f5deb2d48b8a810c7bf58",
+    "resource": "d46t4c1cy51p1b2iab8vyeb4",
+    "baselineSource": {
+      "repository": "euranix/euranix-io-website",
+      "branch": "main",
+      "configuredSha": "HEAD",
+      "note": "Historical repository URL redirects to the same Git repository as euranix-ai-website"
+    },
+    "baselineImage": "d46t4c1cy51p1b2iab8vyeb4_euranix-ai:82b749bbdd39d702992f5deb2d48b8a810c7bf58",
+    "baselineImageId": "sha256:99c830ea50872f3990e7406473e2d811c9d032391bb82b06bb6cd5f7dd2731be",
+    "baselineConfiguration": {
+      "strategy": "Compose",
+      "composeFile": "/docker-compose.yml",
+      "base": "/",
+      "service": "euranix-ai",
+      "port": 80,
+      "restart": "unless-stopped",
+      "origins": [
+        "https://euranix.ai",
+        "https://www.euranix.ai"
+      ],
+      "managedEnvironmentNames": [
+        "SERVICE_URL_EURANIX_AI",
+        "SERVICE_FQDN_EURANIX_AI"
+      ]
+    },
+    "serverRollbackArchive": "/data/coolify/website-release-2026-11-03/ai-before.tar",
+    "serverRollbackArchiveSha256": "7da85267872179bb8a3f60608e8a74082836d89d0999eb2932048f779bea2864",
+    "serverRuntimeConfiguration": "/data/coolify/website-release-2026-11-03/ai-container-before.json",
+    "localChecks": {
+      "passed": true,
+      "checks": 129,
+      "containerResponses": 21,
+      "routes": 3,
+      "checkedAt": "2026-11-02T19:15:48.126Z"
+    },
+    "emailFallback": {
+      "source": "6d262c9909b97756d9e6f775d75cf4c4f0e21099",
+      "buildFlag": false,
+      "image": "euranix-ai-website:release-email-fallback",
+      "archive": "ai-email-fallback-6d262c9.tar",
+      "sha256": "9192DBC9374F363E853B2E97072C17A1FD20FA63A58BA6857B47561BBFD9DFDC",
+      "passed": true
+    },
+    "deployment": "Not started; corporate gate required",
+    "candidateCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a"
+  },
+  "hub": {
+    "commit": "742343ac980ebf900480665c2eca2aa69945de05",
+    "enabled": true,
+    "noticeVersion": "website-enquiries-2026-11-02-v1",
+    "publicEndpoint": "https://hub.euranixcloud.com/api/v1/enquiries",
+    "publicSiteKey": "0x4AAAAAAFw3v3E7oHBjtH0u",
+    "ownerUserId": 1,
+    "fallback": null,
+    "notificationCorrection": {
+      "candidateCommit": "9b892b3996af42ec3ab0eb7b0f4695525e1b4af6",
+      "deployment": "Pending CI; not deployed",
+      "localTests": 3472,
+      "localAssertions": 21696,
+      "focusedTests": 21,
+      "focusedAssertions": 142,
+      "backup": "EuranixHub/2026-11-02-19-20-27.zip"
+    }
+  },
+  "externalDestinations": {
+    "portal": "HTTP 503",
+    "chatLoader": "HTTP 503",
+    "chatAssets": "HTTP 503",
+    "platform.euranix.ai": "DNS resolution failure",
+    "fallback": "mailto:contact@euranix.com; original destinations preserved"
+  }
+}

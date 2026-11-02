@@ -1,28 +1,28 @@
 {
   "passed": true,
-  "checkedAt": "2026-11-02T17:20:41.015Z",
+  "checkedAt": "2026-11-02T19:15:34.357Z",
   "container": "euranix-ai-rc-routing",
   "image": "euranix-ai-website:rc-review",
-  "imageId": "sha256:e49e1e8e93c5f2f5b8f43440c689ef09aa2d1e3a6cd6768fa64d92859499c75b",
+  "imageId": "sha256:da7e5bb0ef1059c3f1d24e6633556772b7d643ef7b503951e4e6cb3a44e4e99a",
   "nginxVersion": "nginx version: nginx/1.30.6",
   "checks": [
     {
       "url": "/",
       "status": 200,
       "bytes": 12063,
-      "sha256": "922e331d93b996e25e3a3d9e3cce209e3af7a58154a30a91844864ac0e449e00"
+      "sha256": "e71888ca784b252f9c230e96267c5e8fe170cecdba5ed86a6307cd908c060388"
     },
     {
       "url": "/contact",
       "status": 200,
-      "bytes": 5391,
-      "sha256": "0e079b83f6a772f7e3f3e708fe90da1f5ba765d804dc6f83d44ba9dc82bbbfb0"
+      "bytes": 8149,
+      "sha256": "1490ac9ebb14ca47eac7df41c3d449e39ca3888363fefbcbf8bf710701f23240"
     },
     {
       "url": "/technology-review",
       "status": 200,
-      "bytes": 6055,
-      "sha256": "1d101b36af0567db69d50156284d63473a526b027a4ef55048a14512a80e9955"
+      "bytes": 8984,
+      "sha256": "16a03cb422ade086c85142b6acaf23fd86c4b3d100fe10e10a9b2f3d3b494ac2"
     },
     {
       "url": "/apple-touch-icon.png",
@@ -37,10 +37,10 @@
       "sha256": "ad3ba18d2a20a05a2209ac124cd947662f07d88b0fd0a79e33b83f09599792f8"
     },
     {
-      "url": "/assets/index-LfGbvubH.js",
+      "url": "/assets/index-CNhIwA91.js",
       "status": 200,
-      "bytes": 189921,
-      "sha256": "35c95d0121d7b7510d92dbf4acebc7595f91cec010cd9f18e4e52eed181db2f0"
+      "bytes": 189965,
+      "sha256": "61a7fa84f3eada20b337e73c663276870e4d1a31ffeac82088d57a5444a2ca9d"
     },
     {
       "url": "/brand-logo.png",
@@ -88,25 +88,25 @@
       "url": "/404",
       "status": 404,
       "bytes": 4017,
-      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
     },
     {
       "url": "/404.html",
       "status": 404,
       "bytes": 4017,
-      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
     },
     {
       "url": "/missing-release-route",
       "status": 404,
       "bytes": 4017,
-      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
     },
     {
       "url": "/assets/missing.js",
       "status": 404,
       "bytes": 4017,
-      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
     },
     {
       "url": "/index.html",

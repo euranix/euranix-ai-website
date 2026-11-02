@@ -1,6 +1,6 @@
 # Euranix AI — Website
 
-**Current milestone: full-site release candidate on `codex/flagship-design-review`. Do not merge or deploy yet.** [Review instructions, screenshots, tests and remaining release gates](docs/release-candidate/README.md). [Independent deployment and rollback](docs/release-candidate/DEPLOYMENT.md) supersede the generic hosting guide below for this candidate.
+**Controlled release: AI release held until the corporate gate and Hub notification correction pass.** [Current evidence and release record](docs/release-candidate/RELEASE-RECORD.md). [Deployment and rollback](docs/release-candidate/DEPLOYMENT.md) supersede the generic hosting guide below.
 
 Marketing site for [euranix.ai](https://euranix.ai). Built with React + Vite, served via Nginx in a multi-stage Docker image.
 

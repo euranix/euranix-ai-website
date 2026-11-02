@@ -42,7 +42,7 @@
     "description": "Tell Euranix what you need help with. Discuss a service, request an AI demonstration or ask for help choosing a starting point.",
     "status": 200,
     "canonical": "https://euranix.ai/contact",
-    "initialHtmlBytes": 5391,
+    "initialHtmlBytes": 8149,
     "initialH1": "Let’s talk.",
     "links": [
       "#main",
@@ -53,7 +53,6 @@
       "/#pricing",
       "https://www.euranix.com",
       "/contact?service=General%20enquiry",
-      "mailto:contact@euranix.com",
       "https://www.euranix.com/privacy#website-enquiries",
       "mailto:contact@euranix.com",
       "mailto:contact@euranix.com",
@@ -74,7 +73,7 @@
     "description": "Request a one-hour conversation about your systems and priorities. Free for a limited period; future standard fee US$199. Meeting time confirmed separately.",
     "status": 200,
     "canonical": "https://euranix.ai/technology-review",
-    "initialHtmlBytes": 6055,
+    "initialHtmlBytes": 8984,
     "initialH1": "Request a review.",
     "links": [
       "#main",
@@ -85,7 +84,6 @@
       "/#pricing",
       "https://www.euranix.com",
       "/contact?service=General%20enquiry",
-      "mailto:contact@euranix.com",
       "https://www.euranix.com/privacy#website-enquiries",
       "mailto:contact@euranix.com",
       "mailto:contact@euranix.com",

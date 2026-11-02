@@ -8,6 +8,14 @@
     "passed": true
   },
   {
+    "name": "/ CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/ no edge email mutation before hydration",
+    "passed": true
+  },
+  {
     "name": "/ substantive initial HTML",
     "passed": true,
     "detail": 4317
@@ -97,9 +105,17 @@
     "passed": true
   },
   {
+    "name": "/contact CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/contact no edge email mutation before hydration",
+    "passed": true
+  },
+  {
     "name": "/contact substantive initial HTML",
     "passed": true,
-    "detail": 605
+    "detail": 1309
   },
   {
     "name": "/contact production has no staging header",
@@ -186,9 +202,17 @@
     "passed": true
   },
   {
+    "name": "/technology-review CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no edge email mutation before hydration",
+    "passed": true
+  },
+  {
     "name": "/technology-review substantive initial HTML",
     "passed": true,
-    "detail": 1066
+    "detail": 1903
   },
   {
     "name": "/technology-review production has no staging header",
@@ -405,11 +429,23 @@
     "passed": true
   },
   {
-    "name": "disabled intake exposes no editable form or unusable submit",
+    "name": "enabled intake renders one enquiry form",
     "passed": true
   },
   {
-    "name": "disabled intake shows clear email contact panel",
+    "name": "privacy required and unchecked",
+    "passed": true
+  },
+  {
+    "name": "marketing optional and unchecked",
+    "passed": true
+  },
+  {
+    "name": "enabled intake retains Turnstile verification",
+    "passed": true
+  },
+  {
+    "name": "enabled intake replaces disabled panel",
     "passed": true
   },
   {
@@ -438,11 +474,11 @@
         "x": 20,
         "y": 265.796875,
         "width": 350,
-        "height": 473.5
+        "height": 1142.5625
       },
       "aside": {
         "x": 20,
-        "y": 759.296875,
+        "y": 1428.359375,
         "width": 350,
         "height": 148.5
       }
@@ -546,7 +582,7 @@
     "detail": []
   },
   {
-    "name": "production asset no fixtures or known secret patterns index-DReCgeMI.js",
+    "name": "production asset no fixtures or known secret patterns index-CNhIwA91.js",
     "passed": true
   }
 ]

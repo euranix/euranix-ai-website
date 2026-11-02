@@ -1,70 +1,34 @@
-# Independent deployment and rollback: euranix.ai
+# euranix.ai — controlled release
 
-These are instructions for a later approved release. **No public website merge, hosting change, DNS change or deployment was performed by this website task. Hub deployment is coordinated separately by the Hub agent.** The draft PR must remain unmerged until the Hub and external-service gates are resolved. Do not deploy both websites as one operation.
+AI release held until the corporate gate and Hub notification correction pass.
 
-## Review this candidate locally
+Production remains at `82b749bbdd39d702992f5deb2d48b8a810c7bf58`.
 
-Use the existing checkout on `codex/flagship-design-review`. Node 22.13+ is supported by the tooling; Docker builders use Node 22 Alpine. Local verification used Node 24.18.0. `.nvmrc` selects 22.
+Tested enabled candidate (not deployed): `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
-```powershell
-git fetch origin
-git switch codex/flagship-design-review
-git pull --ff-only
-npm ci
-npm run typecheck
-npm run lint
-npm run build
-npm run preview
+## Public build configuration
+
+```dotenv
+VITE_ENQUIRY_ENABLED=true
+VITE_ENQUIRY_API_URL=https://hub.euranixcloud.com/api/v1/enquiries
+VITE_TURNSTILE_SITE_KEY=0x4AAAAAAFw3v3E7oHBjtH0u
+VITE_ENQUIRY_PRIVACY_VERSION=website-enquiries-2026-11-02-v1
 ```
 
-Open **http://127.0.0.1:4374/**. The complete app is at its real URLs; `/design-review/` is retired. Review runs on loopback and sends X-Robots-Tag noindex/nofollow/noarchive, replaces the HTML robots tag and disallows crawling. It does not modify `dist` or production nginx. The disabled build shows an email-only panel. These loopback URLs are for isolated review and are NOT approved Hub enquiry origins.
+The values are public compile-time settings. Never add Hub/Cloudflare secrets to VITE configuration. Rebuild after changing intake configuration; nginx runtime variables cannot change an existing bundle. The existing Coolify resource `d46t4c1cy51p1b2iab8vyeb4` remains the sole deployment target. Preserve its domain mapping, TLS, compose service/port and source repository. Pin the exact tested full commit instead of following an unreviewed HEAD.
 
-Controlled production testing is authorised. Hub permits only https://www.euranix.com, https://euranix.ai and https://www.euranix.ai, with matching Turnstile hostnames. Do not enable intake on localhost or add origin exceptions. The supplied production public values are recorded in .env.production and Docker build arguments, with VITE_ENQUIRY_ENABLED=false. Real positive tests remain post-deployment until the notice and candidate forms are served on approved origins. See CONTROLLED-PRODUCTION-TESTS.md.
+## Review and verification
 
-## Repeat verification
+Run `npm ci`, `npm run typecheck`, `npm run lint`, `npm run build`, `npm run test:adapter`, `npm run test:preservation`, then `npm run preview`. Review at http://127.0.0.1:4374/. The review server keeps its noindex/nofollow/noarchive headers and disallowed robots output. Localhost is not an approved Hub origin and must not be used for genuine intake.
 
-```powershell
-npm run typecheck
-npm run lint
-npm run build
-node scripts/preservation-check.cjs
-node scripts/enquiry-adapter-check.cjs
-```
+For browser tests, set REVIEW_TOOL_ROOT to the separate directory containing Playwright and axe. Use EXPECTED_ENQUIRY_ENABLED=true for an enabled build and omit/set false for a disabled build. `test:enquiries` uses isolated fixtures; `test:release` blocks external scripts and checks routes/layout/SEO; `test:container` verifies exact built bytes and nginx behavior. None of these alone proves live intake. Controlled genuine tests use the final public origins only; see CONTROLLED-PRODUCTION-TESTS.md.
 
-Browser tooling is intentionally outside runtime dependencies. Create a separate tooling directory, install Playwright and axe-core there, and set `REVIEW_TOOL_ROOT` to its absolute path. The recorded run uses Edge installed on Windows (`channel: msedge`). Its package versions are in the evidence summary. For example:
+## Rollback
 
-```powershell
-$env:REVIEW_TOOL_ROOT='C:\path\to\review-tools'
-npm run test:enquiries
-docker build -t euranix-ai-website:rc-review .
-docker run --rm -d --name euranix-ai-rc-routing -p 127.0.0.1:4474:80 euranix-ai-website:rc-review
-$env:RELEASE_BASE='http://127.0.0.1:4474'
-npm run test:release
-npm run test:container
-docker stop euranix-ai-rc-routing
-```
+Pre-release production commit: `82b749bbdd39d702992f5deb2d48b8a810c7bf58`. Image: `d46t4c1cy51p1b2iab8vyeb4_euranix-ai:82b749bbdd39d702992f5deb2d48b8a810c7bf58`. Archive on the existing production server: `/data/coolify/website-release-2026-11-03/ai-before.tar` (SHA256 `7da85267872179bb8a3f60608e8a74082836d89d0999eb2932048f779bea2864`). Exact original configuration is recorded in controlled-release-record.json. Do not run cleanup on this archive during the release.
 
-Keep `npm run preview` running in a second terminal for the review-isolation checks. The routing container intentionally tests production indexing rules and is restricted to loopback. Do not expose this local routing container as an unapproved intake origin. The tests never send a real Hub enquiry. Screenshots and JSON evidence are written to `docs/release-candidate`.
+For intake-only failures, rebuild with the explicit build argument VITE_ENQUIRY_ENABLED=false and deploy through the same resource; confirm all editable fields are replaced by the email contact panel. Rebuild source reference: `6d262c9909b97756d9e6f775d75cf4c4f0e21099` (the explicit false argument overrides release defaults). Locally tested fallback images are also archived with the release artifacts. Preserve the CDN no-transform correction when making a new fallback build.
 
-## Notice publication before intake
+For broader regressions, restore the saved original image/configuration. Corporate rollback must use ff9cca62709d0d9577eaaa55f50af25f8bc97e2b or another verified image retaining the published notice; never use its older pre-notice images. Corporate Coolify's rollback control was exercised successfully at 19:04:15 UTC on 2 November. AI's Compose resource did not list rollback images, so its actual running image and private runtime configuration were archived before release. If an image has been pruned, load the saved tar before restoring the matching compose/image configuration. Restore the matching Git source pin too, so a subsequent push does not reintroduce the failed candidate.
 
-The final notice is prepared in the corporate candidate, with a separate minimal publication patch against production main. See [NOTICE-PUBLICATION.md](NOTICE-PUBLICATION.md). Neither artifact is a public deployment. The user has not authorised website deployment in this task; publish only through a later approved release and verify the public anchor before Hub enablement.
-
-## Later release, only after approval
-
-1. Resolve the gates in README and HUB-INTEGRATION, including approved notice publication and Hub deployment/assignment and the live portal/chat/AI-platform failures. Review the exact final commit/diff and site-specific configuration.
-2. Record this site's currently deployed image digest, commit, environment and reverse-proxy settings in the release record. Confirm the actual Coolify resource, branch triggers and build method before using it; those settings were not accessible here. Do not create a replacement resource or alter DNS as a shortcut.
-3. Build and tag the approved commit for **this repository only**. Pass the confirmed production public values as `--build-arg VITE_ENQUIRY_API_URL`, `--build-arg VITE_TURNSTILE_SITE_KEY` and `--build-arg VITE_ENQUIRY_PRIVACY_VERSION`. The existing docker-compose.yml forwards these build arguments, with empty defaults; preserve its service, exposure and restart settings. The supplied public defaults are populated; VITE_ENQUIRY_ENABLED=false explicitly disables intake. Pass VITE_ENQUIRY_ENABLED=true only after notice publication and verified Hub enablement, during an approved website release. Never use a synthetic test build for deployment.
-4. The runtime image contains only nginx and `dist`, not source tests, fixtures, npm, local documentation or SSR tooling. Treat the built image as the release artifact; public configuration changes require rebuilding it.
-5. Deploy that approved immutable image through the existing site resource. Preserve existing apex/www and HTTPS redirects at the edge. The local nginx config does not replace edge hostname/TLS policy.
-6. Smoke-test home, every indexed route, refreshes, old URLs, assets, metadata, robots and sitemap on the actual hostname. Test an unrelated missing route and missing asset for 404. Check index.html/trailing-slash redirects, original verification asset where applicable, email, portals and chat. Confirm public responses have no staging noindex headers and that /studio remains intentionally noindex on .com.
-7. Run the approved production operational check only under the owner's separate release procedure; the user now authorises bounded synthetic enquiries using contact@euranix.com; no load tests or unrelated mail changes are authorised. Actual approved public origins and real Turnstile verification remain mandatory. Monitor errors, intake receipts and crawler/analytics behaviour using existing operational tooling. Search Console/analytics accounts were not available for this review.
-8. Review the result before scheduling the other website. The sites can roll forward or back independently.
-
-## Roll back this site only
-
-First preserve the published website-enquiry notice across rollback. If an older corporate image lacks it, do not remove the notice while Hub or either website can accept enquiries; coordinate with Hub and use a known-good image with the supplement retained. See NOTICE-PUBLICATION.md. For intake-only problems, rebuild this site with VITE_ENQUIRY_ENABLED=false to restore the email panel, while retaining routes and notice.
-
-Restore the previously recorded immutable image/digest and its matching public configuration through the same Coolify resource. Do not force-reset main and do not roll back Hub, the other website or DNS. Verify the old site's routes, email, portal/chat links and metadata after switching. Retain release logs and diagnose the failed candidate separately.
-
-The recorded repository baseline is **75802365f8811093c9043632c860aa5838e5465f**. If no known-good image remains, build that exact commit in an isolated checkout after approval and restore the matching old configuration; prefer the previous deployed image because dependency/base-image tags can change. There are no website database migrations to reverse. Requests already durably accepted by Hub remain backend records; rolling back a website must not delete or resubmit them.
+Recheck home, contact, notice, direct routes, missing-route 404, assets, redirects, metadata, robots/sitemap and email contact after rollback. Do not change DNS, roll back Hub, delete accepted records, re-send enquiries or remove the privacy notice. No website database migration is involved.
