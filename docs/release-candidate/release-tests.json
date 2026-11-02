@@ -1,16 +1,16 @@
 {
   "passed": true,
-  "checkedAt": "2026-11-02T16:20:14.521Z",
+  "checkedAt": "2026-11-02T17:15:45.020Z",
   "base": "http://127.0.0.1:4474",
   "productionOrigin": "https://euranix.ai",
   "routeCount": 3,
-  "checks": 114,
+  "checks": 120,
   "failures": [],
   "externalRequests": [],
   "limitations": [
     "External scripts blocked during deterministic layout/axe tests; live portal/chat checks are reported separately.",
     "axe and layout tests do not replace assistive-technology user testing.",
     "CSS zoom checks supplement responsive viewport checks; not a full browser/OS zoom matrix.",
-    "Hub live integration not tested: staging configuration unavailable."
+    "Controlled production tests authorised; real positive checks require notice publication, Hub enablement and deployment at approved public origins. Not run."
   ]
 }

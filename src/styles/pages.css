@@ -285,6 +285,32 @@
 .form-panel form {
   min-width: 0;
 }
+.email-contact-panel h2 {
+  font-size: 30px;
+}
+.email-contact-panel .btn {
+  margin-block: 12px 20px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.email-contact-panel .enquiry-privacy-link {
+  font-size: 13px;
+}
+.portal-fallback {
+  max-width: 230px;
+}
+.chat-fallback {
+  padding-block: 18px;
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+}
+.chat-fallback p {
+  margin: 0;
+}
+.website-enquiry-notice {
+  scroll-margin-top: 24px;
+}
 .form-panel fieldset {
   min-width: 0;
 }

@@ -1,28 +1,28 @@
 {
   "passed": true,
-  "checkedAt": "2026-11-02T16:28:53.382Z",
+  "checkedAt": "2026-11-02T17:20:41.015Z",
   "container": "euranix-ai-rc-routing",
   "image": "euranix-ai-website:rc-review",
-  "imageId": "sha256:29bc4c42206ddda0595397ca4c89fddd15c87d97cf26830d496f49628a409f5d",
+  "imageId": "sha256:e49e1e8e93c5f2f5b8f43440c689ef09aa2d1e3a6cd6768fa64d92859499c75b",
   "nginxVersion": "nginx version: nginx/1.30.6",
   "checks": [
     {
       "url": "/",
       "status": 200,
-      "bytes": 11932,
-      "sha256": "16340a652e4fbadcb8551b7a2197810da5ada9d23ee0585572895196ca92e5a8"
+      "bytes": 12063,
+      "sha256": "922e331d93b996e25e3a3d9e3cce209e3af7a58154a30a91844864ac0e449e00"
     },
     {
       "url": "/contact",
       "status": 200,
-      "bytes": 8000,
-      "sha256": "261af342f45a2cef6665e3c24c730533ac659ab3f6cb288eb79cbbaec189b7e1"
+      "bytes": 5391,
+      "sha256": "0e079b83f6a772f7e3f3e708fe90da1f5ba765d804dc6f83d44ba9dc82bbbfb0"
     },
     {
       "url": "/technology-review",
       "status": 200,
-      "bytes": 8835,
-      "sha256": "972fa4103ad2a4a501c4d46c6482c6cc6e7daa0b1d208393a907bbe14beb2211"
+      "bytes": 6055,
+      "sha256": "1d101b36af0567db69d50156284d63473a526b027a4ef55048a14512a80e9955"
     },
     {
       "url": "/apple-touch-icon.png",
@@ -31,16 +31,16 @@
       "sha256": "c504593e2b2bc88c9e3947f4cd9ea385ab1cec5891f4640e17de9c96b91b472c"
     },
     {
-      "url": "/assets/index-BNXMxWGW.js",
+      "url": "/assets/index-0BwXt007.css",
       "status": 200,
-      "bytes": 188776,
-      "sha256": "69105faa2d1e1f210dea08818eb693d75bf7f25f7812b9d2d37d9767ba8e8d1b"
+      "bytes": 30779,
+      "sha256": "ad3ba18d2a20a05a2209ac124cd947662f07d88b0fd0a79e33b83f09599792f8"
     },
     {
-      "url": "/assets/index-D-AMn2MX.css",
+      "url": "/assets/index-LfGbvubH.js",
       "status": 200,
-      "bytes": 30376,
-      "sha256": "5e9409182999f4bba46f1ef9e331b6927a6f05a345d717bcb5f805cf64d65457"
+      "bytes": 189921,
+      "sha256": "35c95d0121d7b7510d92dbf4acebc7595f91cec010cd9f18e4e52eed181db2f0"
     },
     {
       "url": "/brand-logo.png",
@@ -87,26 +87,26 @@
     {
       "url": "/404",
       "status": 404,
-      "bytes": 3886,
-      "sha256": "dd28a32ee1f89dc3da9a8ef1c97d19a9e201ca9cd361f53803507eeba3326aef"
+      "bytes": 4017,
+      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
     },
     {
       "url": "/404.html",
       "status": 404,
-      "bytes": 3886,
-      "sha256": "dd28a32ee1f89dc3da9a8ef1c97d19a9e201ca9cd361f53803507eeba3326aef"
+      "bytes": 4017,
+      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
     },
     {
       "url": "/missing-release-route",
       "status": 404,
-      "bytes": 3886,
-      "sha256": "dd28a32ee1f89dc3da9a8ef1c97d19a9e201ca9cd361f53803507eeba3326aef"
+      "bytes": 4017,
+      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
     },
     {
       "url": "/assets/missing.js",
       "status": 404,
-      "bytes": 3886,
-      "sha256": "dd28a32ee1f89dc3da9a8ef1c97d19a9e201ca9cd361f53803507eeba3326aef"
+      "bytes": 4017,
+      "sha256": "0c45b4527e107e815f028b4e7b4d5f95db23e4aa2dc56caa923581c4952c438c"
     },
     {
       "url": "/index.html",

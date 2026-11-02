@@ -6,6 +6,7 @@ export const enquiryConfig = {
   privacyVersion: import.meta.env.VITE_ENQUIRY_PRIVACY_VERSION || "",
 };
 export const enquiriesEnabled = Boolean(
+  import.meta.env.VITE_ENQUIRY_ENABLED === "true" &&
   enquiryConfig.endpoint &&
   enquiryConfig.siteKey &&
   enquiryConfig.privacyVersion,

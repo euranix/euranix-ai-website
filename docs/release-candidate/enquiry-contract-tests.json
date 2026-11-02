@@ -3,8 +3,30 @@
   "kind": "Automated contract tests with intercepted synthetic responses; NOT live Hub acceptance",
   "hubCommit": "778e1e1a4319d76efdef00413667925e34390ba1",
   "contract": "docs/website-enquiries-contract.md",
+  "enabledFormLayouts": [
+    {
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "axeViolations": 0,
+      "noHorizontalOverflow": true,
+      "syntheticVerificationOnly": true
+    },
+    {
+      "device": "mobile",
+      "width": 390,
+      "height": 844,
+      "axeViolations": 0,
+      "noHorizontalOverflow": true,
+      "syntheticVerificationOnly": true
+    }
+  ],
   "checks": [
+    "enabled form desktop/mobile axe WCAG A/AA checks with synthetic verification",
+    "enabled form desktop/mobile overflow checks and contract-only screenshots",
     "required fields and privacy acknowledgement",
+    "privacy and optional marketing initially unchecked",
+    "exact notice URL opens in a separate tab without losing entered fields or consent state",
     "expired, errored and timed-out bot challenge prevents submission until refreshed",
     "unchecked optional marketing",
     "canonical service and enquiry type mapping",
@@ -22,5 +44,5 @@
     "no PII persisted in browser storage"
   ],
   "syntheticRequests": 8,
-  "liveHubAcceptance": "BLOCKED: staging endpoint, Turnstile key, approved privacy version and allowed origins not confirmed"
+  "liveHubAcceptance": "POST-DEPLOYMENT: controlled production tests authorised, but notice publication and actual allowed public-origin candidates are required; no live acceptance is claimed"
 }

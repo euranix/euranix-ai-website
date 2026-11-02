@@ -1,30 +1,39 @@
-[
-  {
-    "url": "https://portal.euranix.com",
-    "result": "503 https://portal.euranix.com/"
-  },
-  {
-    "url": "https://www.euranixcloud.com",
-    "result": "200 https://www.euranixcloud.com/"
-  },
-  {
-    "url": "https://platform.euranix.ai",
-    "result": "curl: (6) Could not resolve host: platform.euranix.ai 000 https://platform.euranix.ai/"
-  },
-  {
-    "url": "https://portal.euranix.com/im_livechat/loader/1",
-    "result": "503 https://portal.euranix.com/im_livechat/loader/1"
-  },
-  {
-    "url": "https://portal.euranix.com/im_livechat/assets_embed.js",
-    "result": "503 https://portal.euranix.com/im_livechat/assets_embed.js"
-  },
-  {
-    "url": "https://www.euranix.com",
-    "result": "200 https://www.euranix.com/"
-  },
-  {
-    "url": "https://euranix.ai",
-    "result": "200 https://euranix.ai/"
-  }
-]
+{
+  "checkedAt": "2026-11-02T17:24:25.4674587Z",
+  "method": "Read-only HTTPS GET and local resolver A lookup; no authenticated portal check",
+  "probes": [
+    {
+      "url": "https://portal.euranix.com",
+      "result": "503 https://portal.euranix.com/",
+      "curlExit": 0
+    },
+    {
+      "url": "https://portal.euranix.com/im_livechat/loader/1",
+      "result": "503 https://portal.euranix.com/im_livechat/loader/1",
+      "curlExit": 0
+    },
+    {
+      "url": "https://portal.euranix.com/im_livechat/assets_embed.js",
+      "result": "503 https://portal.euranix.com/im_livechat/assets_embed.js",
+      "curlExit": 0
+    },
+    {
+      "url": "https://platform.euranix.ai",
+      "result": "curl: (6) Could not resolve host: platform.euranix.ai\r\n000 https://platform.euranix.ai/",
+      "curlExit": 6
+    },
+    {
+      "url": "https://www.euranixcloud.com",
+      "result": "200 https://www.euranixcloud.com/",
+      "curlExit": 0
+    },
+    {
+      "url": "https://www.euranix.com/privacy",
+      "result": "200 https://www.euranix.com/privacy",
+      "curlExit": 0
+    }
+  ],
+  "aiPlatformDns": "platform.euranix.ai : DNS name does not exist.",
+  "publicNoticeVersionFound": false,
+  "publicNoticeAnchorFound": false
+}

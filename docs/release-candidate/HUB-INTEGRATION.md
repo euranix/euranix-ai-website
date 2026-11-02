@@ -1,50 +1,56 @@
-# Hub integration evidence and remaining gate
+# Hub enquiry integration — controlled production testing
 
-This candidate implements **website enquiry contract v1** from Euranix Hub commit **778e1e1a4319d76efdef00413667925e34390ba1**, on `codex/website-enquiry-intake`. The user explicitly approved this implemented contract for website development. It is not evidence of a deployed intake service.
+Updated 2 November 2026 (India time). The user authorised bounded synthetic testing against production Hub; **a separate staging environment is not required**. The user has not authorised merging or deploying either public website. Those are separate permissions.
 
-- [Contract: docs/website-enquiries-contract.md](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/docs/website-enquiries-contract.md)
-- [Rollout status](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/docs/website-enquiries-rollout.md)
-- [Controller](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/src/app/Http/Controllers/EnquiryIntakeController.php)
-- [Schema](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/src/app/Services/Enquiries/EnquirySchema.php)
-- [Server configuration](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/src/config/enquiries.php)
+## Coordination and verified public configuration
 
-Hub main was inspected at `fe8be19f81d7f97017e730e5c584b60468fe7183`; the implementation was found on the intake feature branch. Rollout notes said intake is disabled by default and its hostname is not provisioned. The user confirmed staging configuration remains unavailable. No Hub repository, setting, infrastructure or enquiry data was changed.
+The website chat coordinated directly with the existing codex-hub chat. Hub verified its current public Turnstile widget and the exact origin/hostname pairs below. The intake contract v1 originated at **778e1e1a4319d76efdef00413667925e34390ba1**, [docs/website-enquiries-contract.md](https://github.com/euranix/euranixhub/blob/778e1e1a4319d76efdef00413667925e34390ba1/docs/website-enquiries-contract.md). Shared-host deployment work continues from **27ae15e79677f91a4d8b16ce3152bff1812ca426**. The old contract commit is not a deployment recommendation.
 
-## Configurable public values
-
-All three values are deliberately empty in `.env.example`.
-
-| Build variable | Required value from Hub/staging owner |
+| Public build value | Supplied value |
 | --- | --- |
-| VITE_ENQUIRY_API_URL | Confirmed HTTPS endpoint ending in /api/v1/enquiries |
-| VITE_TURNSTILE_SITE_KEY | Approved public site key compatible with the staging frontend hostname |
-| VITE_ENQUIRY_PRIVACY_VERSION | Approved, server-allowlisted privacy-notice version |
+| VITE_ENQUIRY_API_URL | https://hub.euranixcloud.com/api/v1/enquiries |
+| VITE_TURNSTILE_SITE_KEY | 0x4AAAAAAFw3v3E7oHBjtH0u |
+| VITE_ENQUIRY_PRIVACY_VERSION | website-enquiries-2026-11-02-v1 |
+| VITE_ENQUIRY_ENABLED | false in these candidates |
 
-Vite embeds public build configuration. Supply it before `npm run build`, or as the corresponding Docker build arguments. Changing a container runtime environment alone does not change the static bundle. Never put Turnstile secret keys, Hub credentials or other secrets in VITE variables, Docker public arguments or frontend files.
+The endpoint is confirmed by Hub as the intended production route; a working accepting deployment has **not** been verified by this website project. Hub's inspected live commit was **87107dfaf675126f06f4ca8df23519b54850af77**, with intake not deployed/accepting. The Hub agent is implementing individually granted CRM access and manual retention. Its final release status must be checked before enablement.
 
-**Exact local frontend staging/review origins:** `http://127.0.0.1:4373` for euranix.com and `http://127.0.0.1:4374` for euranix.ai. These are bound to loopback and protected from indexing. Any CORS/source and Turnstile hostname allowances must be staging-only, including the exact ports in Origin checks. The Hub owner must confirm Turnstile compatibility with these local hostnames or agree separate HTTPS staging hosts before a live test. No public staging hostname has been invented or provisioned. Ports 4473/4474 are local nginx routing-test endpoints, not proposed Hub frontend origins.
+All four values are public build-time settings, supplied through .env.production or Docker build arguments; .env.example shows the same defaults. The AI compose build forwards them. Only an explicit VITE_ENQUIRY_ENABLED=true plus complete configuration renders the form. Server credentials, the Turnstile secret and origin-authentication secrets stay with Hub. No secret was requested, copied or placed in a frontend value.
 
-The production bundle contains no fixture endpoint, test key or test-notice version. With configuration absent it presents an honest unavailable message, disables sending and retains `mailto:contact@euranix.com`. It cannot simulate acceptance.
+| Allowed browser Origin | Required verified Turnstile hostname |
+| --- | --- |
+| https://www.euranix.com | www.euranix.com |
+| https://euranix.ai | euranix.ai |
+| https://www.euranix.ai | www.euranix.ai |
 
-## Implemented behaviour
+The Hub agent confirmed these from actual served/redirected hosts. Local review at http://127.0.0.1:4373 and :4374 is **not an approved intake origin**. No localhost exception, wildcard CORS, origin spoofing, test-key substitution in production or CAPTCHA bypass is permitted. No approved alternative preview origin was supplied. Real positive candidate submissions therefore require later deployment at an approved public origin.
 
-`src/enquiries/transport.ts` isolates the contract from the UI. HTTPS JSON POST uses credentials=omit, no-store, redirects rejected and an Idempotency-Key UUID v4. Fields use the verified type/service identifiers; source_website is fixed per site and source_page excludes query/fragment. General enquiries, service enquiries, AI demonstrations and one-hour technology-review requests are distinct. An uncertain service is an empty service-interest list.
+## Notice and consent
 
-Privacy acknowledgement is required. Marketing consent is separate and unchecked. Optional phone/WhatsApp numbers belong to the visitor, are validated in international format, and are sent only for the selected preference. Optional contact windows include selected weekdays, ordered times and an IANA time zone. No company WhatsApp or appointment URL was invented.
+The final supplement belongs at **https://www.euranix.com/privacy#website-enquiries**, preserving the general privacy policy. Candidate publication is not public availability. Hub must not enable intake until the matching exact notice is actually available at that URL. The website release recommendation tracks publication separately from local rendering.
 
-Turnstile uses explicit rendering and action `website_enquiry`. Expired, failed and timed-out checks clear the token; retry refreshes the challenge. Client validation precedes submission. Error responses have fixed safe copy and field names, not untrusted server message HTML. Retry-After supports seconds and HTTP dates. A 15-second timeout or network/5xx ambiguity keeps the same business payload/key; duplicate in-flight submits are blocked. Changed business content creates a new key. A 409 stops resubmission and directs the visitor to email.
+Both enquiry links target that exact URL with target=_blank and rel=noopener noreferrer, with visible “opens in a new tab” wording. A contract browser test fills fields, opens/closes the notice tab and verifies that the entered values and consent state remain intact. Required privacy acknowledgement starts unchecked. Optional marketing consent starts unchecked and is not required for a response.
 
-Only HTTP 200/201 with status=accepted and valid UUID receipt_id/request_id can display acceptance. This confirms durable intake according to the contract, not an email delivery, appointment or payment. The key and personal fields remain in memory only. Reloading/closing the page loses the retry state; the failure copy explicitly asks the visitor to keep the page open and avoid starting another request when receipt is uncertain. Durable deduplication across reloads is not claimed.
+The final approved notice is now included unchanged in the corporate candidate. Source: Hub docs/privacy/website-enquiries-2026-11-02-v1.md; identifier website-enquiries-2026-11-02-v1. Original supplied-file SHA-256: 9E27323780666CDA123E7A0E445E241445163DA5EF9E3636A047AB8656E971F6; canonical LF SHA-256: 315ecd49f1c278a7a894a122b18f8259ec084c5ded7af2a1b8dccb97f15ff0c9. See [notice provenance, minimal publication patch and rollback constraint](NOTICE-PUBLICATION.md). This text is final; publication, Hub's final release SHA and backend enablement are still pending.
 
-No enquiry details go to analytics or browser storage. Campaign capture accepts only business-approved values from the five UTM fields. The allowlist is empty because no approved campaign values were supplied; arbitrary query values are discarded. The illustrative homepage interactions do not call Hub. Future CX-to-Hub integration remains outside scope.
+## Disabled intake and service fallbacks
 
-## Automated evidence versus live evidence
+Disabled intake shows a concise email contact panel with contact@euranix.com and no editable fields or unusable send button. It retains the contextual one-hour review offer on the review route. Missing configuration also fails closed.
 
-- [Adapter tests](adapter-tests.json): fake fetch/timers; status mappings, 15-second timeout, concurrent-submit prevention, malformed/edge responses, safe error text, Retry-After, same-key retries and changed-content keys.
-- [Browser contract tests](enquiry-contract-tests.json): a separate test build in `.build/contract-dist`; intercepted synthetic Turnstile and Hub responses; eight synthetic requests per site; required fields, consent, intent/service mapping, optional contact preferences, challenge failures, 422/429/503, network retry and acceptance.
-- `scripts/enquiry-check.cjs` never overwrites `dist`. Test values exist only in the test build and test source, which are not copied into the runtime Docker image.
-- **Live Hub acceptance, backend deduplication, real CORS/preflight, real Turnstile verification and downstream intake visibility: NOT RUN / BLOCKED.** Automated contract responses do not establish those properties.
+The existing client/cloud/AI platform links are retained. A visible footer email fallback helps visitors who cannot reach a portal. The original Odoo loader and assets URLs remain; a script-load error produces a clear inline “Live chat could not load” email fallback. Nothing silently routes users to a different portal.
 
-## Required staging acceptance before release
+Fresh probes still found HTTP 503 at portal.euranix.com and both chat script URLs, and NXDOMAIN for platform.euranix.ai. The cloud portal returned 200. See external-link-probes.json. These are external-service failures; this task did not alter their infrastructure.
 
-Obtain the three approved values, staging-only Origin/hostname configuration and enabled contract v1 deployment. Review the notice linked by each site against the approved notice version. Use synthetic test data only on the confirmed staging endpoint. Verify real OPTIONS/POST, 201 durable receipt and stored enquiry visibility; retry the same key/payload with a fresh challenge and verify one record/200 replay. Exercise changed payload/conflict, validation, bot expiry/failure, rate limits, unavailable dependency, timeout and preserved email fallback. Confirm no PII reaches analytics/logging integrations. Record endpoint/version/date, request IDs and evidence in a separate live-integration report. Do not send test enquiries to production.
+## Implemented contract behaviour
+
+The isolated adapter retains canonical enquiry/service types, optional contact preferences, required acknowledgement, separate optional marketing choice, fixed website/path attribution, real Turnstile action website_enquiry, validation, safe error messages, rate-limit waits, 15-second timeout, UUID v4 idempotency and duplicate in-flight protection. Only 200/201 with an accepted receipt and valid request/receipt UUIDs displays success. A fresh verification token accompanies retries; unchanged business data retains its key. Changed data starts a new key. Retry state is memory-only; keep the page open after an uncertain result.
+
+No enquiry fields enter analytics or browser storage. No campaign values were approved, so the allowlist remains empty. Homepage demonstrations are labelled illustrative/synthetic and never submit enquiries. Future CX-to-Hub integration is excluded.
+
+## Evidence boundary
+
+[Automated browser contract tests](enquiry-contract-tests.json) use a separate build and intercepted synthetic responses. [Adapter tests](adapter-tests.json) use fake fetch/timers. They establish frontend handling, not real Hub acceptance, CRM assignment, inbox delivery or backend duplicate prevention.
+
+Real Turnstile verification, accepted production receipts, CRM record/assignment, actual notification delivery and duplicate-safe production retry are **post-deployment / not run**. Hub additionally reported a missing primary/fallback representative selection and requested it in its own chat; this website task does not infer or assign staff.
+
+See [CONTROLLED-PRODUCTION-TESTS.md](CONTROLLED-PRODUCTION-TESTS.md) for the bounded test plan and the evidence each side must record. No positive production result is claimed.

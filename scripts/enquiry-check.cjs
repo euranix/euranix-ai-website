@@ -11,6 +11,7 @@ const { chromium } = createRequire(
   await build({
     build: { outDir: ".build/contract-dist", emptyOutDir: true },
     define: {
+      "import.meta.env.VITE_ENQUIRY_ENABLED": JSON.stringify("true"),
       "import.meta.env.VITE_ENQUIRY_API_URL": JSON.stringify(
         "https://intake.example.test/api/v1/enquiries",
       ),
@@ -49,6 +50,7 @@ const { chromium } = createRequire(
   const b = await chromium.launch({ channel: "msedge", headless: true });
   const p = await b.newPage();
   const posts = [];
+  await p.context().route('https://www.euranix.com/privacy**', route => route.fulfill({contentType:'text/html', body:'<!doctype html><html lang="en"><title>Notice link test</title><h1 id="website-enquiries">Synthetic notice target — navigation test only</h1></html>'}));
   let reply = {
       status: 503,
       body: { error: { code: "intake_unavailable" } },
@@ -97,7 +99,20 @@ const { chromium } = createRequire(
   await p.goto(
     origin + "/contact?utm_campaign=unapproved&email=private@example.test",
   );
+  await p.addScriptTag({path:createRequire(path.join(process.env.REVIEW_TOOL_ROOT || process.cwd(),'package.json')).resolve('axe-core/axe.min.js')});
+  const enabledFormLayouts = [];
+  for (const [device,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
+    await p.setViewportSize({width,height});
+    const accessibility = await p.evaluate(()=>window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));
+    assert.deepEqual(accessibility.violations,[],device+' enabled-form accessibility');
+    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),device+' enabled-form overflow');
+    await p.screenshot({path:'docs/release-candidate/screenshots/enabled-form-contract-'+device+'.png',fullPage:true});
+    enabledFormLayouts.push({device,width,height,axeViolations:0,noHorizontalOverflow:true,syntheticVerificationOnly:true});
+  }
+  await p.setViewportSize({width:1440,height:1000});
   await p.getByRole("button", { name: /Send enquiry/ }).click();
+  assert.equal(await p.locator('#privacy').isChecked(), false);
+  assert.equal(await p.locator('#marketing').isChecked(), false);
   assert.equal(await p.locator("[aria-invalid=true]").count(), 4);
   await p.locator("#name").fill("Synthetic Prospect");
   await p.locator("#email").fill("prospect@example.test");
@@ -105,6 +120,21 @@ const { chromium } = createRequire(
     .locator("#message")
     .fill("Synthetic contract test enquiry; no real person or customer.");
   await p.locator("#privacy").check();
+  const notice = p.locator('.enquiry-privacy-link');
+  assert.equal(await notice.getAttribute('href'), 'https://www.euranix.com/privacy#website-enquiries');
+  assert.equal(await notice.getAttribute('target'), '_blank');
+  assert((await notice.getAttribute('rel')).includes('noopener'));
+  const popupPromise = p.waitForEvent('popup');
+  await notice.click();
+  const popup = await popupPromise;
+  await popup.waitForLoadState();
+  assert.equal(popup.url(), 'https://www.euranix.com/privacy#website-enquiries');
+  await popup.close();
+  assert.equal(await p.locator('#name').inputValue(), 'Synthetic Prospect');
+  assert.equal(await p.locator('#email').inputValue(), 'prospect@example.test');
+  assert.equal(await p.locator('#message').inputValue(), 'Synthetic contract test enquiry; no real person or customer.');
+  assert.equal(await p.locator('#privacy').isChecked(), true);
+  assert.equal(await p.locator('#marketing').isChecked(), false);
   for (const event of ["expired-callback", "error-callback", "timeout-callback"]) {
     await p.evaluate(event => window.challengeOptions[event](), event);
     await p.getByRole("button", {name: "Refresh security check"}).waitFor();
@@ -257,8 +287,13 @@ const { chromium } = createRequire(
     kind: "Automated contract tests with intercepted synthetic responses; NOT live Hub acceptance",
     hubCommit: "778e1e1a4319d76efdef00413667925e34390ba1",
     contract: "docs/website-enquiries-contract.md",
+    enabledFormLayouts,
     checks: [
+      "enabled form desktop/mobile axe WCAG A/AA checks with synthetic verification",
+      "enabled form desktop/mobile overflow checks and contract-only screenshots",
       "required fields and privacy acknowledgement",
+      "privacy and optional marketing initially unchecked",
+      "exact notice URL opens in a separate tab without losing entered fields or consent state",
       "expired, errored and timed-out bot challenge prevents submission until refreshed",
       "unchecked optional marketing",
       "canonical service and enquiry type mapping",
@@ -277,7 +312,7 @@ const { chromium } = createRequire(
     ],
     syntheticRequests: posts.length,
     liveHubAcceptance:
-      "BLOCKED: staging endpoint, Turnstile key, approved privacy version and allowed origins not confirmed",
+      "POST-DEPLOYMENT: controlled production tests authorised, but notice publication and actual allowed public-origin candidates are required; no live acceptance is claimed",
   };
   fs.mkdirSync("docs/release-candidate", { recursive: true });
   fs.writeFileSync(

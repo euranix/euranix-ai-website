@@ -99,7 +99,7 @@
   {
     "name": "/contact substantive initial HTML",
     "passed": true,
-    "detail": 1357
+    "detail": 605
   },
   {
     "name": "/contact production has no staging header",
@@ -188,7 +188,7 @@
   {
     "name": "/technology-review substantive initial HTML",
     "passed": true,
-    "detail": 1951
+    "detail": 1066
   },
   {
     "name": "/technology-review production has no staging header",
@@ -279,27 +279,35 @@
     "passed": true
   },
   {
-    "name": "anchor #main",
+    "name": "anchor http://127.0.0.1:4474/#main",
     "passed": true
   },
   {
-    "name": "anchor /#usecases",
+    "name": "anchor http://127.0.0.1:4474/#usecases",
     "passed": true
   },
   {
-    "name": "anchor /#howitworks",
+    "name": "anchor http://127.0.0.1:4474/#howitworks",
     "passed": true
   },
   {
-    "name": "anchor /#privacy",
+    "name": "anchor http://127.0.0.1:4474/#privacy",
     "passed": true
   },
   {
-    "name": "anchor /#pricing",
+    "name": "anchor http://127.0.0.1:4474/#pricing",
     "passed": true
   },
   {
-    "name": "anchor #demo",
+    "name": "anchor http://127.0.0.1:4474/#demo",
+    "passed": true
+  },
+  {
+    "name": "anchor http://127.0.0.1:4474/contact#main",
+    "passed": true
+  },
+  {
+    "name": "anchor http://127.0.0.1:4474/technology-review#main",
     "passed": true
   },
   {
@@ -348,7 +356,24 @@
     "passed": true
   },
   {
+    "name": "/404 real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/404 noindex and no homepage canonical",
+    "passed": true
+  },
+  {
     "name": "canonical redirect /index.html",
+    "passed": true,
+    "detail": {
+      "status": 308,
+      "location": "/?ref=test"
+    }
+  },
+  {
+    "name": "canonical redirect /index",
     "passed": true,
     "detail": {
       "status": 308,
@@ -380,7 +405,11 @@
     "passed": true
   },
   {
-    "name": "unconfigured intake cannot submit",
+    "name": "disabled intake exposes no editable form or unusable submit",
+    "passed": true
+  },
+  {
+    "name": "disabled intake shows clear email contact panel",
     "passed": true
   },
   {
@@ -388,11 +417,11 @@
     "passed": true
   },
   {
-    "name": "general enquiry default",
+    "name": "direct enquiry notice destination",
     "passed": true
   },
   {
-    "name": "help me choose option",
+    "name": "notice opens separately",
     "passed": true
   },
   {
@@ -409,11 +438,11 @@
         "x": 20,
         "y": 265.796875,
         "width": 350,
-        "height": 1130.8125
+        "height": 473.5
       },
       "aside": {
         "x": 20,
-        "y": 1416.609375,
+        "y": 759.296875,
         "width": 350,
         "height": 148.5
       }
@@ -517,7 +546,7 @@
     "detail": []
   },
   {
-    "name": "production asset no fixtures or known secret patterns index-BNXMxWGW.js",
+    "name": "production asset no fixtures or known secret patterns index-DReCgeMI.js",
     "passed": true
   }
 ]

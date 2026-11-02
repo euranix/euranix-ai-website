@@ -5,7 +5,7 @@
     "description": "Knowledge, customer support and business information assistants, with scoped data access, deployment and ongoing management by Euranix.",
     "status": 200,
     "canonical": "https://euranix.ai/",
-    "initialHtmlBytes": 11932,
+    "initialHtmlBytes": 12063,
     "initialH1": "Your knowledge.A useful answer.A clear source.",
     "links": [
       "#main",
@@ -30,6 +30,7 @@
       "https://www.euranixcloud.com",
       "https://platform.euranix.ai",
       "/technology-review",
+      "mailto:contact@euranix.com",
       "https://www.euranix.com/privacy",
       "https://www.euranix.com/terms",
       "https://www.euranix.com/data-deletion"
@@ -41,7 +42,7 @@
     "description": "Tell Euranix what you need help with. Discuss a service, request an AI demonstration or ask for help choosing a starting point.",
     "status": 200,
     "canonical": "https://euranix.ai/contact",
-    "initialHtmlBytes": 8000,
+    "initialHtmlBytes": 5391,
     "initialH1": "Let’s talk.",
     "links": [
       "#main",
@@ -53,7 +54,7 @@
       "https://www.euranix.com",
       "/contact?service=General%20enquiry",
       "mailto:contact@euranix.com",
-      "https://www.euranix.com/privacy",
+      "https://www.euranix.com/privacy#website-enquiries",
       "mailto:contact@euranix.com",
       "mailto:contact@euranix.com",
       "https://www.euranix.com",
@@ -61,6 +62,7 @@
       "https://www.euranixcloud.com",
       "https://platform.euranix.ai",
       "/technology-review",
+      "mailto:contact@euranix.com",
       "https://www.euranix.com/privacy",
       "https://www.euranix.com/terms",
       "https://www.euranix.com/data-deletion"
@@ -72,7 +74,7 @@
     "description": "Request a one-hour conversation about your systems and priorities. Free for a limited period; future standard fee US$199. Meeting time confirmed separately.",
     "status": 200,
     "canonical": "https://euranix.ai/technology-review",
-    "initialHtmlBytes": 8835,
+    "initialHtmlBytes": 6055,
     "initialH1": "Request a review.",
     "links": [
       "#main",
@@ -84,7 +86,7 @@
       "https://www.euranix.com",
       "/contact?service=General%20enquiry",
       "mailto:contact@euranix.com",
-      "https://www.euranix.com/privacy",
+      "https://www.euranix.com/privacy#website-enquiries",
       "mailto:contact@euranix.com",
       "mailto:contact@euranix.com",
       "https://www.euranix.com",
@@ -92,6 +94,7 @@
       "https://www.euranixcloud.com",
       "https://platform.euranix.ai",
       "/technology-review",
+      "mailto:contact@euranix.com",
       "https://www.euranix.com/privacy",
       "https://www.euranix.com/terms",
       "https://www.euranix.com/data-deletion"

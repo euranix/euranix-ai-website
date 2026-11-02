@@ -4,9 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VITE_ENQUIRY_API_URL: ${VITE_ENQUIRY_API_URL:-}
-        VITE_TURNSTILE_SITE_KEY: ${VITE_TURNSTILE_SITE_KEY:-}
-        VITE_ENQUIRY_PRIVACY_VERSION: ${VITE_ENQUIRY_PRIVACY_VERSION:-}
+        VITE_ENQUIRY_ENABLED: ${VITE_ENQUIRY_ENABLED:-false}
+        VITE_ENQUIRY_API_URL: ${VITE_ENQUIRY_API_URL:-https://hub.euranixcloud.com/api/v1/enquiries}
+        VITE_TURNSTILE_SITE_KEY: ${VITE_TURNSTILE_SITE_KEY:-0x4AAAAAAFw3v3E7oHBjtH0u}
+        VITE_ENQUIRY_PRIVACY_VERSION: ${VITE_ENQUIRY_PRIVACY_VERSION:-website-enquiries-2026-11-02-v1}
     restart: unless-stopped
     expose:
       - "80"

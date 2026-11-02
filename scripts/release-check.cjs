@@ -89,14 +89,15 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
   check(pr.headers.get('x-robots-tag')?.includes('noindex')&&prText.includes('content="noindex,nofollow,noarchive"'),'review server noindex isolation');
   check((await(await fetch(preview+'/robots.txt')).text()).includes('Disallow: /'),'review robots disallow');
   await page.goto(base+'/contact'); await page.setViewportSize({width:390,height:844});
-  check(await page.locator('.submit').isDisabled(),'unconfigured intake cannot submit');
+  check(await page.locator('form,input,textarea,select,.submit').count()===0,'disabled intake exposes no editable form or unusable submit');
+  check(await page.locator('.email-contact-panel').isVisible(),'disabled intake shows clear email contact panel');
   check(await page.locator('a[href="mailto:contact@euranix.com"]').count()>0,'real email fallback');
-  check(await page.locator('#intent').inputValue()==='general_sales','general enquiry default');
-  check((await page.locator('#service option').first().textContent()).includes('Not sure'),'help me choose option');
+  check(await page.locator('.enquiry-privacy-link').getAttribute('href')==='https://www.euranix.com/privacy#website-enquiries','direct enquiry notice destination');
+  check(await page.locator('.enquiry-privacy-link').getAttribute('target')==='_blank','notice opens separately');
   const intro=await page.locator('.enquiry-intro').boundingBox(), form=await page.locator('.form-panel').boundingBox(), aside=await page.locator('.enquiry-support').boundingBox();
   check(form.y>intro.y&&form.y<intro.y+intro.height+40&&form.y<aside.y,'mobile form follows short introduction',{intro,form,aside});
-  await page.locator('#name').focus(); await page.keyboard.press('Escape');
-  check(await page.locator('#name').evaluate(e=>e===document.activeElement),'Escape with closed menu preserves focus');
+  await page.locator('.email-contact-panel .btn').focus(); await page.keyboard.press('Escape');
+  check(await page.locator('.email-contact-panel .btn').evaluate(e=>e===document.activeElement),'Escape with closed menu preserves focus');
   await page.getByRole('button',{name:'Open navigation'}).click(); await page.locator('#navigation a').first().focus(); await page.keyboard.press('Escape');
   check(await page.getByRole('button',{name:'Open navigation'}).evaluate(e=>e===document.activeElement),'Escape closes open menu and restores button focus');
   await page.goto(base+'/'); await page.keyboard.press('Tab');
@@ -116,6 +117,7 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
     check((await page.locator('.workflow-result').textContent()).includes('Confirm access'),'business workflow interaction');
     check([...externalRequests].some(u=>u==='https://portal.euranix.com/im_livechat/loader/1'),'preserved Odoo chat loader request');
     check([...externalRequests].some(u=>u==='https://portal.euranix.com/im_livechat/assets_embed.js'),'preserved Odoo chat assets request');
+    check(await page.locator('.chat-fallback a[href="mailto:contact@euranix.com"]').isVisible(),'failed chat offers explicit email fallback');
     await page.goto(base+'/services/custom-software-engineering');
     const last=page.locator('.cta .btn.primary');
     check((await last.textContent()).toLowerCase().includes('software')&&(await last.getAttribute('href')).includes('Software'),'software-specific final CTA');
@@ -140,7 +142,7 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
     const body=fs.readFileSync('dist/assets/'+file,'utf8');
     check(!/synthetic-test-key|synthetic-notice-v1|intake\.example\.test|TURNSTILE_SECRET|sk_live_|-----BEGIN PRIVATE KEY-----/.test(body),'production asset no fixtures or known secret patterns '+file);
   }
-  const report={passed:!failures.length,checkedAt:new Date().toISOString(),base,productionOrigin:origin,routeCount:routes.length,checks:checks.length,failures,externalRequests:[...externalRequests],limitations:['External scripts blocked during deterministic layout/axe tests; live portal/chat checks are reported separately.','axe and layout tests do not replace assistive-technology user testing.','CSS zoom checks supplement responsive viewport checks; not a full browser/OS zoom matrix.','Hub live integration not tested: staging configuration unavailable.']};
+  const report={passed:!failures.length,checkedAt:new Date().toISOString(),base,productionOrigin:origin,routeCount:routes.length,checks:checks.length,failures,externalRequests:[...externalRequests],limitations:['External scripts blocked during deterministic layout/axe tests; live portal/chat checks are reported separately.','axe and layout tests do not replace assistive-technology user testing.','CSS zoom checks supplement responsive viewport checks; not a full browser/OS zoom matrix.','Controlled production tests authorised; real positive checks require notice publication, Hub enablement and deployment at approved public origins. Not run.']};
   fs.writeFileSync(output+'/routes.json',JSON.stringify(inventory,null,2));
   fs.writeFileSync(output+'/release-tests.json',JSON.stringify(report,null,2));
   fs.writeFileSync(output+'/release-checks.json',JSON.stringify(checks,null,2));

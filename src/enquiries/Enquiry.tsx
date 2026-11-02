@@ -337,296 +337,355 @@ export default function Enquiry({
           </p>
         </div>
         <div className="form-panel">
-          {!enquiriesEnabled && (
-            <p className="form-availability" role="status">
-              The online form is currently unavailable. Email{" "}
-              <a href="mailto:contact@euranix.com">contact@euranix.com</a> to
-              start a conversation.
-            </p>
-          )}
-          <noscript>
-            <p>
-              Please enable JavaScript to use the form, or email{" "}
-              <a href="mailto:contact@euranix.com">contact@euranix.com</a>.
-            </p>
-          </noscript>
-          <form onSubmit={submit} noValidate aria-busy={status === "sending"}>
-            {Object.keys(errors).length > 0 && (
-              <div
-                className="error-summary"
-                tabIndex={-1}
-                ref={summary}
-                role="alert"
-              >
-                <strong>Please check these details</strong>
-                <ul>
-                  {Object.entries(errors).map(([key, text]) => (
-                    <li key={key}>
-                      <a
-                        href={"#" + key}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document.getElementById(key)?.focus();
-                        }}
-                      >
-                        {text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <fieldset disabled={status === "sending" || status === "accepted"}>
-              <legend className="sr-only">Your enquiry details</legend>
-              <div className="field request-type">
-                <label htmlFor="intent">What would you like to do?</label>
-                <select
-                  id="intent"
-                  value={data.intent}
-                  onChange={(e) =>
-                    update("intent", e.target.value as EnquiryType)
-                  }
-                >
-                  <option value="general_sales">Make a general enquiry</option>
-                  <option value="service_enquiry">Discuss a service</option>
-                  <option value="ai_demo">Request an AI demonstration</option>
-                  <option value="technology_review_1h">
-                    Request a technology review
-                  </option>
-                </select>
-                {isReview && (
-                  <p className="small request-context">
-                    One hour, free for a limited period. Future standard fee:
-                    US$199. We’ll confirm a time with you; this is not an
-                    appointment booking.
-                  </p>
-                )}
-              </div>
-              <div className="form-grid">
-                {field("name", "Name (required)", true)}
-                {field("email", "Work email (required)", true)}
-                {field("company", "Business name (optional)")}
-                <div className="field">
-                  <label htmlFor="service">Which service interests you?</label>
-                  <select
-                    id="service"
-                    value={data.service}
-                    onChange={(e) => update("service", e.target.value)}
-                  >
-                    <option value="">Not sure — help me choose</option>
-                    {services.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {field(
-                  "message",
-                  "What would you like help with? (required)",
-                  true,
-                )}
-              </div>
-              <p className="small muted">
-                Please don’t include passwords, access keys, sensitive records
-                or customer data.
+          {!enquiriesEnabled ? (
+            <section
+              className="email-contact-panel"
+              aria-labelledby="email-contact-heading"
+            >
+              <p className="eyebrow">Contact by email</p>
+              <h2 id="email-contact-heading">We’re ready to hear from you.</h2>
+              <p>
+                Online enquiries are currently unavailable. Email us with a
+                short description of what you need, and we’ll follow up.
               </p>
-              <details className="contact-preferences">
-                <summary>Contact preferences (optional)</summary>
-                <div className="field">
-                  <label htmlFor="method">
-                    How would you prefer us to follow up?
-                  </label>
-                  <select
-                    id="method"
-                    value={data.method}
-                    onChange={(e) =>
-                      update("method", e.target.value as FormData["method"])
-                    }
+              <a className="btn primary" href="mailto:contact@euranix.com">
+                Email contact@euranix.com <span aria-hidden="true">↗</span>
+              </a>
+              <p className="small muted">
+                Please don’t include passwords, payment details or sensitive
+                records. You can also copy the email address into your preferred
+                email app.
+              </p>
+              <a
+                className="enquiry-privacy-link"
+                href="https://www.euranix.com/privacy#website-enquiries"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read the enquiry privacy notice (opens in a new tab)
+              </a>
+            </section>
+          ) : (
+            <>
+              <noscript>
+                <p>
+                  Please enable JavaScript to use the form, or email{" "}
+                  <a href="mailto:contact@euranix.com">contact@euranix.com</a>.
+                </p>
+              </noscript>
+              <form
+                onSubmit={submit}
+                noValidate
+                aria-busy={status === "sending"}
+              >
+                {Object.keys(errors).length > 0 && (
+                  <div
+                    className="error-summary"
+                    tabIndex={-1}
+                    ref={summary}
+                    role="alert"
                   >
-                    <option value="email">Email</option>
-                    <option value="phone">Phone</option>
-                    <option value="whatsapp">WhatsApp</option>
-                  </select>
-                </div>
-                {data.method === "phone" &&
-                  field("phone", "Your phone number (with country code)", true)}
-                {data.method === "whatsapp" &&
-                  field(
-                    "whatsapp",
-                    "Your WhatsApp number (with country code)",
-                    true,
-                  )}
-                <label className="check">
-                  <input
-                    type="checkbox"
-                    checked={data.window}
-                    onChange={(e) => update("window", e.target.checked)}
-                  />
-                  Suggest a contact window
-                </label>
-                {data.window && (
-                  <div id="contactWindow" tabIndex={-1}>
-                    <fieldset className="day-picker">
-                      <legend>Preferred days</legend>
-                      {["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map(
-                        (day) => (
-                          <label key={day}>
-                            <input
-                              type="checkbox"
-                              checked={data.days.includes(day)}
-                              onChange={(e) =>
-                                update(
-                                  "days",
-                                  e.target.checked
-                                    ? [...data.days, day]
-                                    : data.days.filter((d) => d !== day),
-                                )
-                              }
-                            />
-                            {day}
-                          </label>
-                        ),
-                      )}
-                    </fieldset>
-                    <div className="form-grid">
-                      <div className="field">
-                        <label htmlFor="start">From</label>
-                        <input
-                          type="time"
-                          id="start"
-                          value={data.start}
-                          onChange={(e) => update("start", e.target.value)}
-                        />
-                      </div>
-                      <div className="field">
-                        <label htmlFor="end">Until</label>
-                        <input
-                          type="time"
-                          id="end"
-                          value={data.end}
-                          onChange={(e) => update("end", e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    {field(
-                      "timezone",
-                      "Time zone (for example Asia/Kolkata)",
-                      true,
-                    )}
-                    {errors.contactWindow && (
-                      <p className="field-error">{errors.contactWindow}</p>
-                    )}
+                    <strong>Please check these details</strong>
+                    <ul>
+                      {Object.entries(errors).map(([key, text]) => (
+                        <li key={key}>
+                          <a
+                            href={"#" + key}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              document.getElementById(key)?.focus();
+                            }}
+                          >
+                            {text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
-                <p className="small muted">
-                  We’ll confirm availability. A preference does not reserve a
-                  time.
-                </p>
-              </details>
-              <label className="check">
-                <input
-                  id="privacy"
-                  type="checkbox"
-                  required
-                  checked={data.privacy}
-                  aria-invalid={Boolean(errors.privacy)}
-                  onChange={(e) => update("privacy", e.target.checked)}
-                />
-                <span>
-                  I have read the{" "}
-                  <a href={AI ? "https://www.euranix.com/privacy" : "/privacy"}>
-                    Euranix privacy notice
-                  </a>{" "}
-                  and acknowledge how my enquiry details will be handled.
-                  (Required)
-                </span>
-              </label>
-              <label className="check">
-                <input
-                  id="marketing"
-                  type="checkbox"
-                  checked={data.marketing}
-                  onChange={(e) => update("marketing", e.target.checked)}
-                />
-                Optional: I’d like to receive Euranix news and service updates.
-                This is separate from my enquiry.
-              </label>
-              {enquiriesEnabled && (
-                <div id="verification" tabIndex={-1}>
-                  <Verification
-                    siteKey={enquiryConfig.siteKey}
-                    onToken={setToken}
-                    reset={verificationReset}
-                  />
-                </div>
-              )}
-              <button
-                className="btn primary submit"
-                type="submit"
-                disabled={
-                  !enquiriesEnabled ||
-                  status === "sending" ||
-                  wait > 0 ||
-                  failure?.code === "http_409"
-                }
-              >
-                {status === "sending"
-                  ? "Sending…"
-                  : wait
-                    ? "Please wait " + wait + " seconds"
-                    : status === "failed"
-                      ? "Retry enquiry"
-                      : "Send enquiry"}{" "}
-                <span aria-hidden="true">↗</span>
-              </button>
-            </fieldset>
-            {status === "failed" && failure && (
-              <div
-                ref={result}
-                tabIndex={-1}
-                role="alert"
-                className="error-summary"
-              >
-                <strong>Receipt has not been confirmed</strong>
-                <p>{failure.message}</p>
-                {failure.uncertain && (
-                  <p className="small">
-                    Retry without changing the details to check the same
-                    request. Editing them starts a different enquiry. Keep this
-                    page open while resolving the result.
-                  </p>
-                )}
-                <a href="mailto:contact@euranix.com">Contact us by email ↗</a>
-              </div>
-            )}
-            {status === "accepted" && receipt && (
-              <div className="success" ref={result} tabIndex={-1} role="status">
-                <h2>Your enquiry has been received.</h2>
-                <p>
-                  Reference:{" "}
-                  <span className="receipt">{receipt.receipt_id}</span>
-                </p>
-                <p>
-                  We’ll review your request and follow up. This does not confirm
-                  an appointment or a payment.
-                </p>
-                <button
-                  type="button"
-                  className="text-button"
-                  onClick={() => {
-                    session.current = new EnquirySession();
-                    setData(blank(false));
-                    setReceipt(undefined);
-                    setStatus("idle");
-                    setFailure(undefined);
-                  }}
+                <fieldset
+                  disabled={status === "sending" || status === "accepted"}
                 >
-                  Start another enquiry
-                </button>
-              </div>
-            )}
-          </form>
+                  <legend className="sr-only">Your enquiry details</legend>
+                  <div className="field request-type">
+                    <label htmlFor="intent">What would you like to do?</label>
+                    <select
+                      id="intent"
+                      value={data.intent}
+                      onChange={(e) =>
+                        update("intent", e.target.value as EnquiryType)
+                      }
+                    >
+                      <option value="general_sales">
+                        Make a general enquiry
+                      </option>
+                      <option value="service_enquiry">Discuss a service</option>
+                      <option value="ai_demo">
+                        Request an AI demonstration
+                      </option>
+                      <option value="technology_review_1h">
+                        Request a technology review
+                      </option>
+                    </select>
+                    {isReview && (
+                      <p className="small request-context">
+                        One hour, free for a limited period. Future standard
+                        fee: US$199. We’ll confirm a time with you; this is not
+                        an appointment booking.
+                      </p>
+                    )}
+                  </div>
+                  <div className="form-grid">
+                    {field("name", "Name (required)", true)}
+                    {field("email", "Work email (required)", true)}
+                    {field("company", "Business name (optional)")}
+                    <div className="field">
+                      <label htmlFor="service">
+                        Which service interests you?
+                      </label>
+                      <select
+                        id="service"
+                        value={data.service}
+                        onChange={(e) => update("service", e.target.value)}
+                      >
+                        <option value="">Not sure — help me choose</option>
+                        {services.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.title}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    {field(
+                      "message",
+                      "What would you like help with? (required)",
+                      true,
+                    )}
+                  </div>
+                  <p className="small muted">
+                    Please don’t include passwords, access keys, sensitive
+                    records or customer data.
+                  </p>
+                  <details className="contact-preferences">
+                    <summary>Contact preferences (optional)</summary>
+                    <div className="field">
+                      <label htmlFor="method">
+                        How would you prefer us to follow up?
+                      </label>
+                      <select
+                        id="method"
+                        value={data.method}
+                        onChange={(e) =>
+                          update("method", e.target.value as FormData["method"])
+                        }
+                      >
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                        <option value="whatsapp">WhatsApp</option>
+                      </select>
+                    </div>
+                    {data.method === "phone" &&
+                      field(
+                        "phone",
+                        "Your phone number (with country code)",
+                        true,
+                      )}
+                    {data.method === "whatsapp" &&
+                      field(
+                        "whatsapp",
+                        "Your WhatsApp number (with country code)",
+                        true,
+                      )}
+                    <label className="check">
+                      <input
+                        type="checkbox"
+                        checked={data.window}
+                        onChange={(e) => update("window", e.target.checked)}
+                      />
+                      Suggest a contact window
+                    </label>
+                    {data.window && (
+                      <div id="contactWindow" tabIndex={-1}>
+                        <fieldset className="day-picker">
+                          <legend>Preferred days</legend>
+                          {[
+                            "mon",
+                            "tue",
+                            "wed",
+                            "thu",
+                            "fri",
+                            "sat",
+                            "sun",
+                          ].map((day) => (
+                            <label key={day}>
+                              <input
+                                type="checkbox"
+                                checked={data.days.includes(day)}
+                                onChange={(e) =>
+                                  update(
+                                    "days",
+                                    e.target.checked
+                                      ? [...data.days, day]
+                                      : data.days.filter((d) => d !== day),
+                                  )
+                                }
+                              />
+                              {day}
+                            </label>
+                          ))}
+                        </fieldset>
+                        <div className="form-grid">
+                          <div className="field">
+                            <label htmlFor="start">From</label>
+                            <input
+                              type="time"
+                              id="start"
+                              value={data.start}
+                              onChange={(e) => update("start", e.target.value)}
+                            />
+                          </div>
+                          <div className="field">
+                            <label htmlFor="end">Until</label>
+                            <input
+                              type="time"
+                              id="end"
+                              value={data.end}
+                              onChange={(e) => update("end", e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        {field(
+                          "timezone",
+                          "Time zone (for example Asia/Kolkata)",
+                          true,
+                        )}
+                        {errors.contactWindow && (
+                          <p className="field-error">{errors.contactWindow}</p>
+                        )}
+                      </div>
+                    )}
+                    <p className="small muted">
+                      We’ll confirm availability. A preference does not reserve
+                      a time.
+                    </p>
+                  </details>
+                  <label className="check">
+                    <input
+                      id="privacy"
+                      type="checkbox"
+                      required
+                      checked={data.privacy}
+                      aria-invalid={Boolean(errors.privacy)}
+                      onChange={(e) => update("privacy", e.target.checked)}
+                    />
+                    <span>
+                      I have read the{" "}
+                      <a
+                        className="enquiry-privacy-link"
+                        href="https://www.euranix.com/privacy#website-enquiries"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Euranix website enquiry privacy notice (opens in a new tab)
+                      </a>{" "}
+                      and acknowledge how my enquiry details will be handled.
+                      (Required)
+                    </span>
+                  </label>
+                  <label className="check">
+                    <input
+                      id="marketing"
+                      type="checkbox"
+                      checked={data.marketing}
+                      onChange={(e) => update("marketing", e.target.checked)}
+                    />
+                    Optional: I would like to receive marketing updates from Euranix.
+                    I can withdraw this choice at any time.
+                  </label>
+                  {enquiriesEnabled && (
+                    <div id="verification" tabIndex={-1}>
+                      <Verification
+                        siteKey={enquiryConfig.siteKey}
+                        onToken={setToken}
+                        reset={verificationReset}
+                      />
+                    </div>
+                  )}
+                  <button
+                    className="btn primary submit"
+                    type="submit"
+                    disabled={
+                      !enquiriesEnabled ||
+                      status === "sending" ||
+                      wait > 0 ||
+                      failure?.code === "http_409"
+                    }
+                  >
+                    {status === "sending"
+                      ? "Sending…"
+                      : wait
+                        ? "Please wait " + wait + " seconds"
+                        : status === "failed"
+                          ? "Retry enquiry"
+                          : "Send enquiry"}{" "}
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </fieldset>
+                {status === "failed" && failure && (
+                  <div
+                    ref={result}
+                    tabIndex={-1}
+                    role="alert"
+                    className="error-summary"
+                  >
+                    <strong>Receipt has not been confirmed</strong>
+                    <p>{failure.message}</p>
+                    {failure.uncertain && (
+                      <p className="small">
+                        Retry without changing the details to check the same
+                        request. Editing them starts a different enquiry. Keep
+                        this page open while resolving the result.
+                      </p>
+                    )}
+                    <a href="mailto:contact@euranix.com">
+                      Contact us by email ↗
+                    </a>
+                  </div>
+                )}
+                {status === "accepted" && receipt && (
+                  <div
+                    className="success"
+                    ref={result}
+                    tabIndex={-1}
+                    role="status"
+                  >
+                    <h2>Your enquiry has been received.</h2>
+                    <p>
+                      Reference:{" "}
+                      <span className="receipt">{receipt.receipt_id}</span>
+                    </p>
+                    <p>
+                      We’ll review your request and follow up. This does not
+                      confirm an appointment or a payment.
+                    </p>
+                    <button
+                      type="button"
+                      className="text-button"
+                      onClick={() => {
+                        session.current = new EnquirySession();
+                        setData(blank(false));
+                        setReceipt(undefined);
+                        setStatus("idle");
+                        setFailure(undefined);
+                      }}
+                    >
+                      Start another enquiry
+                    </button>
+                  </div>
+                )}
+              </form>
+            </>
+          )}
         </div>
         <aside
           className="enquiry-support"

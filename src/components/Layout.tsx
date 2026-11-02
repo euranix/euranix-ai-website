@@ -103,6 +103,10 @@ export function Footer() {
             <a href="https://www.euranixcloud.com">Cloud portal ↗</a>
             {AI && <a href="https://platform.euranix.ai">AI platform ↗</a>}
             <a href="/technology-review">Technology review ↗</a>
+            <p className="portal-fallback small">
+              Can’t reach a portal?{" "}
+              <a href="mailto:contact@euranix.com">Email us for help ↗</a>
+            </p>
           </div>
         </div>
         <div className="footer-bottom">
