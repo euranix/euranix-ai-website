@@ -19,3 +19,6 @@ README.md
 # Editor / OS noise
 .DS_Store
 Thumbs.db
+.build
+dist-review
+docs

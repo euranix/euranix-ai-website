@@ -1,0 +1,38 @@
+{
+  "results": [
+    {
+      "route": "/design-review/",
+      "device": "desktop",
+      "title": "Managed AI design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 26,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/enquiry",
+      "device": "desktop",
+      "title": "Enquiry design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 21,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/",
+      "device": "mobile",
+      "title": "Managed AI design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 26,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/enquiry",
+      "device": "mobile",
+      "title": "Enquiry design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 21,
+      "overflow": false
+    }
+  ],
+  "issues": [],
+  "behaviour": "Passed desktop/mobile: routes, links, images, 7 services or AI demo, menu and Escape, skip link, validation/focus, unavailable/success/failure fixtures, no POST, no default consent, retry preserves data, busy/disabled, reduced motion, 404s and robots."
+}

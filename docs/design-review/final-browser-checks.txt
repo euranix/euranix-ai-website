@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "route": "/design-review/",
+      "device": "desktop",
+      "title": "Managed AI design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 26,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/enquiry",
+      "device": "desktop",
+      "title": "Enquiry design review | Euranix",
+      "a11yViolations": 0,
+      "links": 20,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/",
+      "device": "mobile",
+      "title": "Managed AI design review | Euranix AI",
+      "a11yViolations": 0,
+      "links": 26,
+      "overflow": false
+    },
+    {
+      "route": "/design-review/enquiry",
+      "device": "mobile",
+      "title": "Enquiry design review | Euranix",
+      "a11yViolations": 0,
+      "links": 20,
+      "overflow": false
+    }
+  ],
+  "issues": []
+}

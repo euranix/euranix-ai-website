@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "route": "/design-review/",
+      "status": 200,
+      "rawTitle": "Managed AI design review | Euranix AI",
+      "renderedTitle": "Managed AI design review | Euranix AI",
+      "robots": "noindex, nofollow, noarchive",
+      "description": "Private design review of Euranix services and enquiries. Test interactions only."
+    },
+    {
+      "route": "/design-review/enquiry",
+      "status": 200,
+      "rawTitle": "Enquiry design review | Euranix AI",
+      "renderedTitle": "Enquiry design review | Euranix AI",
+      "robots": "noindex, nofollow, noarchive",
+      "description": "Private design review of Euranix services and enquiries. Test interactions only."
+    }
+  ],
+  "additionalWidths": [
+    320,
+    768,
+    1024
+  ],
+  "overflow": false,
+  "errors": [],
+  "compression": "gzip verified",
+  "existingRootStatus": 200
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-02T19:41:59.152Z",
+  "base": "https://euranix.ai",
+  "productionOrigin": "https://euranix.ai",
+  "routeCount": 3,
+  "checks": 129,
+  "failures": [],
+  "externalRequests": [
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+  ],
+  "limitations": [
+    "External scripts blocked during deterministic layout/axe tests; live portal/chat checks are reported separately.",
+    "axe and layout tests do not replace assistive-technology user testing.",
+    "CSS zoom checks supplement responsive viewport checks; not a full browser/OS zoom matrix.",
+    "This script never submits enquiries. Genuine live acceptance, CRM assignment, inbox delivery and replay evidence are recorded separately in controlled-release-record.json."
+  ]
+}

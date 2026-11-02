@@ -1,0 +1,34 @@
+[
+  {
+    "requested": "https://euranix.com/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://www.euranix.com/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://euranix.ai/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://www.euranix.ai/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://www.euranix.com/robots.txt",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://www.euranix.com/sitemap.xml",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://euranix.ai/robots.txt",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "requested": "https://euranix.ai/sitemap.xml",
+    "error": "HTTP Error 403: Forbidden"
+  }
+]

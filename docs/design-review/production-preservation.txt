@@ -1,0 +1,1 @@
+PASS: production dist files are byte-for-byte identical to baseline (8 files). Preview entry, fixture code and noindex rules are absent from the production bundle.

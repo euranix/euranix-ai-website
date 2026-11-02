@@ -1,0 +1,3 @@
+
+> euranix-ai-react@0.1.0 typecheck:review
+> tsc -p tsconfig.review.json

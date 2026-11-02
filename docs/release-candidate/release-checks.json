@@ -1,0 +1,588 @@
+[
+  {
+    "name": "production robots permits crawling",
+    "passed": true
+  },
+  {
+    "name": "/ HTTP 200",
+    "passed": true
+  },
+  {
+    "name": "/ CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/ no edge email mutation before hydration",
+    "passed": true
+  },
+  {
+    "name": "/ substantive initial HTML",
+    "passed": true,
+    "detail": 4317
+  },
+  {
+    "name": "/ production has no staging header",
+    "passed": true
+  },
+  {
+    "name": "/ sitemap membership",
+    "passed": true
+  },
+  {
+    "name": "/ browser direct load",
+    "passed": true
+  },
+  {
+    "name": "/ rendered title",
+    "passed": true
+  },
+  {
+    "name": "/ canonical",
+    "passed": true
+  },
+  {
+    "name": "/ description",
+    "passed": true
+  },
+  {
+    "name": "/ social URL",
+    "passed": true
+  },
+  {
+    "name": "/ social image",
+    "passed": true
+  },
+  {
+    "name": "/ one main heading",
+    "passed": true
+  },
+  {
+    "name": "/ robots intent",
+    "passed": true
+  },
+  {
+    "name": "/ no review controls",
+    "passed": true
+  },
+  {
+    "name": "/ desktop images load",
+    "passed": true
+  },
+  {
+    "name": "/ desktop no overflow",
+    "passed": true,
+    "detail": {
+      "w": 1440,
+      "scroll": 1440
+    }
+  },
+  {
+    "name": "/ desktop axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/ mobile images load",
+    "passed": true
+  },
+  {
+    "name": "/ mobile no overflow",
+    "passed": true,
+    "detail": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  {
+    "name": "/ mobile axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/ refresh",
+    "passed": true
+  },
+  {
+    "name": "/contact HTTP 200",
+    "passed": true
+  },
+  {
+    "name": "/contact CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/contact no edge email mutation before hydration",
+    "passed": true
+  },
+  {
+    "name": "/contact substantive initial HTML",
+    "passed": true,
+    "detail": 1309
+  },
+  {
+    "name": "/contact production has no staging header",
+    "passed": true
+  },
+  {
+    "name": "/contact sitemap membership",
+    "passed": true
+  },
+  {
+    "name": "/contact browser direct load",
+    "passed": true
+  },
+  {
+    "name": "/contact rendered title",
+    "passed": true
+  },
+  {
+    "name": "/contact canonical",
+    "passed": true
+  },
+  {
+    "name": "/contact description",
+    "passed": true
+  },
+  {
+    "name": "/contact social URL",
+    "passed": true
+  },
+  {
+    "name": "/contact social image",
+    "passed": true
+  },
+  {
+    "name": "/contact one main heading",
+    "passed": true
+  },
+  {
+    "name": "/contact robots intent",
+    "passed": true
+  },
+  {
+    "name": "/contact no review controls",
+    "passed": true
+  },
+  {
+    "name": "/contact desktop images load",
+    "passed": true
+  },
+  {
+    "name": "/contact desktop no overflow",
+    "passed": true,
+    "detail": {
+      "w": 1440,
+      "scroll": 1440
+    }
+  },
+  {
+    "name": "/contact desktop axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/contact mobile images load",
+    "passed": true
+  },
+  {
+    "name": "/contact mobile no overflow",
+    "passed": true,
+    "detail": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  {
+    "name": "/contact mobile axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/contact refresh",
+    "passed": true
+  },
+  {
+    "name": "/technology-review HTTP 200",
+    "passed": true
+  },
+  {
+    "name": "/technology-review CDN preserves prerendered HTML",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no edge email mutation before hydration",
+    "passed": true
+  },
+  {
+    "name": "/technology-review substantive initial HTML",
+    "passed": true,
+    "detail": 1903
+  },
+  {
+    "name": "/technology-review production has no staging header",
+    "passed": true
+  },
+  {
+    "name": "/technology-review sitemap membership",
+    "passed": true
+  },
+  {
+    "name": "/technology-review browser direct load",
+    "passed": true
+  },
+  {
+    "name": "/technology-review rendered title",
+    "passed": true
+  },
+  {
+    "name": "/technology-review canonical",
+    "passed": true
+  },
+  {
+    "name": "/technology-review description",
+    "passed": true
+  },
+  {
+    "name": "/technology-review social URL",
+    "passed": true
+  },
+  {
+    "name": "/technology-review social image",
+    "passed": true
+  },
+  {
+    "name": "/technology-review one main heading",
+    "passed": true
+  },
+  {
+    "name": "/technology-review robots intent",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no review controls",
+    "passed": true
+  },
+  {
+    "name": "/technology-review desktop images load",
+    "passed": true
+  },
+  {
+    "name": "/technology-review desktop no overflow",
+    "passed": true,
+    "detail": {
+      "w": 1440,
+      "scroll": 1440
+    }
+  },
+  {
+    "name": "/technology-review desktop axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/technology-review mobile images load",
+    "passed": true
+  },
+  {
+    "name": "/technology-review mobile no overflow",
+    "passed": true,
+    "detail": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  {
+    "name": "/technology-review mobile axe WCAG A/AA",
+    "passed": true
+  },
+  {
+    "name": "/technology-review refresh",
+    "passed": true
+  },
+  {
+    "name": "unique page titles",
+    "passed": true
+  },
+  {
+    "name": "unique descriptions",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#main",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#usecases",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#howitworks",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#privacy",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#pricing",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/#demo",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/contact#main",
+    "passed": true
+  },
+  {
+    "name": "anchor https://euranix.ai/technology-review#main",
+    "passed": true
+  },
+  {
+    "name": "/missing-route real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/missing-route noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "/services/not-a-service real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/services/not-a-service noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "/assets/missing.js real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/assets/missing.js noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "/design-review/ real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/design-review/ noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "/404.html real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/404.html noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "/404 real 404",
+    "passed": true,
+    "detail": 404
+  },
+  {
+    "name": "/404 noindex and no homepage canonical",
+    "passed": true
+  },
+  {
+    "name": "canonical redirect /index.html",
+    "passed": true,
+    "detail": {
+      "status": 308,
+      "location": "/?ref=test"
+    }
+  },
+  {
+    "name": "canonical redirect /index",
+    "passed": true,
+    "detail": {
+      "status": 308,
+      "location": "/?ref=test"
+    }
+  },
+  {
+    "name": "canonical redirect /contact/",
+    "passed": true,
+    "detail": {
+      "status": 301,
+      "location": "/contact?ref=test"
+    }
+  },
+  {
+    "name": "canonical redirect /contact.html",
+    "passed": true,
+    "detail": {
+      "status": 308,
+      "location": "/contact?ref=test"
+    }
+  },
+  {
+    "name": "review server noindex isolation",
+    "passed": true
+  },
+  {
+    "name": "review robots disallow",
+    "passed": true
+  },
+  {
+    "name": "enabled intake renders one enquiry form",
+    "passed": true
+  },
+  {
+    "name": "privacy required and unchecked",
+    "passed": true
+  },
+  {
+    "name": "marketing optional and unchecked",
+    "passed": true
+  },
+  {
+    "name": "enabled intake retains Turnstile verification",
+    "passed": true
+  },
+  {
+    "name": "enabled intake replaces disabled panel",
+    "passed": true
+  },
+  {
+    "name": "real email fallback",
+    "passed": true
+  },
+  {
+    "name": "direct enquiry notice destination",
+    "passed": true
+  },
+  {
+    "name": "notice opens separately",
+    "passed": true
+  },
+  {
+    "name": "mobile form follows short introduction",
+    "passed": true,
+    "detail": {
+      "intro": {
+        "x": 20,
+        "y": 113,
+        "width": 350,
+        "height": 132.796875
+      },
+      "form": {
+        "x": 20,
+        "y": 265.796875,
+        "width": 350,
+        "height": 1142.5625
+      },
+      "aside": {
+        "x": 20,
+        "y": 1428.359375,
+        "width": 350,
+        "height": 148.5
+      }
+    }
+  },
+  {
+    "name": "Escape with closed menu preserves focus",
+    "passed": true
+  },
+  {
+    "name": "Escape closes open menu and restores button focus",
+    "passed": true
+  },
+  {
+    "name": "keyboard skip link first",
+    "passed": true
+  },
+  {
+    "name": "skip link focuses main",
+    "passed": true
+  },
+  {
+    "name": "reduced motion emulation",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #usecases",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #howitworks",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #features",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #outcomes",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #pricing",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #privacy",
+    "passed": true
+  },
+  {
+    "name": "preserved AI anchor #demo",
+    "passed": true
+  },
+  {
+    "name": "AI restricted-access demonstration",
+    "passed": true
+  },
+  {
+    "name": "AI synthetic handover honest",
+    "passed": true
+  },
+  {
+    "name": "/ no overflow 320",
+    "passed": true
+  },
+  {
+    "name": "/contact no overflow 320",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no overflow 320",
+    "passed": true
+  },
+  {
+    "name": "/ no overflow 768",
+    "passed": true
+  },
+  {
+    "name": "/contact no overflow 768",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no overflow 768",
+    "passed": true
+  },
+  {
+    "name": "/ no overflow 1024",
+    "passed": true
+  },
+  {
+    "name": "/contact no overflow 1024",
+    "passed": true
+  },
+  {
+    "name": "/technology-review no overflow 1024",
+    "passed": true
+  },
+  {
+    "name": "no uncaught browser errors",
+    "passed": true,
+    "detail": []
+  },
+  {
+    "name": "production asset no fixtures or known secret patterns index-CNhIwA91.js",
+    "passed": true
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "method": "Same baseline method: fresh Edge contexts, CPU 4x, loopback gzip-compressed assets, no network throttling, three runs/device, 3-second observation. Not field CWV.",
+  "runs": [
+    {
+      "device": "desktop",
+      "run": 1,
+      "lcp": 1500,
+      "cls": 0,
+      "dcl": 233.40000009536743,
+      "resources": 4,
+      "bytes": 135468
+    },
+    {
+      "device": "desktop",
+      "run": 2,
+      "lcp": 1696,
+      "cls": 0,
+      "dcl": 244.2000002861023,
+      "resources": 4,
+      "bytes": 135468
+    },
+    {
+      "device": "desktop",
+      "run": 3,
+      "lcp": 1748,
+      "cls": 0,
+      "dcl": 211.19999980926514,
+      "resources": 4,
+      "bytes": 135468
+    },
+    {
+      "device": "mobile",
+      "run": 1,
+      "lcp": 1520,
+      "cls": 0,
+      "dcl": 300.69999980926514,
+      "resources": 4,
+      "bytes": 135468
+    },
+    {
+      "device": "mobile",
+      "run": 2,
+      "lcp": 1448,
+      "cls": 0,
+      "dcl": 200.60000038146973,
+      "resources": 4,
+      "bytes": 135468
+    },
+    {
+      "device": "mobile",
+      "run": 3,
+      "lcp": 1432,
+      "cls": 0,
+      "dcl": 210.40000009536743,
+      "resources": 4,
+      "bytes": 135468
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-02T19:50:52.155Z",
+  "results": [
+    {
+      "url": "https://portal.euranix.com/",
+      "status": 503,
+      "finalUrl": "https://portal.euranix.com/"
+    },
+    {
+      "url": "https://portal.euranix.com/im_livechat/loader/1",
+      "status": 503,
+      "finalUrl": "https://portal.euranix.com/im_livechat/loader/1"
+    },
+    {
+      "url": "https://portal.euranix.com/im_livechat/assets_embed.js",
+      "status": 503,
+      "finalUrl": "https://portal.euranix.com/im_livechat/assets_embed.js"
+    }
+  ],
+  "platform": {
+    "hostname": "platform.euranix.ai",
+    "directDnsQueryError": "ECONNREFUSED",
+    "systemLookupError": "ENOTFOUND",
+    "curlExitCode": 6,
+    "result": "System resolver and HTTPS probe could not resolve host"
+  },
+  "fallback": "mailto:contact@euranix.com; original destinations remain linked",
+  "scope": "Read-only unauthenticated availability checks; not authenticated service verification"
+}

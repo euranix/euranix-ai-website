@@ -1,0 +1,134 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-02T19:15:34.357Z",
+  "container": "euranix-ai-rc-routing",
+  "image": "euranix-ai-website:rc-review",
+  "imageId": "sha256:da7e5bb0ef1059c3f1d24e6633556772b7d643ef7b503951e4e6cb3a44e4e99a",
+  "nginxVersion": "nginx version: nginx/1.30.6",
+  "checks": [
+    {
+      "url": "/",
+      "status": 200,
+      "bytes": 12063,
+      "sha256": "e71888ca784b252f9c230e96267c5e8fe170cecdba5ed86a6307cd908c060388"
+    },
+    {
+      "url": "/contact",
+      "status": 200,
+      "bytes": 8149,
+      "sha256": "1490ac9ebb14ca47eac7df41c3d449e39ca3888363fefbcbf8bf710701f23240"
+    },
+    {
+      "url": "/technology-review",
+      "status": 200,
+      "bytes": 8984,
+      "sha256": "16a03cb422ade086c85142b6acaf23fd86c4b3d100fe10e10a9b2f3d3b494ac2"
+    },
+    {
+      "url": "/apple-touch-icon.png",
+      "status": 200,
+      "bytes": 7370,
+      "sha256": "c504593e2b2bc88c9e3947f4cd9ea385ab1cec5891f4640e17de9c96b91b472c"
+    },
+    {
+      "url": "/assets/index-0BwXt007.css",
+      "status": 200,
+      "bytes": 30779,
+      "sha256": "ad3ba18d2a20a05a2209ac124cd947662f07d88b0fd0a79e33b83f09599792f8"
+    },
+    {
+      "url": "/assets/index-CNhIwA91.js",
+      "status": 200,
+      "bytes": 189965,
+      "sha256": "61a7fa84f3eada20b337e73c663276870e4d1a31ffeac82088d57a5444a2ca9d"
+    },
+    {
+      "url": "/brand-logo.png",
+      "status": 200,
+      "bytes": 72113,
+      "sha256": "9d266de0b4b0343a8e00cab903633437cac46dd3677649c84b5c1f6b7e0118dc"
+    },
+    {
+      "url": "/favicon.ico",
+      "status": 200,
+      "bytes": 6312,
+      "sha256": "c1b328133510c607145f55254634751748dfd69463d6d4553b0d05b031cf830c"
+    },
+    {
+      "url": "/favicon.png",
+      "status": 200,
+      "bytes": 2072,
+      "sha256": "81d3b77ea6057b92965e28c5b9c23863d8644d5f47ad3620a9ca714cea008dc4"
+    },
+    {
+      "url": "/favicon.svg",
+      "status": 200,
+      "bytes": 1549,
+      "sha256": "016911485099175f22c923183deff6c0f327ce916e45677539431ca40a723ad1"
+    },
+    {
+      "url": "/robots.txt",
+      "status": 200,
+      "bytes": 63,
+      "sha256": "7f2171a6017ba511a4ed993da927c8dbb558a0b0f0dfbface40c1345677c1053"
+    },
+    {
+      "url": "/sitemap.xml",
+      "status": 200,
+      "bytes": 260,
+      "sha256": "53b6e141b859fd4c8517ca758e7087cb3a84e4a42a6e2c97486835d4a869c9e1"
+    },
+    {
+      "url": "/social-share.png",
+      "status": 200,
+      "bytes": 35567,
+      "sha256": "68499e9564159fa9580e7ab09c3d390c39c371045f8ea42205575ec842bd767b"
+    },
+    {
+      "url": "/404",
+      "status": 404,
+      "bytes": 4017,
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
+    },
+    {
+      "url": "/404.html",
+      "status": 404,
+      "bytes": 4017,
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
+    },
+    {
+      "url": "/missing-release-route",
+      "status": 404,
+      "bytes": 4017,
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
+    },
+    {
+      "url": "/assets/missing.js",
+      "status": 404,
+      "bytes": 4017,
+      "sha256": "dc8591664a8675a1a6228fb767c12ea24386e0d8f7a4f96e7503e44349b62b8f"
+    },
+    {
+      "url": "/index.html",
+      "status": 308,
+      "location": "/?source=check"
+    },
+    {
+      "url": "/index",
+      "status": 308,
+      "location": "/?source=check"
+    },
+    {
+      "url": "/contact/",
+      "status": 301,
+      "location": "/contact?source=check"
+    },
+    {
+      "url": "/contact.html",
+      "status": 308,
+      "location": "/contact?source=check"
+    }
+  ],
+  "productionBytesMatchLocalBuild": true,
+  "runtimeHasNoTestBuildOrDocs": true
+}
