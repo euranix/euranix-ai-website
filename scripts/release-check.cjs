@@ -3,6 +3,7 @@ const req = createRequire(path.join(process.env.REVIEW_TOOL_ROOT || process.cwd(
 const {chromium} = req('playwright');
 const ai = fs.existsSync('public/brand-logo.png'), origin = ai ? 'https://euranix.ai' : 'https://www.euranix.com';
 const base = process.env.RELEASE_BASE || 'http://127.0.0.1:' + (ai ? 4474 : 4473);
+const intakeEnabled = process.env.EXPECTED_ENQUIRY_ENABLED === 'true';
 const preview = 'http://127.0.0.1:' + (ai ? 4374 : 4373);
 const routes = JSON.parse(fs.readFileSync('.build/routes.json'));
 const output = 'docs/release-candidate', checks = [], failures = [], inventory = [], links = new Set(), anchors = {};
@@ -11,7 +12,7 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
   fs.mkdirSync(output+'/screenshots', {recursive:true});
   const browser=await chromium.launch({channel:'msedge',headless:true});
   const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
-  const pageErrors=[]; page.on('pageerror',e=>pageErrors.push(e.message));
+  const pageErrors=[]; page.on('pageerror',e=>pageErrors.push({url:page.url(),message:e.message}));
   const externalRequests = new Set();
   await page.route('**/*', route => {
     const url=route.request().url();
@@ -24,6 +25,8 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
   for(const meta of routes) {
     const rawResponse=await fetch(base+meta.path), raw=await rawResponse.text();
     check(rawResponse.status===200,meta.path+' HTTP 200');
+    check(rawResponse.headers.get('cache-control')?.includes('no-transform'),meta.path+' CDN preserves prerendered HTML');
+    check(!/data-cfemail|__cf_email__|email-decode\.min\.js/.test(raw),meta.path+' no edge email mutation before hydration');
     const mainText=(raw.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1]||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
     check(raw.includes('<h1')&&mainText.length>200,meta.path+' substantive initial HTML',mainText.length);
     check(!rawResponse.headers.get('x-robots-tag')?.includes('noindex'),meta.path+' production has no staging header');
@@ -36,6 +39,13 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
     check(await page.locator('meta[property="og:url"]').getAttribute('content')===origin+meta.path,meta.path+' social URL');
     check(await page.locator('meta[property="og:image"]').getAttribute('content')===origin+'/social-share.png',meta.path+' social image');
     check(await page.locator('h1').count()===1,meta.path+' one main heading');
+    if(meta.path==='/privacy') {
+      const expected=fs.readFileSync('src/content/website-enquiries-2026-11-02-v1.md','utf8').replace(/^###\s*/,'').replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/\s+/g,' ').trim();
+      const actual=(await page.locator('#website-enquiries').innerText()).replace(/\s+/g,' ').trim();
+      check(actual===expected,'approved enquiry notice text rendered exactly');
+      check(await page.locator('#website-enquiries a[href="https://www.cloudflare.com/turnstile-privacy-policy/"]').count()===1,'Turnstile Privacy Addendum link');
+      check((await page.locator('.legal-intro').textContent()).includes('18 September 2026'),'general policy original date retained');
+    }
     check((await page.locator('meta[name=robots]').getAttribute('content')).includes('noindex')===!!meta.noindex,meta.path+' robots intent');
     check(await page.locator('.review-bar,.fixture-controls,[data-fixture]').count()===0,meta.path+' no review controls');
     const hrefs=await page.locator('a[href]').evaluateAll(es=>es.map(e=>e.getAttribute('href')));
@@ -89,15 +99,24 @@ function check(ok, name, detail) { checks.push({name, passed: !!ok, ...(detail ?
   check(pr.headers.get('x-robots-tag')?.includes('noindex')&&prText.includes('content="noindex,nofollow,noarchive"'),'review server noindex isolation');
   check((await(await fetch(preview+'/robots.txt')).text()).includes('Disallow: /'),'review robots disallow');
   await page.goto(base+'/contact'); await page.setViewportSize({width:390,height:844});
-  check(await page.locator('form,input,textarea,select,.submit').count()===0,'disabled intake exposes no editable form or unusable submit');
-  check(await page.locator('.email-contact-panel').isVisible(),'disabled intake shows clear email contact panel');
+  if (intakeEnabled) {
+    check(await page.locator('form').count()===1,'enabled intake renders one enquiry form');
+    check(await page.locator('#privacy').evaluate(e=>e.required&&!e.checked),'privacy required and unchecked');
+    check(await page.locator('#marketing').evaluate(e=>!e.required&&!e.checked),'marketing optional and unchecked');
+    check(await page.locator('#verification').count()===1,'enabled intake retains Turnstile verification');
+    check(await page.locator('.email-contact-panel').count()===0,'enabled intake replaces disabled panel');
+  } else {
+    check(await page.locator('form,input,textarea,select,.submit').count()===0,'disabled intake exposes no editable form or unusable submit');
+    check(await page.locator('.email-contact-panel').isVisible(),'disabled intake shows clear email contact panel');
+  }
   check(await page.locator('a[href="mailto:contact@euranix.com"]').count()>0,'real email fallback');
   check(await page.locator('.enquiry-privacy-link').getAttribute('href')==='https://www.euranix.com/privacy#website-enquiries','direct enquiry notice destination');
   check(await page.locator('.enquiry-privacy-link').getAttribute('target')==='_blank','notice opens separately');
   const intro=await page.locator('.enquiry-intro').boundingBox(), form=await page.locator('.form-panel').boundingBox(), aside=await page.locator('.enquiry-support').boundingBox();
   check(form.y>intro.y&&form.y<intro.y+intro.height+40&&form.y<aside.y,'mobile form follows short introduction',{intro,form,aside});
-  await page.locator('.email-contact-panel .btn').focus(); await page.keyboard.press('Escape');
-  check(await page.locator('.email-contact-panel .btn').evaluate(e=>e===document.activeElement),'Escape with closed menu preserves focus');
+  const focusTarget=page.locator(intakeEnabled?'#name':'.email-contact-panel .btn');
+  await focusTarget.focus(); await page.keyboard.press('Escape');
+  check(await focusTarget.evaluate(e=>e===document.activeElement),'Escape with closed menu preserves focus');
   await page.getByRole('button',{name:'Open navigation'}).click(); await page.locator('#navigation a').first().focus(); await page.keyboard.press('Escape');
   check(await page.getByRole('button',{name:'Open navigation'}).evaluate(e=>e===document.activeElement),'Escape closes open menu and restores button focus');
   await page.goto(base+'/'); await page.keyboard.press('Tab');
