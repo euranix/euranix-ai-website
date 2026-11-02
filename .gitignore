@@ -22,3 +22,6 @@ yarn-error.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Isolated local design-review output
+dist-review/

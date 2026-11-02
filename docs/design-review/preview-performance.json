@@ -1,0 +1,59 @@
+{
+  "method": "Sequential runs in Edge 156.0.4314.58. Fresh browser context, cache disabled, CPU 4x, desktop 1440x1000 / mobile 390x844, loopback gzip-compressed production assets, no network throttling, three runs/device, 3-second observation. External resources allowed; cross-origin bytes may not be exposed. Lab results, not field Core Web Vitals.",
+  "runs": [
+    {
+      "device": "desktop",
+      "run": 1,
+      "lcp": 552,
+      "cls": 0,
+      "dcl": 76.5,
+      "resources": 4,
+      "bytes": 133695
+    },
+    {
+      "device": "desktop",
+      "run": 2,
+      "lcp": 520,
+      "cls": 0,
+      "dcl": 69.5,
+      "resources": 4,
+      "bytes": 133695
+    },
+    {
+      "device": "desktop",
+      "run": 3,
+      "lcp": 492,
+      "cls": 0,
+      "dcl": 71.19999980926514,
+      "resources": 4,
+      "bytes": 133695
+    },
+    {
+      "device": "mobile",
+      "run": 1,
+      "lcp": 520,
+      "cls": 0,
+      "dcl": 77.7999997138977,
+      "resources": 4,
+      "bytes": 133695
+    },
+    {
+      "device": "mobile",
+      "run": 2,
+      "lcp": 552,
+      "cls": 0,
+      "dcl": 72.90000009536743,
+      "resources": 4,
+      "bytes": 133695
+    },
+    {
+      "device": "mobile",
+      "run": 3,
+      "lcp": 536,
+      "cls": 0,
+      "dcl": 80.2999997138977,
+      "resources": 4,
+      "bytes": 133695
+    }
+  ]
+}

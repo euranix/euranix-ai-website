@@ -1,0 +1,15 @@
+
+> euranix-ai-react@0.1.0 build:review
+> vite build --mode design-review
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.21 building for design-review...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist-review/design-review/index.html            0.69 kB │ gzip:  0.39 kB
+dist-review/review-assets/logo-DQLSJae4.png    72.11 kB
+dist-review/review-assets/index-D1u4yVBD.css   18.90 kB │ gzip:  4.69 kB
+dist-review/review-assets/index-hDBlbMGE.js   171.56 kB │ gzip: 54.78 kB
+✓ built in 1.36s

@@ -17,6 +17,9 @@
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:review": "vite build --mode design-review",
+    "preview:review": "node scripts/review-server.mjs",
+    "typecheck:review": "tsc -p tsconfig.review.json"
   }
 }
