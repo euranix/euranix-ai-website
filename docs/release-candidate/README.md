@@ -21,6 +21,7 @@ The shared design uses production components for layout, CTA, illustrated workfl
 - [Independent release and rollback procedure](DEPLOYMENT.md)
 - [Approved notice, publication patch and provenance](NOTICE-PUBLICATION.md)
 - [Final release recommendation](RELEASE-RECOMMENDATION.md)
+- [Exact tested commits and image digest](RELEASE-RECORD.md)
 
 ## Verification evidence
 
