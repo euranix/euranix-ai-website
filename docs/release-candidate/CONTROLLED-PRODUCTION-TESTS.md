@@ -1,10 +1,8 @@
 # euranix.ai — controlled release
 
-AI release held until the corporate gate and Hub notification correction pass.
+AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
 
-Production remains at `82b749bbdd39d702992f5deb2d48b8a810c7bf58`.
-
-Tested enabled candidate (not deployed): `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
+Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
 Controlled production testing is authorised. No separate staging system is required. The exact approved frontend origins are https://www.euranix.com, https://euranix.ai and https://www.euranix.ai; verify actual redirects and test each origin that continues serving forms. Never spoof origins or weaken Turnstile.
 
@@ -14,4 +12,4 @@ The user explicitly approved the prepared single-request Playwright replay helpe
 
 Record genuine browser receipt and time separately from automated contract/layout tests. Hub must correlate the exact synthetic receipt, source, verified hostname, consent, Admin owner, one enquiry/lead and notification intents. On replay require HTTP 200, the original receipt and unchanged entity/notification counts. Ask the human to confirm exact subject and synthetic name in admin@euranix.com; a sent log alone is insufficient.
 
-Corporate genuine acceptance, assignment and human inbox delivery have passed. See controlled-release-record.json for replay, email-rendering correction and AI statuses. Do not submit extra enquiries or resend accepted notifications to test formatting; coordinate the already-authorised AI enquiry with Hub's correction. Keep existing contact methods and published notice throughout. If intake checks fail, rebuild disabled/email fallback; for broader regression use the saved notice-preserving image.
+Corporate genuine acceptance, assignment and human inbox delivery have passed. The human explicitly accepted corporate replay as unverified and authorised the AI release. This exception does not turn a zero-request timeout into a passed retry. AI apex and www both independently serve forms, so each needs its labelled acceptance test. See controlled-release-record.json for replay, email-rendering correction and AI statuses. Do not submit extra enquiries or resend accepted notifications to test formatting; coordinate the already-authorised AI enquiry with Hub's correction. Keep existing contact methods and published notice throughout. If intake checks fail, rebuild disabled/email fallback; for broader regression use the saved notice-preserving image.

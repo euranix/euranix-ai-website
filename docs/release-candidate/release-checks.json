@@ -303,35 +303,35 @@
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#main",
+    "name": "anchor https://euranix.ai/#main",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#usecases",
+    "name": "anchor https://euranix.ai/#usecases",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#howitworks",
+    "name": "anchor https://euranix.ai/#howitworks",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#privacy",
+    "name": "anchor https://euranix.ai/#privacy",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#pricing",
+    "name": "anchor https://euranix.ai/#pricing",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/#demo",
+    "name": "anchor https://euranix.ai/#demo",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/contact#main",
+    "name": "anchor https://euranix.ai/contact#main",
     "passed": true
   },
   {
-    "name": "anchor http://127.0.0.1:4474/technology-review#main",
+    "name": "anchor https://euranix.ai/technology-review#main",
     "passed": true
   },
   {

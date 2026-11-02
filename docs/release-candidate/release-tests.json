@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "checkedAt": "2026-11-02T19:15:48.126Z",
-  "base": "http://127.0.0.1:4474",
+  "checkedAt": "2026-11-02T19:41:59.152Z",
+  "base": "https://euranix.ai",
   "productionOrigin": "https://euranix.ai",
   "routeCount": 3,
   "checks": 129,

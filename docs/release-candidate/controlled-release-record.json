@@ -83,8 +83,14 @@
       ],
       "duplicates": 0
     },
-    "releaseStatus": "Corporate deployed with genuine acceptance, assignment and human-confirmed inbox delivery. Same-key replay remains incomplete because the automated browser could not complete Turnstile; AI release is held.",
-    "deployedCommit": "28a139217946849609153792099726aa7ed8c1f5"
+    "releaseStatus": "Corporate deployed; genuine acceptance, assignment, human inbox delivery and 578 public checks passed. User authorises proceeding with corporate duplicate-safe replay documented as unverified.",
+    "deployedCommit": "28a139217946849609153792099726aa7ed8c1f5",
+    "replayException": {
+      "authorisedBy": "Human user in this chat",
+      "recordedAt": "2026-11-02T19:39:05Z",
+      "instruction": "Proceed with replay unverified",
+      "scope": "Release AI with corporate duplicate-safe replay explicitly unverified. No assertion that corporate replay passed; all other AI checks remain."
+    }
   },
   "ai": {
     "baselineCommit": "82b749bbdd39d702992f5deb2d48b8a810c7bf58",
@@ -131,8 +137,44 @@
       "sha256": "9192DBC9374F363E853B2E97072C17A1FD20FA63A58BA6857B47561BBFD9DFDC",
       "passed": true
     },
-    "deployment": "Not started; corporate gate required",
-    "candidateCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a"
+    "deployment": "Deployed; genuine enquiry checks await corrected Hub notification release",
+    "candidateCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a",
+    "releaseStatus": "AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.",
+    "deployedCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a",
+    "deployments": [
+      {
+        "commit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a",
+        "deployment": "jn8zhhrvqnjt31qbj0m9qx3e",
+        "completedAt": "2026-11-02T19:40:54Z",
+        "result": "New container started; all 129 public checks subsequently passed"
+      }
+    ],
+    "publicChecks": {
+      "passed": true,
+      "checks": 129,
+      "routes": 3,
+      "checkedAt": "2026-11-02T19:41:59.152Z"
+    },
+    "publicBuildVerification": {
+      "responses": 14,
+      "strictByteMatches": 9,
+      "lineEndingOnlyDifferences": 5,
+      "lineEndingFollowupPassed": true,
+      "checkedAt": "2026-11-02T19:42:29.495Z",
+      "reports": [
+        "ai-public-build.json",
+        "ai-public-line-ending-check.json"
+      ]
+    },
+    "servingOrigins": [
+      "https://euranix.ai",
+      "https://www.euranix.ai"
+    ],
+    "redirects": {
+      "httpToHttps": 302,
+      "wwwToApex": false,
+      "canonical": "https://euranix.ai"
+    }
   },
   "hub": {
     "commit": "742343ac980ebf900480665c2eca2aa69945de05",

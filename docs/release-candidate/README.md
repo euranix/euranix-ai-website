@@ -1,10 +1,8 @@
 # euranix.ai — controlled release
 
-AI release held until the corporate gate and Hub notification correction pass.
+AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
 
-Production remains at `82b749bbdd39d702992f5deb2d48b8a810c7bf58`.
-
-Tested enabled candidate (not deployed): `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
+Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
 Review the approved application at http://127.0.0.1:4374/ using `npm run preview`; the loopback review server retains noindex isolation and is not a live Hub origin. [Build, deployment and rollback](DEPLOYMENT.md).
 
@@ -13,7 +11,7 @@ The shared design, meaningful synthetic demonstrations, existing routes, general
 ## Current evidence
 
 - [Release record: commits, genuine receipt and rollback references](RELEASE-RECORD.md)
-- [Release checks](release-tests.json): 129 checks, passed=True, base http://127.0.0.1:4474, checked 2026-11-02T19:15:48.126Z.
+- [Release checks](release-tests.json): 129 checks, passed=True, base https://euranix.ai, checked 2026-11-02T19:41:59.152Z.
 - [Full assertions](release-checks.json), [route inventory](routes.json), [container byte/redirect checks](container-tests.json).
 - [29 adapter contract checks](adapter-tests.json), [20 isolated form test groups](enquiry-contract-tests.json), [preserved assets/legal policy/favicons](preservation.json).
 - [Homepage desktop](screenshots/home-desktop.png) / [mobile](screenshots/home-mobile.png).

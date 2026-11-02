@@ -1,12 +1,10 @@
 # euranix.ai — controlled release
 
-AI release held until the corporate gate and Hub notification correction pass.
+AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
 
-Production remains at `82b749bbdd39d702992f5deb2d48b8a810c7bf58`.
+Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
-Tested enabled candidate (not deployed): `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
-
-Do not claim both websites complete until both genuine enquiry journeys pass. Corporate must pass real Turnstile acceptance, assignment to admin@euranix.com/user 1 with no fallback, human-confirmed inbox delivery and same-key replay before AI deployment. Keep the AI site unchanged until that gate passes. Resolve the reported Hub email-rendering defect through its coordinated corrective release; do not resend an accepted enquiry to test formatting.
+The human explicitly authorised proceeding with corporate duplicate-safe replay unverified. This is a release exception, not a successful replay test. Corporate genuine Turnstile acceptance, correct assignment to admin@euranix.com/user 1 with no fallback, human-confirmed inbox delivery and public checks passed. AI is now deployed; its genuine enquiry, assignment, actual inbox and retry checks remain required. Resolve the reported Hub email-rendering defect through its coordinated corrective release before the labelled AI acceptance tests; do not resend an accepted enquiry to test formatting. Do not claim the remaining checks passed.
 
 Portal and chat remain HTTP 503; platform.euranix.ai still fails DNS resolution. The user explicitly permits these existing outages for this release with the visible contact@euranix.com fallbacks. Original destinations remain linked. These outages are unresolved, and unauthenticated probes do not prove authenticated portal function.
 

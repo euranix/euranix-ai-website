@@ -1,10 +1,8 @@
 # euranix.ai — controlled release
 
-AI release held until the corporate gate and Hub notification correction pass.
+AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
 
-Production remains at `82b749bbdd39d702992f5deb2d48b8a810c7bf58`.
-
-Tested enabled candidate (not deployed): `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
+Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
 ## Public build configuration
 

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-02T19:42:29.495Z",
+  "passed": true,
+  "scope": "Follow-up of the five strict byte mismatches. Only CRLF versus LF normalisation is allowed; no other content changes are ignored.",
+  "checks": [
+    {
+      "url": "/missing-release-verification",
+      "status": 404,
+      "expectedStatus": 404,
+      "onlyCrLfDifference": true,
+      "localCrLf": 8,
+      "publicCrLf": 0,
+      "localBytes": 4017,
+      "publicBytes": 4009,
+      "passed": true
+    },
+    {
+      "url": "/contact",
+      "status": 200,
+      "expectedStatus": 200,
+      "onlyCrLfDifference": true,
+      "localCrLf": 8,
+      "publicCrLf": 0,
+      "localBytes": 8149,
+      "publicBytes": 8141,
+      "passed": true
+    },
+    {
+      "url": "/favicon.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "onlyCrLfDifference": true,
+      "localCrLf": 5,
+      "publicCrLf": 0,
+      "localBytes": 1549,
+      "publicBytes": 1544,
+      "passed": true
+    },
+    {
+      "url": "/",
+      "status": 200,
+      "expectedStatus": 200,
+      "onlyCrLfDifference": true,
+      "localCrLf": 8,
+      "publicCrLf": 0,
+      "localBytes": 12063,
+      "publicBytes": 12055,
+      "passed": true
+    },
+    {
+      "url": "/technology-review",
+      "status": 200,
+      "expectedStatus": 200,
+      "onlyCrLfDifference": true,
+      "localCrLf": 8,
+      "publicCrLf": 0,
+      "localBytes": 8984,
+      "publicBytes": 8976,
+      "passed": true
+    }
+  ]
+}

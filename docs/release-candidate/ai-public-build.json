@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-11-02T19:41:40.638Z",
+  "origin": "https://euranix.ai",
+  "passed": false,
+  "checks": [
+    {
+      "url": "/missing-release-verification",
+      "status": 404,
+      "expectedStatus": 404,
+      "bytes": 4009,
+      "sha256": "7eb7a0b08765cca032cd24139549a0396c2ee54c14c0d9eb56952d6823a56eb4",
+      "matchesTestedBuild": false,
+      "passed": false
+    },
+    {
+      "url": "/apple-touch-icon.png",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 7370,
+      "sha256": "c504593e2b2bc88c9e3947f4cd9ea385ab1cec5891f4640e17de9c96b91b472c",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/assets/index-0BwXt007.css",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 30779,
+      "sha256": "ad3ba18d2a20a05a2209ac124cd947662f07d88b0fd0a79e33b83f09599792f8",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/assets/index-CNhIwA91.js",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 189965,
+      "sha256": "61a7fa84f3eada20b337e73c663276870e4d1a31ffeac82088d57a5444a2ca9d",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/brand-logo.png",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 72113,
+      "sha256": "9d266de0b4b0343a8e00cab903633437cac46dd3677649c84b5c1f6b7e0118dc",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/contact",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 8141,
+      "sha256": "ee2ee4ab21e20255ecbd27487f2217e32109fd89b600beb1b626ca8bbc689373",
+      "matchesTestedBuild": false,
+      "passed": false
+    },
+    {
+      "url": "/favicon.ico",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 6312,
+      "sha256": "c1b328133510c607145f55254634751748dfd69463d6d4553b0d05b031cf830c",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/favicon.png",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 2072,
+      "sha256": "81d3b77ea6057b92965e28c5b9c23863d8644d5f47ad3620a9ca714cea008dc4",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/favicon.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 1544,
+      "sha256": "09493cb3747f12d9feac02f74964e66995d115971f2a03d30e0f1b03ecf95d78",
+      "matchesTestedBuild": false,
+      "passed": false
+    },
+    {
+      "url": "/",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 12055,
+      "sha256": "af4c4e98659697ce1e622c410c88cfc8d152871d8a16f375490323813f68c925",
+      "matchesTestedBuild": false,
+      "passed": false
+    },
+    {
+      "url": "/robots.txt",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 63,
+      "sha256": "7f2171a6017ba511a4ed993da927c8dbb558a0b0f0dfbface40c1345677c1053",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/sitemap.xml",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 260,
+      "sha256": "53b6e141b859fd4c8517ca758e7087cb3a84e4a42a6e2c97486835d4a869c9e1",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/social-share.png",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 35567,
+      "sha256": "68499e9564159fa9580e7ab09c3d390c39c371045f8ea42205575ec842bd767b",
+      "matchesTestedBuild": true,
+      "passed": true
+    },
+    {
+      "url": "/technology-review",
+      "status": 200,
+      "expectedStatus": 200,
+      "bytes": 8976,
+      "sha256": "1750238cc6e97e2619190e31add12d490734b6194f7ee9a8f57944933c17424f",
+      "matchesTestedBuild": false,
+      "passed": false
+    }
+  ],
+  "aliases": [
+    {
+      "url": "http://euranix.ai/contact",
+      "status": 302,
+      "location": "https://euranix.ai/contact"
+    },
+    {
+      "url": "https://www.euranix.ai/contact",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "http://www.euranix.ai/contact",
+      "status": 302,
+      "location": "https://www.euranix.ai/contact"
+    }
+  ],
+  "scope": "Bounded read-only public build and redirect checks. No enquiry requests."
+}

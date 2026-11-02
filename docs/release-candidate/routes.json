@@ -5,7 +5,7 @@
     "description": "Knowledge, customer support and business information assistants, with scoped data access, deployment and ongoing management by Euranix.",
     "status": 200,
     "canonical": "https://euranix.ai/",
-    "initialHtmlBytes": 12063,
+    "initialHtmlBytes": 12055,
     "initialH1": "Your knowledge.A useful answer.A clear source.",
     "links": [
       "#main",
@@ -42,7 +42,7 @@
     "description": "Tell Euranix what you need help with. Discuss a service, request an AI demonstration or ask for help choosing a starting point.",
     "status": 200,
     "canonical": "https://euranix.ai/contact",
-    "initialHtmlBytes": 8149,
+    "initialHtmlBytes": 8141,
     "initialH1": "Let’s talk.",
     "links": [
       "#main",
@@ -73,7 +73,7 @@
     "description": "Request a one-hour conversation about your systems and priorities. Free for a limited period; future standard fee US$199. Meeting time confirmed separately.",
     "status": 200,
     "canonical": "https://euranix.ai/technology-review",
-    "initialHtmlBytes": 8984,
+    "initialHtmlBytes": 8976,
     "initialH1": "Request a review.",
     "links": [
       "#main",
