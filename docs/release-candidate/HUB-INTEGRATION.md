@@ -51,6 +51,6 @@ No enquiry fields enter analytics or browser storage. No campaign values were ap
 
 [Automated browser contract tests](enquiry-contract-tests.json) use a separate build and intercepted synthetic responses. [Adapter tests](adapter-tests.json) use fake fetch/timers. They establish frontend handling, not real Hub acceptance, CRM assignment, inbox delivery or backend duplicate prevention.
 
-Real Turnstile verification, accepted production receipts, CRM record/assignment, actual notification delivery and duplicate-safe production retry are **post-deployment / not run**. Hub additionally reported a missing primary/fallback representative selection and requested it in its own chat; this website task does not infer or assign staff.
+Real Turnstile verification, accepted production receipts, CRM record/assignment, actual notification delivery and duplicate-safe production retry are **post-deployment / not run**. The Hub agent relayed the human-approved primary representative admin@euranix.com (existing user ID 1), with no fallback required. That selection is resolved; live assignment still requires verification. No Member access grants or assignment inference were made by this website task. Hub is preparing deployment and will keep intake off until the public notice is verified.
 
 See [CONTROLLED-PRODUCTION-TESTS.md](CONTROLLED-PRODUCTION-TESTS.md) for the bounded test plan and the evidence each side must record. No positive production result is claimed.

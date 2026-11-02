@@ -5,7 +5,7 @@
 ## Prerequisites and sequence
 
 1. Publish the approved notice, unchanged, at https://www.euranix.com/privacy#website-enquiries. Verify its version and exact body publicly. The prepared candidate section alone does not meet this gate.
-2. Obtain the Hub agent's final deployed full SHA, enabled intake status, selected primary/fallback representatives, individual CRM grants and unchanged notification recipients. CRM access and assignment are separate decisions.
+2. Obtain the Hub agent's final deployed full SHA, enabled intake status, confirmed primary admin@euranix.com (user ID 1), no fallback, individual CRM access and unchanged notification recipients. CRM access and assignment are separate decisions.
 3. After separate website deployment approval, serve the reviewed candidate from https://www.euranix.com and https://euranix.ai. If www.euranix.ai continues serving the same candidate, verify that exact origin/hostname pair as well. Never alter the Origin header or proxy localhost as an approved browser.
 4. Configure the supplied public values and enable the form only when the notice and accepting backend are ready. Keep the email panel available by rebuilding with VITE_ENQUIRY_ENABLED=false if those prerequisites fail.
 5. Complete genuine Turnstile verification in a normal browser. If it asks for human interaction, the reviewer completes that interaction. No challenge bypass or synthetic token is valid for this live test.
@@ -45,6 +45,6 @@ Do not send these automatically before the prerequisites and separate website-de
 | Notice publicly available | Not yet; candidate changes are not deployed |
 | Real Turnstile verification from both candidates | Post-deployment — not run |
 | Production accepted receipts | Post-deployment — not run |
-| Correct Hub record and assignment | Post-deployment — not run; representative selection tracked by Hub |
+| Correct Hub record and assignment | Post-deployment — not run; primary selected by the user; live assignment unverified |
 | Notification delivered | Post-deployment — not run |
 | Backend duplicate-safe retry / one notification | Post-deployment — not run |

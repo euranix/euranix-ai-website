@@ -16,3 +16,5 @@ Hub contract v1: **778e1e1a4319d76efdef00413667925e34390ba1**, docs/website-enqu
 Final notice version: **website-enquiries-2026-11-02-v1**. Source/provenance, original and canonical hashes, publication patch and verification are in [NOTICE-PUBLICATION.md](NOTICE-PUBLICATION.md). Fresh public probes at 2026-11-02T17:24:25Z found neither the new version nor the anchor on the public privacy page. Portal/chat remained 503 and platform.euranix.ai returned NXDOMAIN.
 
 [Release recommendation](RELEASE-RECOMMENDATION.md): hold public promotion. [Controlled production tests](CONTROLLED-PRODUCTION-TESTS.md): authorised but post-deployment / not run. [Rollback](DEPLOYMENT.md): independent website rollback with the published notice retained and no deletion/replay of Hub records.
+
+Hub coordination update: the user selected **admin@euranix.com (existing user ID 1)** as primary representative and no fallback. Hub confirmed it will not infer Member grants and is preparing the authorised backend deployment. Intake remains disabled pending public notice availability. The exact deployed new SHA has not yet been reported.
