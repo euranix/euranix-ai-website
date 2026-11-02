@@ -5,7 +5,7 @@ import {
   type Fixture,
 } from "./adapter";
 const services = [
-  "Technology review",
+  "Not sure — help me choose",
   "Managed IT and Cloud",
   "Cybersecurity and Resilience",
   "Business Applications",
@@ -16,15 +16,19 @@ const services = [
 ];
 export default function Enquiry({ ai }: { ai: boolean }) {
   const requested = new URLSearchParams(location.search).get("service");
+  const reviewRequested =
+    requested === "Technology review" ||
+    new URLSearchParams(location.search).get("intent") === "technology-review";
   const [data, setData] = useState<EnquiryData>({
+    intent: reviewRequested ? "technology-review" : "general",
+    contactPreference: "",
+    preferredContactTime: "",
     name: "",
     email: "",
     company: "",
     service: services.includes(requested || "")
       ? requested!
-      : ai
-        ? "Managed AI"
-        : "Technology review",
+      : "Not sure — help me choose",
     message: "",
     marketing: false,
   });
@@ -74,7 +78,7 @@ export default function Enquiry({ ai }: { ai: boolean }) {
     }
   }
   function field(
-    key: "name" | "email" | "company" | "message",
+    key: "name" | "email" | "company" | "message" | "preferredContactTime",
     label: string,
     multiline = false,
   ) {
@@ -103,9 +107,11 @@ export default function Enquiry({ ai }: { ai: boolean }) {
                 ? "name"
                 : key === "email"
                   ? "email"
-                  : "organization"
+                  : key === "company"
+                    ? "organization"
+                    : "off"
             }
-            required={key !== "company"}
+            required={key === "name" || key === "email"}
           />
         )}
         {errors[key] && (
@@ -118,53 +124,30 @@ export default function Enquiry({ ai }: { ai: boolean }) {
   }
   return (
     <section className="shell enquiry-layout">
-      <div>
-        <p className="eyebrow">Start a conversation</p>
+      <div className="enquiry-intro">
+        <p className="eyebrow">
+          {data.intent === "technology-review"
+            ? "Technology-review request"
+            : "Start a conversation"}
+        </p>
         <h1>
-          What needs to
-          <br />
-          work better?
+          {data.intent === "technology-review"
+            ? "Request a review."
+            : "Let’s talk."}
         </h1>
         <p className="lede">
-          Tell us about the work, the tools you use and where you need help.
-          We’ll agree a useful next step with you.
-        </p>
-        <div className="review-offer">
-          <span className="eyebrow">A useful place to start</span>
-          <h2>
-            One hour.
-            <br />A clearer direction.
-          </h2>
-          <p>
-            A technology review of your current systems, subscriptions and
-            operational priorities. We’ll discuss the gaps and possible next
-            steps.
-          </p>
-          <p>
-            <strong>Free for a limited period.</strong>
-            <br />
-            Future standard fee: US$199.
-          </p>
-          <small>
-            No promotion end date is set. A review request is not a confirmed
-            appointment. There is no automatic billing.
-          </small>
-        </div>
-        <p>
-          Prefer to write to us directly?
-          <br />
-          <a href="mailto:contact@euranix.com">contact@euranix.com ↗</a>
-        </p>
-        <p className="muted">
-          Human support is delivered during the working hours agreed with each
-          customer.
+          {data.intent === "technology-review"
+            ? "Tell us about your current setup. We’ll confirm the meeting scope and time with you by email."
+            : ai
+              ? "Tell us what you’d like AI to help with, or ask us to help you choose a starting point."
+              : "Tell us what you need help with. It’s fine if you’re still working out where to start."}
         </p>
       </div>
       <div className="form-panel">
         <p className="fixture-label">DESIGN REVIEW · TEST FORM ONLY</p>
         <p id="test-notice">
-          Use sample details. This preview sends no enquiries and stores no form
-          data. For a real enquiry, use the email link.
+          Use sample details. Nothing is sent or saved. For a real enquiry,
+          email <a href="mailto:contact@euranix.com">contact@euranix.com</a>.
         </p>
         <form
           onSubmit={submit}
@@ -199,12 +182,37 @@ export default function Enquiry({ ai }: { ai: boolean }) {
           )}
           <fieldset disabled={status === "loading"}>
             <legend className="sr-only">Your enquiry details</legend>
+            <div className="field request-type">
+              <label htmlFor="intent">What would you like to do?</label>
+              <select
+                id="intent"
+                value={data.intent}
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    intent: e.target.value as EnquiryData["intent"],
+                  })
+                }
+              >
+                <option value="general">Make a general enquiry</option>
+                <option value="technology-review">
+                  Request a technology review
+                </option>
+              </select>
+              {data.intent === "technology-review" && (
+                <p className="small request-context">
+                  One hour, free for a limited period. Future standard fee:
+                  US$199. We’ll confirm a time with you; this is not an
+                  appointment booking.
+                </p>
+              )}
+            </div>
             <div className="form-grid">
               {field("name", "Name (required)")}
               {field("email", "Work email (required)")}
               {field("company", "Business name (optional)")}
               <div className="field">
-                <label htmlFor="service">I’m interested in</label>
+                <label htmlFor="service">Which service interests you?</label>
                 <select
                   id="service"
                   value={data.service}
@@ -227,6 +235,35 @@ export default function Enquiry({ ai }: { ai: boolean }) {
               Please don’t include passwords, access keys, sensitive records or
               customer data.
             </p>
+            <details className="contact-preferences">
+              <summary>Contact preferences (optional)</summary>
+              <div className="field">
+                <label htmlFor="contactPreference">
+                  How would you prefer to follow up?
+                </label>
+                <select
+                  id="contactPreference"
+                  value={data.contactPreference}
+                  onChange={(e) =>
+                    setData({ ...data, contactPreference: e.target.value })
+                  }
+                >
+                  <option value="">No preference</option>
+                  <option value="email">Email</option>
+                  <option value="conversation">
+                    Arrange a conversation by email
+                  </option>
+                </select>
+              </div>
+              {field(
+                "preferredContactTime",
+                "Preferred time and time zone (optional)",
+              )}
+              <p className="small muted">
+                We’ll confirm availability by email. A preference does not
+                reserve a time.
+              </p>
+            </details>
             <label className="check">
               <input
                 type="checkbox"
@@ -245,8 +282,7 @@ export default function Enquiry({ ai }: { ai: boolean }) {
               <a href="https://www.euranix.com/privacy">
                 Euranix privacy policy
               </a>
-              . The final enquiry data flow and retention details will be
-              reviewed before launch.
+              .
             </p>
             <details className="fixture-controls" open>
               <summary>Review controls · simulated outcomes</summary>
@@ -309,6 +345,38 @@ export default function Enquiry({ ai }: { ai: boolean }) {
           )}
         </form>
       </div>
+      <aside
+        className="enquiry-support"
+        aria-label="Contact and request details"
+      >
+        {data.intent === "technology-review" && (
+          <div className="review-offer">
+            <span className="eyebrow">Your technology review</span>
+            <h2>
+              One hour.
+              <br />A clearer direction.
+            </h2>
+            <p>
+              Talk through your systems, subscriptions and operational
+              priorities. We’ll discuss gaps and useful next steps.
+            </p>
+            <p>
+              <strong>Free for a limited period.</strong>
+              <br />
+              Future standard fee: US$199.
+            </p>
+            <small>
+              We’ll agree a meeting time with you. A request is not a confirmed
+              appointment, and there is no automatic billing.
+            </small>
+          </div>
+        )}
+        <h2>Prefer email?</h2>
+        <a href="mailto:contact@euranix.com">contact@euranix.com ↗</a>
+        <p className="small muted">
+          Human support follows the working hours agreed with each customer.
+        </p>
+      </aside>
     </section>
   );
 }

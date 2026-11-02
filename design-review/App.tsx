@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import Enquiry from "./Enquiry";
+import { BusinessWorkflow, KnowledgeDemo } from "./WorkflowDemo";
 import { AI, LOGO } from "./site";
 import "./review.css";
+import "./refinements.css";
 const base = "/design-review";
-const enquiry = (service = "Technology review") =>
+const enquiry = (service = "General enquiry") =>
   base + "/enquiry?service=" + encodeURIComponent(service);
 const verticals = [
   [
@@ -47,14 +49,14 @@ function Header() {
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const escape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" && open) {
         setOpen(false);
         toggle.current?.focus();
       }
     };
     document.addEventListener("keydown", escape);
     return () => document.removeEventListener("keydown", escape);
-  }, []);
+  }, [open]);
   const links = AI
     ? [
         [base + "#usecases", "Use cases"],
@@ -112,10 +114,7 @@ function Header() {
           >
             {AI ? "Euranix.com" : "Euranix AI"} ↗
           </a>
-          <a
-            className="btn small-btn"
-            href={enquiry(AI ? "Managed AI" : "Technology review")}
-          >
+          <a className="btn small-btn" href={enquiry()}>
             Let’s talk <span aria-hidden="true">↗</span>
           </a>
         </nav>
@@ -174,27 +173,48 @@ function Footer() {
     </footer>
   );
 }
-function CTA({ ai = false }: { ai?: boolean }) {
+function CTA({
+  ai = false,
+  software = false,
+}: {
+  ai?: boolean;
+  software?: boolean;
+}) {
   return (
     <section className="cta shell">
       <div>
         <p className="eyebrow">A useful next step</p>
         <h2>
-          {ai
-            ? "Start with one question your business needs answered."
-            : "Let’s work out what your business needs next."}
+          {software
+            ? "Let’s shape the software your business needs."
+            : ai
+              ? "Start with one question your business needs answered."
+              : "Let’s work out what your business needs next."}
         </h2>
         <p>
-          {ai
-            ? "Bring a use case. We’ll discuss the information, access and operating model it needs."
-            : "Request a one-hour technology review. Free for a limited period; future standard fee US$199."}
+          {software
+            ? "Tell us about your workflow, existing tools and the capability you need to build."
+            : ai
+              ? "Bring a use case. We’ll discuss the information, access and operating model it needs."
+              : "Request a one-hour technology review. Free for a limited period; future standard fee US$199."}
         </p>
       </div>
       <a
         className="btn primary"
-        href={enquiry(ai ? "Managed AI" : "Technology review")}
+        href={enquiry(
+          software
+            ? "Custom Software Engineering"
+            : ai
+              ? "Managed AI"
+              : "Technology review",
+        )}
       >
-        {ai ? "Discuss your AI use case" : "Request a technology review"} ↗
+        {software
+          ? "Discuss your software project"
+          : ai
+            ? "Discuss your AI use case"
+            : "Request a technology review"}{" "}
+        ↗
       </a>
     </section>
   );
@@ -231,48 +251,6 @@ const needs = [
     services: "Managed Operations · Customer Experience · Managed AI",
   },
 ];
-function NeedMap() {
-  const [selected, setSelected] = useState(0);
-  const n = needs[selected];
-  return (
-    <div className="need-map">
-      <div className="map-top">
-        <span className="eyebrow">Your business, connected</span>
-        <span className="tiny-mark" aria-hidden="true">
-          ✳
-        </span>
-      </div>
-      <p className="map-caption">Choose a starting point</p>
-      <div className="segmented" aria-label="Business priorities">
-        {needs.map((v, i) => (
-          <button
-            key={v.title}
-            type="button"
-            aria-pressed={selected === i}
-            onClick={() => setSelected(i)}
-          >
-            {v.title}
-          </button>
-        ))}
-      </div>
-      <div className="map-content" aria-live="polite">
-        <h2>{n.text}</h2>
-        <ol>
-          {n.steps.map((s, i) => (
-            <li key={s}>
-              <span>0{i + 1}</span>
-              {s}
-            </li>
-          ))}
-        </ol>
-        <p className="map-services">{n.services}</p>
-      </div>
-      <a href="#solutions" className="text-link">
-        Find your starting point <span>↓</span>
-      </a>
-    </div>
-  );
-}
 function MainHome() {
   return (
     <>
@@ -294,7 +272,7 @@ function MainHome() {
             clear owner for the work.
           </p>
           <div className="actions">
-            <a className="btn primary" href={enquiry()}>
+            <a className="btn primary" href={enquiry("Technology review")}>
               Request a technology review ↗
             </a>
             <a className="text-link" href="#services">
@@ -307,7 +285,7 @@ function MainHome() {
             Future standard fee US$199. Appointment subject to confirmation.
           </p>
         </div>
-        <NeedMap />
+        <BusinessWorkflow />
       </section>
       <div className="principle-strip">
         <div className="shell">
@@ -446,8 +424,8 @@ function MainHome() {
             </div>
           ))}
           <p className="small muted">
-            Examples from the service catalogue. Edition, licences, features and
-            operating scope are agreed per engagement.
+            We help you choose the right fit, with editions, licences and
+            ongoing support agreed for your business.
           </p>
           <a href={enquiry("Business Applications")} className="text-link">
             Find the right application ↗
@@ -521,113 +499,6 @@ function MainHome() {
     </>
   );
 }
-const samples = [
-  {
-    label: "Business knowledge",
-    q: "How do I request a purchase?",
-    answer:
-      "Complete a purchase request with the item, business reason and estimated cost. Your team lead reviews it before purchasing.",
-    source: "Sample procurement guide · section 2",
-    access: "Team member · approved internal guidance",
-    fallback:
-      "The sample guide does not specify an approval deadline. Ask the operations owner rather than relying on a guess.",
-  },
-  {
-    label: "Customer support",
-    q: "Can I change my delivery address?",
-    answer:
-      "A customer support colleague needs to check the order status before confirming an address change.",
-    source: "Sample customer care guide · delivery changes",
-    access: "Customer · public support information",
-    fallback:
-      "This assistant cannot access orders in this demonstration. Ask the customer support team to check the request.",
-  },
-  {
-    label: "Business information",
-    q: "Which invoices need follow-up?",
-    answer:
-      "In this fictional dataset, two invoices are marked overdue. Check the underlying records before taking action.",
-    source: "Synthetic invoice dataset · read-only example",
-    access: "Accounts role · permitted records only",
-    fallback:
-      "Payment status is missing for one record. Verify it in the billing system before contacting the customer.",
-  },
-];
-function Demo() {
-  const [sample, setSample] = useState(0);
-  const [mode, setMode] = useState("answer");
-  const s = samples[sample];
-  return (
-    <div className="demo">
-      <div className="demo-header">
-        <span className="fixture-label">
-          ILLUSTRATIVE DEMO · SYNTHETIC DATA
-        </span>
-        <span aria-hidden="true">↗</span>
-      </div>
-      <div className="segmented" aria-label="Sample use case">
-        {samples.map((s, i) => (
-          <button
-            key={s.label}
-            aria-pressed={sample === i}
-            onClick={() => {
-              setSample(i);
-              setMode("answer");
-            }}
-          >
-            {s.label}
-          </button>
-        ))}
-      </div>
-      <div className="demo-question">{s.q}</div>
-      <div className="demo-response" aria-live="polite">
-        <p className="eyebrow">EURANIX AI / EXAMPLE RESPONSE</p>
-        <p>
-          {mode === "answer"
-            ? s.answer
-            : mode === "missing"
-              ? s.fallback
-              : "In a configured service, this would route the question and relevant context to the agreed team. Human support follows customer working hours. No handover is sent in this demo."}
-        </p>
-        {mode === "answer" && (
-          <details className="source">
-            <summary>View example source ↗</summary>
-            <p>{s.source}</p>
-            <p>
-              This synthetic source was written for the preview. It is not a
-              customer document or a live retrieval result.
-            </p>
-          </details>
-        )}
-        <small>{s.access}</small>
-      </div>
-      <div className="demo-actions">
-        <button
-          aria-pressed={mode === "answer"}
-          onClick={() => setMode("answer")}
-        >
-          Referenced answer
-        </button>
-        <button
-          aria-pressed={mode === "missing"}
-          onClick={() => setMode("missing")}
-        >
-          Missing information
-        </button>
-        <button
-          aria-pressed={mode === "human"}
-          onClick={() => setMode("human")}
-        >
-          Human handover
-        </button>
-      </div>
-      <p className="small muted">
-        Interactive sample, not a live AI connection. Production capabilities
-        and access rules are validated for your deployment.
-      </p>
-    </div>
-  );
-}
 function AIHome() {
   return (
     <>
@@ -661,7 +532,7 @@ function AIHome() {
           </p>
         </div>
         <div id="demo">
-          <Demo />
+          <KnowledgeDemo />
         </div>
       </section>
       <div className="principle-strip">
@@ -803,10 +674,10 @@ function AIHome() {
               to your environment.
             </h2>
             <p>
-              The existing offering describes documents and URLs, MySQL and
-              PostgreSQL, S3 synchronisation, departmental agents, voice and
-              text, a website assistant and usage reporting. We confirm the
-              exact combination and limitations in your scoped demonstration.
+              Bring together documents, websites and business records. Explore
+              database connections, S3 updates, departmental assistants, voice
+              and text, website support and usage reporting in a demonstration
+              focused on your work.
             </p>
           </div>
         </div>
@@ -972,7 +843,7 @@ function Software() {
               <h3>{h}</h3>
               <div>
                 <p>{p}</p>
-                <span className="deliverable">Agreed evidence / {e}</span>
+                <span className="deliverable">What you receive / {e}</span>
               </div>
             </article>
           ))}
@@ -1042,7 +913,7 @@ function Software() {
             ],
             [
               "Security response",
-              "Assess new vulnerabilities, prioritise by exposure and severity, and agree containment, mitigation and remediation. A permanent fix cannot be guaranteed for every zero-day within 24 hours.",
+              "Assess new vulnerabilities, prioritise by exposure and severity, and agree containment, mitigation and remediation. When a patch is not available, we assess containment and mitigation and explain the remaining risk.",
             ],
             [
               "Commercial clarity",
@@ -1074,7 +945,7 @@ function Software() {
           ],
           [
             "How long will delivery take?",
-            "We estimate after understanding the scope and dependencies. Agree milestones and review points; no universal delivery time or performance improvement is promised.",
+            "We estimate after understanding the scope and dependencies. We agree milestones and review points with you, then keep you informed as the work progresses.",
           ],
           [
             "Can you maintain the application?",
@@ -1087,7 +958,7 @@ function Software() {
           </details>
         ))}
       </section>
-      <CTA />
+      <CTA software />
     </>
   );
 }

@@ -1,5 +1,8 @@
 // Domain model only. This is NOT a proposed or final Hub wire schema.
 export type Enquiry = {
+  intent: "general" | "technology-review";
+  contactPreference: string;
+  preferredContactTime: string;
   name: string;
   email: string;
   company: string;

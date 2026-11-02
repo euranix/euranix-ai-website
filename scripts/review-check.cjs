@@ -11,7 +11,8 @@ const root = process.cwd();
 const ai = fs.existsSync("App.tsx");
 const port = ai ? 4274 : 4273;
 const origin = "http://127.0.0.1:" + port;
-const out = "docs/design-review";
+const out = process.env.REVIEW_EVIDENCE_DIR || "docs/design-review";
+fs.mkdirSync(out + "/screenshots", { recursive: true });
 const routes = ai
   ? ["/design-review/", "/design-review/enquiry"]
   : [
@@ -157,11 +158,11 @@ const routes = ai
       );
     } else {
       await page
-        .getByRole("button", { name: "Connect the work", exact: true })
+        .getByRole("button", { name: "A support request", exact: true })
         .click();
       assert(
-        (await page.locator(".map-content").textContent()).includes(
-          "Map one business workflow",
+        (await page.locator(".workflow-demo").textContent()).includes(
+          "shared files",
         ),
       );
       assert.equal(await page.locator(".service-row").count(), 7);

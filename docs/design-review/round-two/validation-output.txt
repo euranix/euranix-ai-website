@@ -1,0 +1,47 @@
+production-build (exit 0)
+
+> euranix-ai-react@0.1.0 build
+> vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.21 building for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.97 kB │ gzip:  0.50 kB
+dist/assets/logo-DQLSJae4.png    72.11 kB
+dist/assets/index-DtfI8xl5.css   31.11 kB │ gzip:  6.44 kB
+dist/assets/index-BIb8hJxm.js   173.97 kB │ gzip: 55.24 kB
+✓ built in 884ms
+
+
+typecheck (exit 0)
+
+
+preview-build (exit 0)
+
+> euranix-ai-react@0.1.0 build:review
+> vite build --mode design-review
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.21 building for design-review...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist-review/design-review/index.html            0.69 kB │ gzip:  0.39 kB
+dist-review/review-assets/logo-DQLSJae4.png    72.11 kB
+dist-review/review-assets/index-zX01Z53K.css   25.34 kB │ gzip:  5.87 kB
+dist-review/review-assets/index-DJCh_rOK.js   174.45 kB │ gzip: 55.37 kB
+✓ built in 1.22s
+
+
+preview-typecheck (exit 0)
+
+> euranix-ai-react@0.1.0 typecheck:review
+> tsc -p tsconfig.review.json
+
+
+
+lint (exit 0)

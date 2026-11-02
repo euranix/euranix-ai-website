@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "productionFiles": 8,
+  "productionSha256MatchesBaseline": true,
+  "productionModeRejectsFixture": true,
+  "nonLoopbackPreviewRejectsSuccess": true,
+  "hubAdapterRemainsDisconnected": true,
+  "networkSubmissions": 0,
+  "originalRootStatus": 200
+}

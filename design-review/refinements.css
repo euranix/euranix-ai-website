@@ -1,0 +1,446 @@
+/* Round two: compact, interactive examples and a form-first enquiry layout. */
+.skip:not(:focus) {
+  clip-path: inset(50%);
+}
+.workflow-demo {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.workflow-demo .fixture-label {
+  margin-bottom: 18px;
+}
+.workflow-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: start;
+}
+.workflow-heading h2 {
+  font-size: 30px;
+  margin-bottom: 22px;
+}
+.workflow-symbol {
+  color: var(--accent);
+  font-size: 44px;
+  line-height: 1;
+}
+.request-note {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border-left: 2px solid var(--accent);
+  background: var(--bg);
+  font-size: 15px;
+}
+.workflow-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  position: relative;
+}
+.workflow-track::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 16%;
+  right: 16%;
+  height: 1px;
+  background: var(--line);
+}
+.workflow-track li {
+  z-index: 1;
+}
+.workflow-track button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  padding: 0 3px 12px;
+  background: none;
+  font-size: 12px;
+  min-height: 66px;
+}
+.step-node {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--muted);
+  font: 12px monospace;
+}
+.workflow-track [aria-pressed="true"] .step-node {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.workflow-result {
+  border-top: 1px solid var(--line);
+  padding: 18px 0 14px;
+}
+.workflow-result .eyebrow {
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-size: 10px;
+}
+.workflow-result p:not(.eyebrow) {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.workflow-service {
+  font-size: 11px;
+  color: var(--muted);
+}
+.demo-footnote {
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.knowledge-demo {
+  padding: 24px;
+}
+.knowledge-demo > .fixture-label {
+  margin-bottom: 18px;
+}
+.knowledge-demo .demo-question {
+  margin: 18px 0;
+  font-size: 16px;
+  padding: 13px 16px;
+}
+.knowledge-flow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  padding: 8px 0 13px;
+  color: var(--muted);
+}
+.knowledge-flow span:nth-child(even) {
+  color: var(--accent);
+}
+.source-document {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 16px;
+}
+.source-document-heading {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.source-document-heading span {
+  font-size: 20px;
+  color: var(--accent);
+}
+.source-document-heading strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.source-document blockquote {
+  margin: 12px 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.access-label {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+}
+.knowledge-demo .demo-response {
+  min-height: 0;
+  border-top: 0;
+  padding: 20px 0 0;
+}
+.knowledge-demo .demo-response .eyebrow {
+  margin-bottom: 10px;
+}
+.knowledge-demo .demo-response p:not(.eyebrow) {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.knowledge-demo .demo-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  padding: 14px 0;
+}
+.knowledge-demo .demo-actions button {
+  font-size: 11px;
+  min-height: 40px;
+}
+.delivery-list article {
+  grid-template-columns: 48px minmax(120px, 0.65fr) minmax(0, 1.6fr);
+  align-items: baseline;
+}
+.delivery-list h3 {
+  margin: 0;
+}
+.delivery-list article > div {
+  min-width: 0;
+}
+.enquiry-layout {
+  grid-template-areas: "intro form" "support form";
+  grid-template-rows: auto 1fr;
+  gap: 26px 90px;
+  align-items: start;
+  padding-top: 55px;
+}
+.enquiry-intro {
+  grid-area: intro;
+}
+.enquiry-intro h1 {
+  font-size: 54px;
+}
+.enquiry-intro .lede {
+  margin-bottom: 0;
+}
+.enquiry-layout .form-panel {
+  grid-area: form;
+}
+.enquiry-support {
+  grid-area: support;
+}
+.enquiry-support > h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.enquiry-support > a {
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.enquiry-support .review-offer {
+  margin: 0 0 28px;
+  padding: 25px 0;
+}
+.request-type {
+  margin-top: 24px;
+}
+.request-context {
+  padding: 12px 0 0;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.contact-preferences {
+  border-block: 1px solid var(--line);
+  padding: 16px 0;
+  margin-top: 22px;
+}
+.contact-preferences summary {
+  font-size: 13px;
+}
+.contact-preferences[open] summary {
+  margin-bottom: 18px;
+}
+.contact-preferences .field {
+  margin-top: 16px;
+}
+.contact-preferences p {
+  margin: 14px 0 0;
+}
+@media (max-width: 900px) {
+  .enquiry-layout {
+    grid-template-areas: "intro" "form" "support";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 24px;
+  }
+  .enquiry-support {
+    padding-top: 10px;
+  }
+  .enquiry-layout .form-panel {
+    max-width: none;
+  }
+  .delivery-list article {
+    grid-template-columns: 30px minmax(95px, 0.65fr) minmax(0, 1.5fr);
+    gap: 20px;
+  }
+  .hero {
+    gap: 28px;
+    padding-block: 40px 44px;
+  }
+  .workflow-demo {
+    max-width: 650px;
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 30px;
+    gap: 24px;
+    padding-bottom: 32px;
+  }
+  .hero h1,
+  .ai .hero h1 {
+    font-size: 43px;
+    margin-bottom: 20px;
+  }
+  .hero-copy .eyebrow {
+    margin-bottom: 18px;
+  }
+  .hero-copy .lede {
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .hero .actions {
+    margin-block: 20px 16px;
+    gap: 15px;
+  }
+  .hero-copy > .small {
+    margin-bottom: 0;
+    font-size: 11px;
+  }
+  .hero .btn {
+    min-height: 46px;
+    padding-block: 14px;
+  }
+  .workflow-demo {
+    padding: 18px;
+  }
+  .workflow-heading h2 {
+    font-size: 25px;
+    margin-bottom: 17px;
+  }
+  .workflow-heading br {
+    display: none;
+  }
+  .workflow-symbol {
+    font-size: 32px;
+  }
+  .workflow-demo .fixture-label,
+  .knowledge-demo > .fixture-label {
+    font-size: 9px;
+    margin-bottom: 14px;
+  }
+  .request-note {
+    font-size: 13px;
+    margin: 16px 0;
+    padding: 12px;
+  }
+  .workflow-track button {
+    font-size: 11px;
+  }
+  .workflow-result {
+    padding: 14px 0 12px;
+  }
+  .workflow-result p:not(.eyebrow) {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .knowledge-demo {
+    padding: 18px;
+  }
+  .knowledge-demo .demo-question {
+    font-size: 14px;
+    margin: 14px 0;
+    padding: 12px;
+  }
+  .knowledge-flow {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .source-document {
+    padding: 12px;
+  }
+  .source-document blockquote {
+    font-size: 12px;
+    margin-block: 10px;
+  }
+  .knowledge-demo .demo-response {
+    padding-top: 15px;
+    min-height: 0;
+  }
+  .knowledge-demo .demo-response p:not(.eyebrow) {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .knowledge-demo .demo-actions {
+    gap: 6px;
+    padding: 12px 0;
+  }
+  .knowledge-demo .demo-actions button {
+    min-height: 44px;
+  }
+  .principle-strip .shell {
+    padding-block: 16px;
+    gap: 6px;
+    font-size: 11px;
+  }
+  .section {
+    padding-block: 44px;
+  }
+  .section-heading {
+    gap: 4px;
+    margin-bottom: 28px;
+  }
+  .section-heading h2 {
+    font-size: 30px;
+    margin-bottom: 16px;
+  }
+  .section-heading p:last-child {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .section-heading > .eyebrow {
+    margin-bottom: 10px;
+  }
+  .service-row summary {
+    min-height: 76px;
+    padding-block: 18px;
+  }
+  .usecase-list article {
+    padding-block: 26px;
+  }
+  .enquiry-layout {
+    padding-top: 30px;
+    gap: 20px;
+  }
+  .enquiry-intro .eyebrow {
+    margin-bottom: 12px;
+  }
+  .enquiry-intro h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .enquiry-intro .lede {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .form-panel {
+    padding: 20px 18px;
+  }
+  .form-panel > .fixture-label {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .form-panel > p:not(.fixture-label) {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  .request-type {
+    margin-top: 18px;
+  }
+  .form-grid {
+    margin-top: 20px;
+    gap: 18px;
+  }
+  .delivery-list article {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 15px;
+  }
+  .delivery-list article > div {
+    grid-column: 2;
+  }
+  .faq {
+    padding-top: 0;
+  }
+}

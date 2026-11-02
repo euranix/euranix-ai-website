@@ -1,4 +1,7 @@
 # Euranix flagship design review
+
+Latest preview: [second design-refinement round, screenshots and test evidence](round-two/README.md). The evidence below records the first round and its production baseline.
+
 Reviewed 2 November 2026. This is a local design-review milestone, not a production release.
 
 ## Scope and preservation

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "width": 390,
+      "formTop": 298,
+      "discoveryTop": 1361,
+      "checks": "Intent, optional preferences, mobile reading order, contextual offer, legacy query URLs, Escape focus, new demonstration boundaries passed"
+    },
+    {
+      "width": 1440,
+      "formTop": 197,
+      "discoveryTop": 998,
+      "checks": "Intent, optional preferences, mobile reading order, contextual offer, legacy query URLs, Escape focus, new demonstration boundaries passed"
+    }
+  ],
+  "scope": "Local preview only. No production readiness claim."
+}
