@@ -1,6 +1,6 @@
 # Euranix AI — Website
 
-**Controlled release: AI release held until the corporate gate and Hub notification correction pass.** [Current evidence and release record](docs/release-candidate/RELEASE-RECORD.md). [Deployment and rollback](docs/release-candidate/DEPLOYMENT.md) supersede the generic hosting guide below.
+**Controlled release: AI deployed; 129 public checks and both genuine origin acceptances, assignment and human-confirmed inbox/format checks passed. AI replay remains unverified after browser closure and the Computer Use URL-verification stop; final release validation remains open.** [Current evidence and release record](docs/release-candidate/RELEASE-RECORD.md). [Deployment and rollback](docs/release-candidate/DEPLOYMENT.md) supersede the generic hosting guide below.
 
 Marketing site for [euranix.ai](https://euranix.ai). Built with React + Vite, served via Nginx in a multi-stage Docker image.
 

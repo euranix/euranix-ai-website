@@ -1,6 +1,6 @@
 # euranix.ai — controlled release
 
-AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
+AI deployed; 129 public checks and both genuine origin acceptances, assignment and human-confirmed inbox/format checks passed. AI replay remains unverified after browser closure and the Computer Use URL-verification stop; final release validation remains open.
 
 Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 

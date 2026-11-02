@@ -1,10 +1,10 @@
 # euranix.ai — controlled release
 
-AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.
+AI deployed; 129 public checks and both genuine origin acceptances, assignment and human-confirmed inbox/format checks passed. AI replay remains unverified after browser closure and the Computer Use URL-verification stop; final release validation remains open.
 
 Current deployed candidate: `4dca061b3527b18dc23bcd82ac1150ea3af7eb5a`.
 
-The human explicitly authorised proceeding with corporate duplicate-safe replay unverified. This is a release exception, not a successful replay test. Corporate genuine Turnstile acceptance, correct assignment to admin@euranix.com/user 1 with no fallback, human-confirmed inbox delivery and public checks passed. AI is now deployed; its genuine enquiry, assignment, actual inbox and retry checks remain required. Resolve the reported Hub email-rendering defect through its coordinated corrective release before the labelled AI acceptance tests; do not resend an accepted enquiry to test formatting. Do not claim the remaining checks passed.
+The human explicitly authorised proceeding with corporate duplicate-safe replay unverified. This is a release exception, not a successful replay test. Corporate genuine Turnstile acceptance, correct assignment to admin@euranix.com/user 1 with no fallback, human-confirmed inbox delivery and public checks passed. Both AI serving origins passed genuine Turnstile acceptance, correct Admin assignment and actual inbox delivery. The human confirmed the revised email formatting is good. Hub correction `9b892b3996af42ec3ab0eb7b0f4695525e1b4af6` is live and healthy. AI replay remains unverified after browser closure and the Computer Use URL-verification stop; final release validation remains open. Unchanged read-only record counts do not establish replay success.
 
 Portal and chat remain HTTP 503; platform.euranix.ai still fails DNS resolution. The user explicitly permits these existing outages for this release with the visible contact@euranix.com fallbacks. Original destinations remain linked. These outages are unresolved, and unauthenticated probes do not prove authenticated portal function.
 

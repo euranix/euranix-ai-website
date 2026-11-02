@@ -43,7 +43,7 @@
     "recipient": "admin@euranix.com",
     "notificationSubject": "New website enquiry #1 — follow-up required",
     "inboxConfirmation": "Human confirmed exact subject and synthetic name in recipient inbox",
-    "notificationQuality": "Human reported entity leakage, raw labels, empty fields; Hub preparing fix",
+    "notificationQuality": "Original notification quality finding corrected in Hub9b892b3996af42ec3ab0eb7b0f4695525e1b4af6; the human confirmed both later AI emails received with good formatting. Original notification was not resent.",
     "publicChecks": {
       "passed": true,
       "checks": 578,
@@ -66,7 +66,7 @@
       "noTransform": true,
       "noticeRetained": true
     },
-    "replay": "Incomplete. Three verification waits sent zero requests. The authorised real checkbox returned Cloudflare failure_retry; a normal refresh did not yield a token. Human ordinary-browser replay is required; no security bypass attempted.",
+    "replay": "Unverified, explicitly accepted by the human as an exception for proceeding with the AI release. Verification attempts sent zero replay requests.",
     "replayNoRequestAudit": {
       "confirmedBy": "Hub agent read-only requery",
       "enquiries": 1,
@@ -137,9 +137,9 @@
       "sha256": "9192DBC9374F363E853B2E97072C17A1FD20FA63A58BA6857B47561BBFD9DFDC",
       "passed": true
     },
-    "deployment": "Deployed; genuine enquiry checks await corrected Hub notification release",
+    "deployment": "Live; both serving origins passed genuine acceptance, CRM assignment and human-confirmed inbox delivery. Replay validation remains open.",
     "candidateCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a",
-    "releaseStatus": "AI deployed; all 129 public checks passed. Genuine apex and www enquiry journeys remain pending. Corporate replay remains explicitly unverified under the user-approved exception.",
+    "releaseStatus": "AI deployed; 129 public checks and both genuine origin acceptances, assignment and human-confirmed inbox/format checks passed. AI replay remains unverified after browser closure and the Computer Use URL-verification stop; final release validation remains open.",
     "deployedCommit": "4dca061b3527b18dc23bcd82ac1150ea3af7eb5a",
     "deployments": [
       {
@@ -174,10 +174,95 @@
       "httpToHttps": 302,
       "wwwToApex": false,
       "canonical": "https://euranix.ai"
-    }
+    },
+    "apex": {
+      "origin": "https://euranix.ai",
+      "name": "EURANIX TEST — Website enquiry 002",
+      "receipt": "47aea039-ec2b-42f6-bb21-8cd7aef448dd",
+      "browserAccepted": true,
+      "realTurnstile": true,
+      "verifiedHostname": "euranix.ai",
+      "privacyAcknowledged": true,
+      "noticeVersion": "website-enquiries-2026-11-02-v1",
+      "marketingConsent": false,
+      "enquiryId": 3,
+      "leadId": 3,
+      "contactId": 1,
+      "ownerUserId": 1,
+      "assignmentFallback": null,
+      "recipient": "admin@euranix.com",
+      "notificationSubject": "New website enquiry #3 — follow-up required",
+      "notificationSentAt": "2026-11-02T19:47:43Z",
+      "deliveryIds": [
+        5,
+        6
+      ],
+      "mailHistoryId": 34,
+      "deliveryAttempts": 1,
+      "inboxConfirmation": "Human confirmed both exact emails received; formatting is good",
+      "replay": {
+        "passed": false,
+        "status": "Unverified; no replay request sent",
+        "requestsSent": 0,
+        "httpStatus": null
+      },
+      "finalHubAudit": {
+        "snapshotKeyCount": 1,
+        "labelCount": 1,
+        "leadCount": 1,
+        "sentNotificationIntents": 2,
+        "bellCount": 1,
+        "soleMailHistoryId": 34,
+        "countsUnchanged": true,
+        "limitation": "Unchanged counts do not prove a successful replay HTTP result"
+      }
+    },
+    "www": {
+      "origin": "https://www.euranix.ai",
+      "name": "EURANIX TEST — Website enquiry 003",
+      "receipt": "0dfbbcb9-14dd-458d-bd36-e54c9f46a646",
+      "browserAccepted": true,
+      "realTurnstile": true,
+      "verifiedHostname": "www.euranix.ai",
+      "privacyAcknowledged": true,
+      "noticeVersion": "website-enquiries-2026-11-02-v1",
+      "marketingConsent": false,
+      "enquiryId": 4,
+      "leadId": 4,
+      "contactId": 1,
+      "ownerUserId": 1,
+      "assignmentFallback": null,
+      "recipient": "admin@euranix.com",
+      "notificationSubject": "New website enquiry #4 — follow-up required",
+      "notificationSentAt": "2026-11-02T19:49:18Z",
+      "deliveryIds": [
+        7,
+        8
+      ],
+      "mailHistoryId": 35,
+      "deliveryAttempts": 1,
+      "inboxConfirmation": "Human confirmed both exact emails received; formatting is good",
+      "replay": {
+        "passed": false,
+        "status": "Unverified; no replay request sent",
+        "requestsSent": 0,
+        "httpStatus": null
+      },
+      "finalHubAudit": {
+        "snapshotKeyCount": 1,
+        "labelCount": 1,
+        "leadCount": 1,
+        "sentNotificationIntents": 2,
+        "bellCount": 1,
+        "soleMailHistoryId": 35,
+        "countsUnchanged": true,
+        "limitation": "Unchanged counts do not prove a successful replay HTTP result"
+      }
+    },
+    "replayBlocker": "Apex replay browsers closed before verification; www helper also exited before verification with zero requests. Native Computer Use then stopped because it could not reliably verify the current browser URL. No workaround attempted; no successful replay result exists."
   },
   "hub": {
-    "commit": "742343ac980ebf900480665c2eca2aa69945de05",
+    "commit": "9b892b3996af42ec3ab0eb7b0f4695525e1b4af6",
     "enabled": true,
     "noticeVersion": "website-enquiries-2026-11-02-v1",
     "publicEndpoint": "https://hub.euranixcloud.com/api/v1/enquiries",
@@ -186,12 +271,30 @@
     "fallback": null,
     "notificationCorrection": {
       "candidateCommit": "9b892b3996af42ec3ab0eb7b0f4695525e1b4af6",
-      "deployment": "Pending CI; not deployed",
+      "deployment": "Live; all five services healthy, effective settings and worker templates verified",
       "localTests": 3472,
       "localAssertions": 21696,
       "focusedTests": 21,
       "focusedAssertions": 142,
-      "backup": "EuranixHub/2026-11-02-19-20-27.zip"
+      "backup": "EuranixHub/2026-11-02-19-41-03.zip",
+      "deploymentId": "cqbdt3z4udc4fygtdphjalmd",
+      "tag": "website-enquiries-v1.0.2-2026-11-03",
+      "webStartedAt": "2026-11-02T19:45:28Z",
+      "healthVerifiedAt": "2026-11-02T19:47:00Z",
+      "ciRun": 350,
+      "ciPassed": true,
+      "originalCaseUnchanged": true,
+      "actualCorrectedInboxAppearance": "Human confirmed both exact AI emails received and formatting is good"
+    },
+    "initialIntakeCommit": "742343ac980ebf900480665c2eca2aa69945de05",
+    "documentationCommit": "c28f7a01d354f1215d4dfa99797c030a60bb680f",
+    "finalAudit": {
+      "allFiveServicesHealthy": true,
+      "recoveryPending": 0,
+      "recoveryFailed": 0,
+      "assignmentReady": true,
+      "acceptedAiCountsUnchanged": true,
+      "noResends": true
     }
   },
   "externalDestinations": {
@@ -199,6 +302,8 @@
     "chatLoader": "HTTP 503",
     "chatAssets": "HTTP 503",
     "platform.euranix.ai": "DNS resolution failure",
-    "fallback": "mailto:contact@euranix.com; original destinations preserved"
-  }
+    "fallback": "mailto:contact@euranix.com; original destinations preserved",
+    "checkedAt": "2026-11-02T19:50:52.155Z"
+  },
+  "releaseRecommendation": "Both public releases are deployed with genuine intake, assignment and actual inbox evidence. Corporate replay is an explicitly accepted unverified exception. AI replay remains unverified and final release validation stays open; no production-readiness or replay-pass claim."
 }
