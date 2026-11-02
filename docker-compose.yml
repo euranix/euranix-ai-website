@@ -3,6 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_ENQUIRY_API_URL: ${VITE_ENQUIRY_API_URL:-}
+        VITE_TURNSTILE_SITE_KEY: ${VITE_TURNSTILE_SITE_KEY:-}
+        VITE_ENQUIRY_PRIVACY_VERSION: ${VITE_ENQUIRY_PRIVACY_VERSION:-}
     restart: unless-stopped
     expose:
       - "80"

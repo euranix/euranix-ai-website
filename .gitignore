@@ -25,3 +25,8 @@ yarn-error.log*
 
 # Isolated local design-review output
 dist-review/
+
+.build/
+dist-stage/
+.env.local
+.env.*.local

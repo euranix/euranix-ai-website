@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "baseline": "75802365f8811093c9043632c860aa5838e5465f",
+  "checks": [
+    {
+      "file": "public/apple-touch-icon.png",
+      "unchanged": true,
+      "gitBlob": "3c9b2f886dfacf62e084a57adbf8950b89757e30"
+    },
+    {
+      "file": "public/favicon.ico",
+      "unchanged": true,
+      "gitBlob": "20ad05d9e61986bfb4e1dc631470475d65fb5490"
+    },
+    {
+      "file": "public/favicon.png",
+      "unchanged": true,
+      "gitBlob": "2e889f5770ecb0df1ff45cef644117c2c87540ba"
+    },
+    {
+      "file": "public/favicon.svg",
+      "unchanged": true,
+      "gitBlob": "8cc2f5ab281b561cc0fdf25a09d9bf4ca5e8619a"
+    }
+  ],
+  "favicons": {
+    "png": "64x64",
+    "apple": "180x180",
+    "icoFrames": [
+      [
+        16,
+        16
+      ],
+      [
+        32,
+        32
+      ],
+      [
+        48,
+        48
+      ],
+      [
+        64,
+        64
+      ]
+    ],
+    "svg": "original square viewBox retained",
+    "stretch": "Original corrected vector/PNG/ICO assets unchanged; favicon rendering does not resize the rectangular logo."
+  }
+}

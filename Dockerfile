@@ -1,4 +1,4 @@
-FROM node:18 AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install ALL deps (including devDependencies where vite lives).
@@ -8,6 +8,9 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
+ARG VITE_ENQUIRY_API_URL=""
+ARG VITE_TURNSTILE_SITE_KEY=""
+ARG VITE_ENQUIRY_PRIVACY_VERSION=""
 # Build with production mode so Vite outputs optimised assets
 RUN NODE_ENV=production npm run build
 

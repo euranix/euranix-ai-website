@@ -1,3 +1,5 @@
+> Archived preview milestone. The complete application and current review instructions are in [release-candidate/README.md](../release-candidate/README.md). Earlier isolation/build commands below describe historical evidence only.
+
 # Euranix flagship design review
 
 Latest preview: [second design-refinement round, screenshots and test evidence](round-two/README.md). The evidence below records the first round and its production baseline.

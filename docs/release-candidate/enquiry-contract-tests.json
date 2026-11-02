@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "kind": "Automated contract tests with intercepted synthetic responses; NOT live Hub acceptance",
+  "hubCommit": "778e1e1a4319d76efdef00413667925e34390ba1",
+  "contract": "docs/website-enquiries-contract.md",
+  "checks": [
+    "required fields and privacy acknowledgement",
+    "expired, errored and timed-out bot challenge prevents submission until refreshed",
+    "unchecked optional marketing",
+    "canonical service and enquiry type mapping",
+    "optional phone and structured IANA contact window",
+    "fixed source website/path and discarded unapproved attribution",
+    "503 and Retry-After",
+    "network failure retains idempotency key",
+    "fresh security token on retry",
+    "422 field validation",
+    "429 cooldown",
+    "403 verification retry",
+    "malformed 200 never accepted",
+    "201 accepted and 200 accepted replay only",
+    "new business enquiry gets new UUID",
+    "no PII persisted in browser storage"
+  ],
+  "syntheticRequests": 8,
+  "liveHubAcceptance": "BLOCKED: staging endpoint, Turnstile key, approved privacy version and allowed origins not confirmed"
+}

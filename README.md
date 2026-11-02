@@ -1,5 +1,7 @@
 # Euranix AI — Website
 
+**Current milestone: full-site release candidate on `codex/flagship-design-review`. Do not merge or deploy yet.** [Review instructions, screenshots, tests and remaining release gates](docs/release-candidate/README.md). [Independent deployment and rollback](docs/release-candidate/DEPLOYMENT.md) supersede the generic hosting guide below for this candidate.
+
 Marketing site for [euranix.ai](https://euranix.ai). Built with React + Vite, served via Nginx in a multi-stage Docker image.
 
 ---
@@ -18,7 +20,7 @@ Marketing site for [euranix.ai](https://euranix.ai). Built with React + Vite, se
 
 ## Local development
 
-**Requirements:** Node 18+
+**Requirements:** Node 22.13+ (Docker builder uses Node 22 Alpine).
 
 ```bash
 npm install
@@ -29,7 +31,7 @@ npm run dev          # http://localhost:5173
 
 ```bash
 npm run build        # outputs to dist/
-npm run preview      # http://localhost:4173
+npm run preview      # http://127.0.0.1:4374 (loopback only, noindex)
 ```
 
 ---

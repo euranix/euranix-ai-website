@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://portal.euranix.com",
+    "result": "503 https://portal.euranix.com/"
+  },
+  {
+    "url": "https://www.euranixcloud.com",
+    "result": "200 https://www.euranixcloud.com/"
+  },
+  {
+    "url": "https://platform.euranix.ai",
+    "result": "curl: (6) Could not resolve host: platform.euranix.ai 000 https://platform.euranix.ai/"
+  },
+  {
+    "url": "https://portal.euranix.com/im_livechat/loader/1",
+    "result": "503 https://portal.euranix.com/im_livechat/loader/1"
+  },
+  {
+    "url": "https://portal.euranix.com/im_livechat/assets_embed.js",
+    "result": "503 https://portal.euranix.com/im_livechat/assets_embed.js"
+  },
+  {
+    "url": "https://www.euranix.com",
+    "result": "200 https://www.euranix.com/"
+  },
+  {
+    "url": "https://euranix.ai",
+    "result": "200 https://euranix.ai/"
+  }
+]

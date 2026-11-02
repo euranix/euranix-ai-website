@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-02T16:30:26.671Z",
+  "commands": [
+    "npm run typecheck",
+    "npm run lint",
+    "npm run build",
+    "docker build",
+    "nginx -t"
+  ],
+  "localNode": "v24.18.0",
+  "dockerBuilder": "node:22-alpine",
+  "lint": {
+    "errors": 0,
+    "warnings": []
+  },
+  "buildWarnings": [],
+  "dockerWarning": "BuildKit flags VITE_TURNSTILE_SITE_KEY by name. This is deliberately a public key, not a secret; all three public args are empty in the tested candidate.",
+  "browserTools": {
+    "playwright": "1.64.1",
+    "axe": "4.14.0"
+  },
+  "scope": "Functional/build checks; not a comprehensive dependency or security audit."
+}
